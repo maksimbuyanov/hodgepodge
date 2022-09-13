@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".", // для абсолютного импорта
+    //"outDir": "./dist/", // не участвует, тк компилим с помощью webpack
+    "noImplicitAny": true,// не позволяет использовать переменные без явного указания типа
+    "module": "ESNext",
+    "target": "es5", // версия js в которую будет код компилироваться
+    "jsx": "react-jsx",
+    "allowJs": true, //
+    "moduleResolution": "node", // определяет то, какие импорты будут node или classic
+    "esModuleInterop": true, // нужен для импорта позволяет работать с пакетами, которые используют common js как с обычными пакетами с помощью import
+    "allowSyntheticDefaultImports": true //позволяет синтетически сделать импорты привычными, многие бибилиотеки не поддерживают export default
+  },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
+  }
+}

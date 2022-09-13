@@ -1,0 +1,14 @@
+@import "normalize";
+@import "standard";
+@import "variables/global";
+@import "thems/light";
+@import "thems/dark";
+
+.app {
+  font: var(--font-m);
+
+  background: var(--bk-color);
+  color: var(--primary-color);
+
+  min-height: 100vh;
+}
