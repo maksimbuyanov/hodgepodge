@@ -43,10 +43,22 @@ export function buildLoaders (options:BuildOptions):webpack.RuleSetRule[] {
         use: 'ts-loader', // то, чем обрабатывает
         exclude: /node_modules/, // файлы, папки которые точно не нужно обрабатывать
     }
+
+    const babelLoader = {
+        test: /\.(js|jsx|tsx)$/,
+        exclude: /node_modules/,
+        use: {
+            loader: "babel-loader",
+            options: {
+                presets: ['@babel/preset-env']
+            }
+        }
+    }
     return [
-        typescriptLoader,
         cssLoader,
         svgLoader,
-        fileLoader
+        fileLoader,
+        babelLoader,
+        typescriptLoader
     ]
 }

@@ -23,7 +23,8 @@ export function buildPlugins({paths,isDev}:BuildOptions): webpack.WebpackPluginI
             __IS_DEV__: JSON.stringify(isDev)
         }),
 
-        new webpack.HotModuleReplacementPlugin(),
+        //выдавал предупреждение, что автоматически добавляет его, по ключу hot в buildDevServer
+        // new webpack.HotModuleReplacementPlugin(),
 
         new ReactRefreshWebpackPlugin(),
     ]
