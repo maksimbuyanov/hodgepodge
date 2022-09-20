@@ -1,32 +1,31 @@
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import webpack from 'webpack';
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import {BuildOptions} from './types/config';
-const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+import HtmlWebpackPlugin from 'html-webpack-plugin'
+import webpack from 'webpack'
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import type { BuildOptions } from './types/config'
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 
-export function buildPlugins({paths,isDev}:BuildOptions): webpack.WebpackPluginInstance[] {
-    const {html} = paths
+export function buildPlugins ({ paths, isDev }: BuildOptions): webpack.WebpackPluginInstance[] {
+  const { html } = paths
 
-    return [
-        new HtmlWebpackPlugin({
-            template: html
-        }),
+  return [
+    new HtmlWebpackPlugin({
+      template: html
+    }),
 
-        new webpack.ProgressPlugin(),
+    new webpack.ProgressPlugin(),
 
-        new MiniCssExtractPlugin({
-            filename: 'css/[name].[contenthash:6].css',
-            chunkFilename:'css/[name].[contenthash:6].css'
-        }),
+    new MiniCssExtractPlugin({
+      filename: 'css/[name].[contenthash:6].css',
+      chunkFilename: 'css/[name].[contenthash:6].css'
+    }),
 
-        new webpack.DefinePlugin({
-            __IS_DEV__: JSON.stringify(isDev)
-        }),
+    new webpack.DefinePlugin({
+      __IS_DEV__: JSON.stringify(isDev)
+    }),
 
-        //выдавал предупреждение, что автоматически добавляет его, по ключу hot в buildDevServer
-        // new webpack.HotModuleReplacementPlugin(),
+    // Выдавал предупреждение, что автоматически добавляет его, по ключу hot в buildDevServer
+    // new webpack.HotModuleReplacementPlugin(),
 
-        new ReactRefreshWebpackPlugin(),
-    ]
+    new ReactRefreshWebpackPlugin()
+  ]
 }
-
