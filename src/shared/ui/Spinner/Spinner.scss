@@ -1,0 +1,345 @@
+$z-index: 51;
+$load-color: #1c99f8;
+$success-color: #5ac45a;
+$fail-color: red;
+
+/* CSS Spinner */
+
+.spinner-dual-ring {
+  position: absolute;
+  z-index: $z-index;
+  top: 50%;
+  left: 50%;
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  align-self: center;
+  justify-self: center;
+  transform: translate(-50%, -50%);
+}
+
+.spinner-dual-ring::after {
+  display: block;
+  width: 80px;
+  height: 80px;
+  border: 6px solid $load-color;
+  border-color: $load-color transparent $load-color transparent;
+  animation: spinner-animation 1.2s linear infinite;
+  border-radius: 50%;
+  content: " ";
+}
+
+@keyframes spinner-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/**
+ * CSS fail
+ */
+
+.fail-checkmark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  align-self: center;
+  justify-self: center;
+  transform: translate(-50%, -50%);
+}
+
+.fail-checkmark .check-icon {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  box-sizing: content-box;
+  border: 0 solid $fail-color;
+  border-radius: 50%;
+}
+
+.fail-checkmark .check-icon .icon-line {
+  position: absolute;
+  z-index: $z-index + 1;
+  display: block;
+  height: 5px;
+  background-color: $fail-color;
+  border-radius: 2px;
+}
+
+.fail-checkmark .check-icon .icon-line.line-tip {
+  top: 50%;
+  right: 50%;
+  width: 100%;
+  animation: icon-line-tip-fail 0.75s;
+  transform: translate(50%, -50%) rotate(45deg);
+}
+
+.fail-checkmark .check-icon .icon-line.line-long {
+  top: 50%;
+  right: 50%;
+  width: 100%;
+  animation: icon-line-fail 0.75s;
+  transform: translate(50%, -50%) rotate(-45deg);
+}
+
+.fail-checkmark .check-icon .icon-circle {
+  position: absolute;
+  z-index: $z-index + 1;
+  top: -6px;
+  left: -6px;
+  width: 80px;
+  height: 80px;
+  box-sizing: content-box;
+  border: 6px solid $fail-color;
+  border-radius: 50%;
+}
+
+@keyframes icon-line-tip-fail {
+  0% {
+    top: 0;
+    right: 100%;
+    width: 0;
+  }
+
+  20% {
+    top: 10%;
+    right: 90%;
+    width: 20%;
+  }
+
+  40% {
+    top: 25%;
+    right: 75%;
+    width: 50%;
+  }
+
+  54% {
+    top: 35%;
+    right: 65%;
+    width: 70%;
+  }
+
+  70% {
+    top: 50%;
+    right: 50%;
+    width: 100%;
+  }
+
+  84% {
+    top: 50%;
+    right: 50%;
+    width: 100%;
+  }
+
+  100% {
+    top: 50%;
+    right: 50%;
+    width: 100%;
+  }
+}
+
+@keyframes icon-line-fail {
+  0% {
+    width: 0;
+  }
+
+  65% {
+    top: 0;
+    right: 0;
+    width: 0;
+  }
+
+  84% {
+    top: 25%;
+    right: 25%;
+    width: 50%;
+  }
+
+  100% {
+    top: 50%;
+    right: 50%;
+    width: 100%;
+  }
+}
+
+/**
+ * CSS success
+ */
+
+.success-checkmark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  align-self: center;
+  justify-self: center;
+  transform: translate(-50%, -50%);
+}
+
+.success-checkmark .check-icon {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  box-sizing: content-box;
+  border: 4px solid $success-color;
+  border-radius: 50%;
+}
+
+.success-checkmark .check-icon::before {
+  top: 3px;
+  left: -2px;
+  width: 30px;
+  border-radius: 100px 0 0 100px;
+  transform-origin: 100% 50%;
+}
+
+.success-checkmark .check-icon::after {
+  top: 0;
+  left: 30px;
+  width: 60px;
+  animation: rotate-circle 4.25s ease-in;
+  border-radius: 0 100px 100px 0;
+  transform-origin: 0 50%;
+}
+
+.success-checkmark .check-icon::before,
+.success-checkmark .check-icon::after {
+  position: absolute;
+  height: 100px;
+  background: inherit;
+  content: "";
+  transform: rotate(-45deg);
+}
+
+.success-checkmark .check-icon .icon-line {
+  position: absolute;
+  z-index: $z-index + 1;
+  display: block;
+  height: 5px;
+  background-color: $success-color;
+  border-radius: 2px;
+}
+
+.success-checkmark .check-icon .icon-line.line-tip {
+  top: 46px;
+  left: 14px;
+  width: 25px;
+  animation: icon-line-tip 0.75s;
+  transform: rotate(45deg);
+}
+
+.success-checkmark .check-icon .icon-line.line-long {
+  top: 38px;
+  right: 8px;
+  width: 47px;
+  animation: icon-line-long 0.75s;
+  transform: rotate(-45deg);
+}
+
+.success-checkmark .check-icon .icon-circle {
+  position: absolute;
+  z-index: $z-index + 1;
+  top: -6px;
+  left: -6px;
+  width: 80px;
+  height: 80px;
+  box-sizing: content-box;
+  border: 6px solid $success-color;
+  border-radius: 50%;
+}
+
+.success-checkmark .check-icon .icon-fix {
+  position: absolute;
+  z-index: $z-index;
+  top: 8px;
+  left: 26px;
+  width: 5px;
+  height: 85px;
+  background-color: inherit;
+  transform: rotate(-45deg);
+}
+
+@keyframes rotate-circle {
+  0% {
+    transform: rotate(-45deg);
+  }
+
+  5% {
+    transform: rotate(-45deg);
+  }
+
+  12% {
+    transform: rotate(-405deg);
+  }
+
+  100% {
+    transform: rotate(-405deg);
+  }
+}
+
+@keyframes icon-line-tip {
+  0% {
+    top: 19px;
+    left: 1px;
+    width: 0;
+  }
+
+  54% {
+    top: 19px;
+    left: 1px;
+    width: 0;
+  }
+
+  70% {
+    top: 37px;
+    left: -8px;
+    width: 50px;
+  }
+
+  84% {
+    top: 48px;
+    left: 21px;
+    width: 17px;
+  }
+
+  100% {
+    top: 45px;
+    left: 14px;
+    width: 25px;
+  }
+}
+
+@keyframes icon-line-long {
+  0% {
+    top: 54px;
+    right: 46px;
+    width: 0;
+  }
+
+  65% {
+    top: 54px;
+    right: 46px;
+    width: 0;
+  }
+
+  84% {
+    top: 35px;
+    right: 0;
+    width: 55px;
+  }
+
+  100% {
+    top: 38px;
+    right: 8px;
+    width: 47px;
+  }
+}
