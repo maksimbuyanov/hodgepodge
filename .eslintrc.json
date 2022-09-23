@@ -1,38 +1,69 @@
 {
+    "parser": "@typescript-eslint/parser",
     "env": {
         "browser": true,
-        "es2021": true
+        "es2021": true,
+        "jest": true
     },
     "extends": [
+        "standard-with-typescript",
         "plugin:react/recommended",
-        "standard-with-typescript"
+        "plugin:i18next/recommended",
+        "plugin:prettier/recommended",
+        "prettier"
     ],
-    "overrides": [
-    ],
+
     "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
         "ecmaVersion": "latest",
         "sourceType": "module",
-        "project": "./tsconfig.json"
+        "project": ["./tsconfig.json"]
     },
     "plugins": [
-        "react"
+        "react",
+        "@typescript-eslint",
+        "i18next",
+        "prettier"
+    ],
+    "overrides": [
+        {
+            "files": ["model.ts"],
+            "rules": {
+                // в файлах создания слайсов постоянно ругался на селекторы, что нет возвращаемых значений, хотя они там очевидны
+                "@typescript-eslint/explicit-function-return-type": "off"
+            }
+        }
     ],
     "rules": {
-        "react/jsx-indent": [2, 2],
-        "react/jsx-indent-props": [2, 2],
-        "indent": [2, 2],
-        "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".tsx"] }],
-        "import/no-unresolved": "off",
+        "prettier/prettier": "error",
+        "no-unused-vars": "off",
+        "@typescript-eslint/no-unused-vars": [
+            "warn",
+            { "argsIgnorePattern": "^_", "varsIgnorePattern": "^___" }
+        ],
+        "react/jsx-filename-extension": [
+            2,
+            { "extensions": [".jsx", ".tsx"] }
+//            { "extensions": [".js", ".jsx", ".tsx"] }
+        ],
+        "@typescript-eslint/strict-boolean-expressions": 0,
         "import/prefer-default-export": "off",
-        "no-unused-vars": "warn",
-        "react/require-default-props": "off",
+        //        "react/require-default-props": "off", //  если будет ругаться на деф пропс включить
         "react/react-in-jsx-scope": "off",
         "react/jsx-props-no-spreading": "warn",
-        "react/function-component-definition": "off",
-        "no-shadow": "off",
-        "import/extensions": "off",
-        "import/no-extraneous-dependencies": "off",
-        "no-underscore-dangle": "off"
+        "@typescript-eslint/naming-convention": 0,
+//
+//
+//        "react/jsx-indent": [2, 2],
+//        "react/jsx-indent-props": [2, 2],
+//        "indent": [2, 2],
+//        "import/no-unresolved": "off",
+        //        "import/extensions": "off",
+        //        "import/no-extraneous-dependencies": "off",
+//        "no-underscore-dangle": "off",
+        "i18next/no-literal-string": ["error", { "markupOnly": true }]
     },
     "globals": {
         "__IS_DEV__": true
