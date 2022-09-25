@@ -46,7 +46,6 @@
         "react/jsx-filename-extension": [
             2,
             { "extensions": [".jsx", ".tsx"] }
-//            { "extensions": [".js", ".jsx", ".tsx"] }
         ],
         "@typescript-eslint/strict-boolean-expressions": 0,
         "import/prefer-default-export": "off",
@@ -54,15 +53,10 @@
         "react/react-in-jsx-scope": "off",
         "react/jsx-props-no-spreading": "warn",
         "@typescript-eslint/naming-convention": 0,
-//
-//
-//        "react/jsx-indent": [2, 2],
-//        "react/jsx-indent-props": [2, 2],
-//        "indent": [2, 2],
-//        "import/no-unresolved": "off",
-        //        "import/extensions": "off",
-        //        "import/no-extraneous-dependencies": "off",
-//        "no-underscore-dangle": "off",
+
+        // не дает импортировать дев зависимости в файлы
+        "import/no-extraneous-dependencies": 0,
+        "no-underscore-dangle": "off",
         "i18next/no-literal-string": ["error", { "markupOnly": true }]
     },
     "globals": {

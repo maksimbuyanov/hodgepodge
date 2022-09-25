@@ -1,5 +1,4 @@
 import { FC } from "react"
-import { Spinner } from "@/shared/ui"
-import { SpinnerStatusEnum } from "@/shared/ui/Spinner/Spinner"
+import { Spinner, SpinnerStatusEnum } from "@/shared/ui"
 
 export const Loader: FC = () => <Spinner status={SpinnerStatusEnum.on} />
