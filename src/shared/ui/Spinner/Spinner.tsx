@@ -3,6 +3,8 @@ import "./Spinner.scss"
 
 const ___SPINNER_EFFECT_DURATION = 1000
 
+// урок 21, можно обернуть в loader"е spinner в отдельный div что бы спозиционировать его не по середине страницы, а допустим в отдельном окошке и тд
+
 export enum SpinnerStatusEnum {
   "off",
   "on",

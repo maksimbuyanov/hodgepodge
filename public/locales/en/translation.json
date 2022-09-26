@@ -2,5 +2,6 @@
   "Язык" : "English",
   "Главная страница" : "This is Page for standard route",
   "О нас": "to About",
-  "На главную": "to Main"
+  "На главную": "to Main",
+  "Страница не найдена": "Not found this page"
 }

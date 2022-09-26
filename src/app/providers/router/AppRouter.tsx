@@ -4,7 +4,7 @@ import { routeConfig } from "@/shared/config"
 import { Loader } from "@/features/Loader"
 
 const AppRouter: FC = () => (
-  <Suspense fallback={Loader}>
+  <Suspense fallback={<Loader />}>
     <Routes>
       {Object.values(routeConfig).map(({ element, path }) => (
         <Route
