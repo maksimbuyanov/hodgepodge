@@ -4,6 +4,7 @@ import { classNames } from "@/shared/lib"
 
 export enum ThemeButton {
   CLEAR = "clear",
+  ERROR = "error",
 }
 
 type ButtonProps = {
