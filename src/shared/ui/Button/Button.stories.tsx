@@ -1,7 +1,8 @@
 import React from "react"
-import { ComponentStory, ComponentMeta } from "@storybook/react"
-
-import { Button } from "./Button"
+import { ComponentMeta, ComponentStory } from "@storybook/react"
+import { Button, ThemeButton } from "./Button"
+import { ThemeDecorator } from "@/shared/config/storybook/styleDecorator/ThemeDecorator"
+import { Theme } from "@/app/providers/ThemeProvider"
 
 export default {
   title: "shared/Button",
@@ -13,25 +14,38 @@ export default {
 
 const Template: ComponentStory<typeof Button> = args => <Button {...args} />
 
-export const Primary = Template.bind({})
-Primary.args = {
-  primary: true,
-  label: "Button",
+export const Default = Template.bind({})
+Default.args = {
+  children: "text",
+  theme: ThemeButton.ERROR,
 }
+export const DefaultDark = Template.bind({})
+DefaultDark.args = {
+  children: "text",
+  theme: ThemeButton.ERROR,
+}
+DefaultDark.decorators = [ThemeDecorator(Theme.DARK)]
 
-export const Secondary = Template.bind({})
-Secondary.args = {
-  label: "Button",
+export const Clear = Template.bind({})
+Clear.args = {
+  children: "text",
+  theme: ThemeButton.CLEAR,
 }
+export const ClearDark = Template.bind({})
+ClearDark.args = {
+  children: "text",
+  theme: ThemeButton.CLEAR,
+}
+ClearDark.decorators = [ThemeDecorator(Theme.DARK)]
 
-export const Large = Template.bind({})
-Large.args = {
-  size: "large",
-  label: "Button",
+export const Outline = Template.bind({})
+Outline.args = {
+  children: "text",
+  theme: ThemeButton.OUTLINE,
 }
-
-export const Small = Template.bind({})
-Small.args = {
-  size: "small",
-  label: "Button",
+export const OutlineDark = Template.bind({})
+OutlineDark.args = {
+  children: "text",
+  theme: ThemeButton.OUTLINE,
 }
+OutlineDark.decorators = [ThemeDecorator(Theme.DARK)]

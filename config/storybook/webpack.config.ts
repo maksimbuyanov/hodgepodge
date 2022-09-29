@@ -1,25 +1,35 @@
-import webpack from 'webpack';
-import {BuildPaths} from '../build/types/config';
-import path from 'path';
-import {buildCssLoader} from '../build/loaders/buildCssLoader';
+import webpack, { RuleSetRule } from "webpack"
+import { BuildPaths } from "../build/types/config"
+import path from "path"
+import { buildCssLoader } from "../build/loaders/buildCssLoader"
+import {buildSvgLoader} from '../build/loaders/buildSvgLoader';
 
-export default ({config}:{config:webpack.Configuration})=> {
+export default ({ config }: { config: webpack.Configuration }) => {
+  const paths: BuildPaths = {
+    build: "",
+    entry: "",
+    html: "",
+    src: path.resolve(__dirname, "..", "..", "src"),
+  }
+  config.resolve = {
+    extensions: [".tsx", ".ts", ".js"], // Позволяет импортировать без указания ему расширения ( import a from "./Nav")
+    preferAbsolute: true, // Предпочитает абсолютные импорты
+    modules: [paths.src, "node_modules"], // Считать абсолютными пути для scr и node_modules
+    alias: { "@": paths.src }, //  Задает вебпаке синоним @ для путя до src
+    mainFiles: ["index"], // Задает для каждой папки главный файл index
+  }
 
-    const paths:BuildPaths = {
-        build:"",
-        entry:"",
-        html:"",
-        src: path.resolve(__dirname, "..", "..", "src")
+
+
+  // @ts-expect-error
+  config.module?.rules = config.module?.rules?.map((rule: RuleSetRule) => {
+    if (/svg/.test(rule.test as string)) {
+      return { ...rule, exclude: /\.svg/i }
     }
-    config.resolve = {
-        extensions: [".tsx", ".ts", ".js"], // Позволяет импортировать без указания ему расширения ( import a from "./Nav")
-        preferAbsolute: true, // Предпочитает абсолютные импорты
-        modules: [paths.src, "node_modules"], // Считать абсолютными пути для scr и node_modules
-        alias: { "@": paths.src }, //  Задает вебпаке синоним @ для путя до src
-        mainFiles: ["index"], // Задает для каждой папки главный файл index
-    }
+    return rule
+  })
+  config?.module?.rules?.push(buildSvgLoader())
+  config?.module?.rules?.push(buildCssLoader(true))
 
-    config?.module?.rules?.push(buildCssLoader(true))
-
-    return config
+  return config
 }
