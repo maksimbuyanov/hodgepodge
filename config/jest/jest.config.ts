@@ -3,7 +3,7 @@
  * https://jestjs.io/docs/configuration
  */
 
-import path from 'path';
+import path from "path"
 
 export default {
   // Automatically clear mock calls, instances and results before every test
