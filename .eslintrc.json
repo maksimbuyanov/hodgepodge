@@ -34,6 +34,13 @@
                 // в файлах создания слайсов постоянно ругался на селекторы, что нет возвращаемых значений, хотя они там очевидны
                 "@typescript-eslint/explicit-function-return-type": "off"
             }
+        },
+        {
+            "files": ["**/*.test.*"],
+            "rules": {
+                // не проверяет есть ли перевод для слов в файлах с тестами, хз, может потом придется выключить
+                "i18next/no-literal-string":0
+            }
         }
     ],
     "rules": {
@@ -57,7 +64,9 @@
         // не дает импортировать дев зависимости в файлы
         "import/no-extraneous-dependencies": 0,
         "no-underscore-dangle": "off",
-        "i18next/no-literal-string": ["error", { "markupOnly": true }]
+        "i18next/no-literal-string": ["error", {
+            "markupOnly": true
+        }]
     },
     "globals": {
         "__IS_DEV__": true

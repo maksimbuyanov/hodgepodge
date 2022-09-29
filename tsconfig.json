@@ -13,11 +13,12 @@
     "moduleResolution": "node", // определяет то, какие импорты будут node или classic
     "esModuleInterop": true, // нужен для импорта позволяет работать с пакетами, которые используют common js как с обычными пакетами с помощью import
     "allowSyntheticDefaultImports": true, //позволяет синтетически сделать импорты привычными, многие бибилиотеки не поддерживают export default
-    "strictNullChecks": true,
+    "strictNullChecks": true
   },
   "ts-node": {
     "compilerOptions": {
       "module": "CommonJS"
     }
-  }
+  },
+  "include": ["./config/jest/setupTest.ts"]
 }
