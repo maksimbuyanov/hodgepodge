@@ -36,10 +36,17 @@
             }
         },
         {
-            "files": ["**/src/**/*.test.{ts,tsx"],
+            "files": ["**/src/**/*.test.{ts,tsx}"],
             "rules": {
                 // не проверяет есть ли перевод для слов в файлах с тестами, хз, может потом придется выключить
                 "i18next/no-literal-string":0
+            }
+        },
+        {
+            "files": ["webpack.config.ts"],
+            "rules": {
+                // ругался на регулярные выражения в конфиге сторибука
+                "@typescript-eslint/prefer-includes": 0
             }
         }
     ],
