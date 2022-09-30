@@ -1,9 +1,9 @@
 import HtmlWebpackPlugin from "html-webpack-plugin"
 import webpack from "webpack"
 import MiniCssExtractPlugin from "mini-css-extract-plugin"
-import type { BuildOptions } from "./types/config"
+import type {BuildOptions} from "./types/config"
 import ReactRefreshPlugin from "@pmmmwh/react-refresh-webpack-plugin"
-import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer"
+import {BundleAnalyzerPlugin} from "webpack-bundle-analyzer"
 
 export function buildPlugins(
   options: BuildOptions
@@ -29,10 +29,10 @@ export function buildPlugins(
 
     // Выдавал предупреждение, что автоматически добавляет его, по ключу hot в buildDevServer
     // все таки нужен, без него warn [ReactRefreshPlugin] Hot Module Replacement (HMR) is not enabled! React Refresh requires HMR to function properly.
-    new webpack.HotModuleReplacementPlugin(),
+    isDev && new webpack.HotModuleReplacementPlugin(),
 
-    new ReactRefreshPlugin(),
+    isDev && new ReactRefreshPlugin(),
 
-    new BundleAnalyzerPlugin({ openAnalyzer: false }),
-  ]
+    isDev && new BundleAnalyzerPlugin({ openAnalyzer: false }),
+  ].filter(Boolean) as webpack.WebpackPluginInstance[]
 }
