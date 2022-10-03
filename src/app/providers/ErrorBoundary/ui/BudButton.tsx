@@ -7,7 +7,9 @@ interface BudButtonProps {
 
 export const BudButton: FC<BudButtonProps> = () => {
   const [error, setError] = useState(false)
-  const throwFn = () => setError(true)
+  const throwFn = (): void => {
+    setError(true)
+  }
   useEffect(() => {
     if (error) {
       throw new Error("Ha Ha Ha")
