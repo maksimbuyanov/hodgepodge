@@ -10,7 +10,7 @@ export function buildPlugins(
 ): webpack.WebpackPluginInstance[] {
   const { paths, isDev } = options
   const { html } = paths
-
+  const isProd = !isDev
   return [
     new HtmlWebpackPlugin({
       template: html,
@@ -18,10 +18,12 @@ export function buildPlugins(
 
     new webpack.ProgressPlugin(),
 
-    new MiniCssExtractPlugin({
-      filename: "css/[name].[contenthash:6].css",
-      chunkFilename: "css/[name].[contenthash:6].css",
-    }),
+    // в дев режиме не нужен, тк не используется
+    isProd &&
+      new MiniCssExtractPlugin({
+        filename: "css/[name].[contenthash:6].css",
+        chunkFilename: "css/[name].[contenthash:6].css",
+      }),
 
     new webpack.DefinePlugin({
       __IS_DEV__: JSON.stringify(isDev),
