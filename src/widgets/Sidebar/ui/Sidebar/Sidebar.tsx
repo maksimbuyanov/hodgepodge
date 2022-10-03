@@ -4,6 +4,7 @@ import cls from "./Sidebar.module.scss"
 import { classNames } from "@/shared/lib"
 import { ThemeSwitcher } from "@/widgets/ThemeSwitcher"
 import { LangSwitcher } from "@/widgets/LangSwitcher"
+import { Button, ThemeButton } from "@/shared/ui"
 
 interface SidebarProps {
   className?: string
@@ -24,9 +25,15 @@ export const Sidebar: FC<SidebarProps> = props => {
       ])}
       {...otherProps}
     >
-      <button onClick={toggle} type="button" data-testid="sidebar-toggle">
+      <Button
+        onClick={toggle}
+        type="button"
+        data-testid="sidebar-toggle"
+        className={cls.collapseBtn}
+        theme={ThemeButton.BACKGROUND_INVERTED}
+      >
         {collapsed ? "<" : ">"}
-      </button>
+      </Button>
       <div className={classNames(cls.switchers)}>
         {children}
         <ThemeSwitcher />

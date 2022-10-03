@@ -24,3 +24,15 @@
   background: none;
   color: var(--primary-color);
 }
+
+.background {
+  border: none;
+  background: var(--bg-color);
+  color: var(--primary-color);
+}
+
+.backgroundInverted {
+  border: none;
+  background: var(--invert-bg-color);
+  color: var(--invert-primary-color);
+}

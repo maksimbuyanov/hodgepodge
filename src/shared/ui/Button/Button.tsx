@@ -6,6 +6,8 @@ export enum ThemeButton {
   CLEAR = "clear",
   ERROR = "error",
   OUTLINE = "outline",
+  BACKGROUND = "background",
+  BACKGROUND_INVERTED = "backgroundInverted",
 }
 
 type ButtonProps = {
