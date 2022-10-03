@@ -1,9 +1,9 @@
 .PageError {
   display: flex;
   flex-direction: column;
-  gap: 30px;
-  font: var(--font-l);
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   padding: 40px;
+  font: var(--font-l);
+  gap: 30px;
 }
