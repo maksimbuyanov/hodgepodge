@@ -8,8 +8,9 @@ void i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
-    fallbackLng: "ru",
+    fallbackLng: "en",
     debug: __IS_DEV__,
+    lng: "ru",
 
     interpolation: {
       escapeValue: false, // Not needed for react as it escapes by default

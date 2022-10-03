@@ -25,7 +25,7 @@ export const Sidebar: FC<SidebarProps> = props => {
       {...otherProps}
     >
       <button onClick={toggle} type="button" data-testid="sidebar-toggle">
-        +
+        {collapsed ? "<" : ">"}
       </button>
       <div className={classNames(cls.switchers)}>
         {children}
