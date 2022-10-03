@@ -22,13 +22,14 @@ jobs:
       - name: build prod project
         run: npm run build:prod
       - name: linting TS
-#        run: npm run lint:ts
-#      - name: linting SCSS
-#        run: npm run lint:scss
-#      - name: unit testing
-#        run: npm run test:unit
+        run: npm run lint:ts
+      - name: linting SCSS
+        run: npm run lint:scss
+      - name: unit testing
+        run: npm run test:unit
       - name: build storybook
         run: npm run storybook:build
       - name: loki test screenshot
         run: npm run test:ui:ci
+
 
