@@ -15,7 +15,7 @@
     "test:ui": "loki test",
     "test:ui:update": "loki update",
     "test:ui:ok": "loki approve",
-    "test:ui:ci": "loki --requireRegference --reactUri file:./storybook-static",
+    "test:ui:ci": "loki update --requireRegference --reactUri file:./storybook-static",
     "storybook": "start-storybook -p 6006 -c ./config/storybook",
     "storybook:build": "build-storybook -c ./config/storybook",
     "loki:test": "loki test"
