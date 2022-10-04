@@ -17,8 +17,7 @@
     "test:ui:ok": "loki approve",
     "test:ui:ci": "loki --requireRegference --reactUri file:./storybook-static",
     "storybook": "start-storybook -p 6006 -c ./config/storybook",
-    "storybook:build": "build-storybook -c ./config/storybook",
-    "loki:test": "loki test"
+    "storybook:build": "build-storybook -c ./config/storybook"
   },
   "keywords": [],
   "author": "",
@@ -91,6 +90,7 @@
     "ts-loader": "^9.2.6",
     "ts-node": "^10.5.0",
     "typescript": "*",
+    "url-loader": "^4.1.1",
     "webpack": "^5.69.1",
     "webpack-bundle-analyzer": "4.5.0",
     "webpack-cli": "^4.10.0",
