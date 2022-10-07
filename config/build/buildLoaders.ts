@@ -15,10 +15,11 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
 
   const cssLoader = buildCssLoader(isDev)
 
-  const fontsLoader = {
-    test: /\.(woff|woff2|eot|ttf|otf)$/i,
-    type: "asset/resource",
-  }
+  // const fontsLoader = {
+  //   test: /\.(woff|woff2|eot|ttf|otf)$/i,
+  //   // use: [{ loader: "file-loader" }],
+  //   use: ["url-loader?limit=100000"],
+  // }
 
   // const fontsLoader = {
   //   test: /\.(ttf|eot|woff|woff2|svg)$/,
@@ -56,6 +57,6 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
     fileLoader,
     babelLoader,
     typescriptLoader,
-    fontsLoader,
+    // fontsLoader,
   ]
 }

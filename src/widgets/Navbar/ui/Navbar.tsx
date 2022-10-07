@@ -16,12 +16,12 @@ export const Navbar: FC<NavbarProps> = props => {
   return (
     <nav className={classNames(cls.Navbar, {}, [className])}>
       <div className={classNames(cls.links)}>
-        <AppLink to={RoutePath.main} className={classNames(cls.mainLink)}>
+        <AppLink
+          to={RoutePath.main}
+          className={classNames(cls.link)}
+          theme={AppLinkTheme.SECONDARY}
+        >
           {t("На главную")}
-        </AppLink>
-
-        <AppLink to={RoutePath.about} theme={AppLinkTheme.SECONDARY}>
-          {t("О нас")}
         </AppLink>
       </div>
     </nav>
