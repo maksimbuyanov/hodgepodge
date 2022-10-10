@@ -4,8 +4,7 @@
 @import "thems/light";
 @import "thems/dark";
 
-.app,
-.app_modal {
+body {
   font: var(--font-m);
   font-family: Montserrat, sans-serif;
 }
