@@ -2,6 +2,10 @@ import MiniCssExtractPlugin from "mini-css-extract-plugin"
 import webpack from "webpack"
 
 export const buildCssLoader = (isDev: boolean): webpack.RuleSetRule => {
+  // const uriLoader = {
+  //   test: /\.(woff|woff2|eot|ttf)$/i,
+  //   use: [{ loader: "url-loader?limit=100000" }],
+  // }
   return {
     test: /\.s[ac]ss$/i,
     use: [
