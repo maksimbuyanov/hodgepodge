@@ -1,10 +1,11 @@
 {
-  "Язык" : "English",
-  "Главная страница" : "This is Page for standard route",
+  "Язык": "English",
+  "Главная страница": "This is Page for standard route",
   "О нас": "to About",
   "На главную": "to Main",
   "Страница не найдена": "Not found this page",
   "Произошла непредвиденная ошибка": "Some error has happened",
   "Обновить страницу": "Restart site",
-  "Короткий язык": "En"
+  "Короткий язык": "En",
+  "Войти": "Log in"
 }

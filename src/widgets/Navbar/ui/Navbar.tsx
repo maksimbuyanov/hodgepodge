@@ -1,10 +1,10 @@
 import type { FC } from "react"
-import React from "react"
+import React, { useCallback, useState } from "react"
 import { useTranslation } from "react-i18next"
 import cls from "./Navbar.module.scss"
 import { classNames } from "@/shared/lib"
-import { AppLink, AppLinkTheme } from "@/shared/ui"
-import { RoutePath } from "@/shared/config/routerConfig/routerConfig"
+import { Button, ButtonTheme } from "@/shared/ui"
+import { Modal } from "@/shared/ui/Modal/Modal"
 
 interface NavbarProps {
   className?: string
@@ -13,16 +13,20 @@ interface NavbarProps {
 export const Navbar: FC<NavbarProps> = props => {
   const { className = "" } = props
   const { t } = useTranslation()
+  const [isAuthModal, setIsAuthModal] = useState(false)
+  const onToggleModal = useCallback(() => {
+    setIsAuthModal(prev => !prev)
+  }, [])
+
   return (
     <nav className={classNames(cls.Navbar, {}, [className])}>
       <div className={classNames(cls.links)}>
-        <AppLink
-          to={RoutePath.main}
-          className={classNames(cls.link)}
-          theme={AppLinkTheme.SECONDARY}
-        >
-          {t("На главную")}
-        </AppLink>
+        <Button theme={ButtonTheme.CLEAR_INVERTED} onClick={onToggleModal}>
+          {t("Войти")}
+        </Button>
+        <Modal isOpen={isAuthModal} onClose={onToggleModal}>
+          {t("Войти")}
+        </Modal>
       </div>
     </nav>
   )
