@@ -7,15 +7,24 @@
     "start": "webpack serve --env port=3001",
     "build:prod": "webpack --env mode=production",
     "build:dev": "webpack --env mode=development",
+
     "lint:ts": "eslint \"**/*.{ts,tsx}\"",
     "lint:ts:fix": "eslint \"**/*.{ts,tsx}\" --fix",
+
     "lint:scss": "stylelint \"**/*.scss\"",
     "lint:scss:fix": "stylelint \"**/*.scss\" --fix",
+
     "test:unit": "jest --config ./config/jest/jest.config.ts",
+
     "test:ui": "loki test",
     "test:ui:update": "loki update",
     "test:ui:ok": "loki approve",
     "test:ui:ci": "loki --requireRegference --reactUri file:./storybook-static",
+
+    "test:ui:report": "npm run test:ui:json && npm run test:ui:html",
+    "test:ui:json": "node scripts/generate-visual-json-report.js",
+    "test:ui:html": "reg-cli --from .loki/report.json --report .loki/report.html",
+
     "storybook": "start-storybook -p 6006 -c ./config/storybook",
     "storybook:build": "build-storybook -c ./config/storybook"
   },
@@ -77,6 +86,7 @@
     "prettier-eslint": "^15.0.1",
     "react-refresh": "0.12.0",
     "react-router-dom": "^6.2.1",
+    "reg-cli": "^0.17.7",
     "sass": "^1.49.9",
     "sass-loader": "^12.6.0",
     "style-loader": "^3.3.1",

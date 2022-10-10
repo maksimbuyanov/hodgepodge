@@ -22,11 +22,10 @@
   },
   "include": [
     "./config/jest/setupTest.ts",
-    "./src/**/*.ts",
-    "./src/**/*.tsx",
-    "./config/**/*.ts",
-    "./config/**/*.tsx",
+    "./src/**/*.{ts,tsx}",
+    "./config/**/*.ts,tsx}",
     "./config/**/*.js",
+    "./scripts/**/*.js",
     "./*.ts",
   ]
 }
