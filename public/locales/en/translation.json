@@ -7,5 +7,7 @@
   "Произошла непредвиденная ошибка": "Some error has happened",
   "Обновить страницу": "Restart site",
   "Короткий язык": "En",
-  "Войти": "Log in"
+  "Войти": "Log in",
+  "введите username": "Enter username >",
+  "введите password": "Enter password >"
 }

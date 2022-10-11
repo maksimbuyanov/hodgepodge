@@ -16,6 +16,7 @@
 }
 
 .content {
+  //display: none;
   max-width: 60%;
   padding: 20px;
   background: var(--bg-color);
@@ -26,6 +27,7 @@
 
 .opened {
   z-index: var(--modal-z-index);
+  //display: unset;
   opacity: 1;
   pointer-events: auto;
 

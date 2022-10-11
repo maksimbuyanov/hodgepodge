@@ -8,6 +8,8 @@ interface StoreProviderProps {
   initialState?: StateSchema
 }
 
+// TODO подставить тип для функции стора
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export const StoreProvider = (props: StoreProviderProps) => {
   const { children, initialState } = props
   const store = createReduxStore(initialState)
