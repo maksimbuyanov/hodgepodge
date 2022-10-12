@@ -9,7 +9,7 @@ const router = jsonServer.router(path.resolve(__dirname, "db.json"))
 const SERVER_PORT = 8000
 const SERVER_DELAY = 800
 
-const handlers = {
+const SERVER_HANDLERS = {
   login: "/login",
 }
 
@@ -22,13 +22,13 @@ server.use(async (req, res, next) => {
 })
 
 server.use((req, res, next) => {
-  if (!req.headers.authorization && !req.path.includes(handlers.login)) {
+  if (!req.headers.authorization && !req.path.includes(SERVER_HANDLERS.login)) {
     return res.status(403).json({ message: "AUTH ERROR" })
   }
   next()
 })
 
-server.post(handlers.login, (req, res) => {
+server.post(SERVER_HANDLERS.login, (req, res) => {
   const { username, password } = req.body
   const db = JSON.parse(
     fs.readFileSync(path.resolve(__dirname, "db.json"), "UTF-8")
@@ -46,7 +46,7 @@ server.post(handlers.login, (req, res) => {
 
 server.use(router)
 server.listen(SERVER_PORT, () => {
-  const list = Object.keys(handlers).map(hand => {
+  const list = Object.keys(SERVER_HANDLERS).map(hand => {
     return `${hand} \n`
   })
   console.log(`server is running on port ${SERVER_PORT}`)
