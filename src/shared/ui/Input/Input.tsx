@@ -1,4 +1,11 @@
-import { InputHTMLAttributes, memo, useEffect, useRef, useState } from "react"
+import {
+  FC,
+  InputHTMLAttributes,
+  memo,
+  useEffect,
+  useRef,
+  useState,
+} from "react"
 import cls from "./Input.module.scss"
 import { classNames } from "@/shared/lib"
 
@@ -15,8 +22,9 @@ interface InputProps extends HTMLInputProps {
   autoFocus?: boolean
 }
 
-// eslint-disable-next-line react/display-name
-export const Input = memo((props: InputProps) => {
+const Input: FC<InputProps> = memo(function InputWithoutMemo(
+  props: InputProps
+) {
   const {
     className = "",
     value,

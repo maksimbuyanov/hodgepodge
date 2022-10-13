@@ -1,7 +1,7 @@
 import { FC } from "react"
 import { classNames } from "@/shared/lib"
 import { Modal } from "@/shared/ui/Modal/Modal"
-import { LoginForm } from "../LoginForm/LoginForm"
+import LoginForm from "../LoginForm/LoginForm"
 
 interface LoginModalProps {
   className?: string

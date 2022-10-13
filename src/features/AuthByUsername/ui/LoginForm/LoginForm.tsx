@@ -13,10 +13,8 @@ interface LoginFormProps {
   className?: string
 }
 
-// eslint-disable-next-line react/display-name
-export const LoginForm: FC<LoginFormProps> = memo(props => {
+const LoginForm: FC<LoginFormProps> = props => {
   const { t } = useTranslation()
-  // eslint-disable-next-line react/prop-types
   const { className = "" } = props
   const dispatch = useDispatch()
   const loginForm = useSelector(getLoginState)
@@ -62,4 +60,6 @@ export const LoginForm: FC<LoginFormProps> = memo(props => {
       </Button>
     </div>
   )
-})
+}
+
+export default memo(LoginForm)
