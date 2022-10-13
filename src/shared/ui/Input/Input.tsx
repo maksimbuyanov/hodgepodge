@@ -22,7 +22,7 @@ interface InputProps extends HTMLInputProps {
   autoFocus?: boolean
 }
 
-const Input: FC<InputProps> = memo(function InputWithoutMemo(
+export const Input: FC<InputProps> = memo(function InputWithoutMemo(
   props: InputProps
 ) {
   const {
