@@ -36,6 +36,7 @@ const LoginForm: FC<LoginFormProps> = props => {
   }, [dispatch, loginForm])
   return (
     <div className={classNames(cls.LoginForm, {}, [className])}>
+      {loginForm?.error && <div>{loginForm.error}</div>}
       <Input
         className={cls.input}
         type="text"
@@ -55,6 +56,7 @@ const LoginForm: FC<LoginFormProps> = props => {
         className={cls.loginButton}
         theme={ButtonTheme.OUTLINE}
         onClick={onLoginClick}
+        disabled={loginForm?.isLoading}
       >
         {t("Войти")}
       </Button>

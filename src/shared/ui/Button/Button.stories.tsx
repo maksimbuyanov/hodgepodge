@@ -119,3 +119,9 @@ BackgroundInvertedSquared_XL.args = {
   square: true,
   size: ButtonSize.XL,
 }
+export const disabled = Template.bind({})
+disabled.args = {
+  children: ">",
+  theme: ButtonTheme.OUTLINE,
+  disabled: true,
+}
