@@ -9,5 +9,9 @@
   "Короткий язык": "En",
   "Войти": "Log in",
   "введите username": "Enter username >",
-  "введите password": "Enter password >"
+  "введите password": "Enter password >",
+  "Форма авторизации": "Auth form",
+  "Пользователь не найден": "User not found",
+  "Выйти": "Log out",
+  "Не найден пользователь": "User not found"
 }

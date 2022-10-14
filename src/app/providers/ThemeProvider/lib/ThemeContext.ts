@@ -11,5 +11,3 @@ export interface ThemeContextProps {
 }
 
 export const ThemeContext = React.createContext<ThemeContextProps>({})
-
-export const LOCAL_STORAGE_THEM_KEY = "theme"
