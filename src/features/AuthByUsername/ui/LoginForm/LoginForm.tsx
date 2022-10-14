@@ -33,6 +33,7 @@ const LoginForm: FC<LoginFormProps> = props => {
   )
   const onLoginClick = useCallback(() => {
     const { username, password } = loginForm
+    // @ts-expect-error
     dispatch(loginByUsername({ username, password }))
   }, [dispatch, loginForm])
   return (

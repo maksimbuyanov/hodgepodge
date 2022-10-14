@@ -114,7 +114,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-i18next": "11.15.5",
-    "react-redux": "7.2.6"
+    "react-redux": "^8.0.4"
   },
   "loki": {
     "chromeSelector": ".wrapper > *, #root > *, .story-decorator > *",
