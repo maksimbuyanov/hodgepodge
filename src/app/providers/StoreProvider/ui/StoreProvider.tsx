@@ -12,6 +12,5 @@ export const StoreProvider: FC<StoreProviderProps> = props => {
   const { children, initialState } = props
   const store = createReduxStore(initialState)
 
-  // @ts-expect-error
   return <Provider store={store}>{children}</Provider>
 }
