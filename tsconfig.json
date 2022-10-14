@@ -2,17 +2,26 @@
   "compilerOptions": {
     "baseUrl": ".", // для абсолютного импорта
     "paths": {
-        "@/*": ["./src/*"] // синоним @ на корень проекта/src
+      "@/*": [
+        "./src/*"
+      ]
+      // синоним @ на корень проекта/src
     },
-    //"outDir": "./dist/", // не участвует, тк компилим с помощью webpack
-    "noImplicitAny": true,// не позволяет использовать переменные без явного указания типа
+    //"outDir": "./dist/", // не участвует, тк компилируем с помощью webpack
+    "noImplicitAny": true,
+    // не позволяет использовать переменные без явного указания типа
     "module": "ESNext",
-    "target": "es5", // версия js в которую будет код компилироваться
+    "target": "es5",
+    // версия js в которую будет код компилироваться
     "jsx": "react-jsx",
-    "allowJs": true, //
-    "moduleResolution": "node", // определяет то, какие импорты будут node или classic
-    "esModuleInterop": true, // нужен для импорта позволяет работать с пакетами, которые используют common js как с обычными пакетами с помощью import
-    "allowSyntheticDefaultImports": true, //позволяет синтетически сделать импорты привычными, многие бибилиотеки не поддерживают export default
+    "allowJs": true,
+    //
+    "moduleResolution": "node",
+    // определяет то, какие импорты будут node или classic
+    "esModuleInterop": true,
+    // нужен для импорта позволяет работать с пакетами, которые используют common js как с обычными пакетами с помощью import
+    "allowSyntheticDefaultImports": true,
+    //позволяет синтетически сделать импорты привычными, многие библиотеки не поддерживают export default
     "strictNullChecks": true
   },
   "ts-node": {
@@ -29,5 +38,12 @@
     "./config/**/*.js",
     "./scripts/**/*.js",
     "./*.ts",
+    "./json-server/**/*.*"
+  ],
+  "exclude": [
+    "./node_modules/**/*.*",
+    "node_modules/**/*.*",
+    "./storybook-static/**/*.*",
+    "storybook-static/**/*.*"
   ]
 }

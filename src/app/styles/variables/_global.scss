@@ -1,9 +1,5 @@
-@font-face {
-  font-family: montserrat;
-  font-style: normal;
-  font-weight: 100;
-  src: url("@/app/styles/fonts/Montserrat-Thin.woff2") format("woff2"), url("@/app/styles/fonts/Montserrat-Thin.woff") format("woff");
-}
+@import "@/app/styles/fonts/roboto/robotomono.css";
+@import "@/app/styles/fonts/montserrat/montserrat.css";
 
 :root {
   --font-family-main: montserrat, serif;
@@ -27,4 +23,6 @@
 
   // colors
   --overlay-color: rgba(0 0 0 / 60%);
+  --red-light: #f00;
+  --red-dark: #ce0505;
 }

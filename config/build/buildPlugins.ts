@@ -31,7 +31,8 @@ export function buildPlugins(
 
     // Выдавал предупреждение, что автоматически добавляет его, по ключу hot в buildDevServer
     // все таки нужен, без него warn [ReactRefreshPlugin] Hot Module Replacement (HMR) is not enabled! React Refresh requires HMR to function properly.
-    isDev && new webpack.HotModuleReplacementPlugin(),
+    // Хз, пока отключил...
+    // isDev && new webpack.HotModuleReplacementPlugin(),
 
     isDev && new ReactRefreshPlugin(),
 
