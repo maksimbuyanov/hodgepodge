@@ -89,12 +89,14 @@
           "markupOnly": true,
           "ignoreAttribute": [
             "data-testid",
-            "to"
+            "to",
+            "reducerName"
           ]
         }
       ],
-      "object-curly-spacing": 0
+      "object-curly-spacing": 0,
       // пробелы в фигурных скобках
+      "linebreak-style": "off"
     },
     "globals": {
         "__IS_DEV__": true

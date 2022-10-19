@@ -30,15 +30,11 @@
     }
   },
   "include": [
-    "./config/jest/setupTest.ts",
-    "./src/**/*.ts",
-    "./src/**/*.tsx",
-    "./config/**/*.ts",
-    "./config/**/*.tsx",
-    "./config/**/*.js",
+    "./src/**/*",
+    "./config/**/*",
     "./scripts/**/*.js",
-    "./*.ts",
-    "./json-server/**/*.*"
+    "./*",
+    "./json-server/**/*"
   ],
   "exclude": [
     "./node_modules/**/*.*",

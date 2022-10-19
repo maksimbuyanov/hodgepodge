@@ -1,4 +1,4 @@
-import "@/app/styles/index.scss"
+// import "@/app/styles/index.scss" TODO проверить на что влияет?
 import { Story } from "@storybook/react"
 import { Theme } from "@/app/providers/ThemeProvider"
 import { ReactElement } from "react"

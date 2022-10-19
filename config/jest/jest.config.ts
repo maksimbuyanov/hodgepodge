@@ -23,8 +23,7 @@ export default {
   moduleNameMapper: {
     "\\.svg": path.resolve(__dirname, "jestEmptyComponent.tsx"),
     "@/(.*)": "<rootDir>src/$1",
-    // "@/": "<rootDir>src/$1", // не работает ...
-    "\\.(s?css)$": "identity-obj-proxy",
+    "\\.(scss)$": "identity-obj-proxy",
   },
   // An array of file extensions your modules use
   moduleFileExtensions: ["js", "jsx", "ts", "tsx", "json", "node"],

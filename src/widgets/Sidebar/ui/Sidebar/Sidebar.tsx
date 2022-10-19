@@ -4,9 +4,14 @@ import cls from "./Sidebar.module.scss"
 import { classNames } from "@/shared/lib"
 import { ThemeSwitcher } from "@/widgets/ThemeSwitcher"
 import { LangSwitcher } from "@/widgets/LangSwitcher"
-import { AppLink, AppLinkTheme, Button, ButtonTheme } from "@/shared/ui"
-import { ButtonSize } from "@/shared/ui/Button/Button"
-import { RoutePath } from "@/shared/config/routerConfig/routerConfig"
+import {
+  AppLink,
+  AppLinkTheme,
+  Button,
+  ButtonTheme,
+  ButtonSize,
+} from "@/shared/ui"
+import { RoutePath } from "@/shared/config"
 import { useTranslation } from "react-i18next"
 import MainIcon from "@/shared/assets/house.svg"
 import AboutIcon from "@/shared/assets/list.svg"

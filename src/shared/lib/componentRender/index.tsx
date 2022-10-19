@@ -1,6 +1,4 @@
 import { ReactNode } from "react"
-import { renderWithRouter } from "@/shared/lib/renderWithRouter"
-import { renderWithTranslations } from "@/shared/lib/renderWithTranslations"
 import { MemoryRouter } from "react-router-dom"
 import i18nForTest from "@/shared/config/i18n/i18nForTest"
 import { I18nextProvider } from "react-i18next"

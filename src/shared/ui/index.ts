@@ -1,3 +1,6 @@
 export { AppLink, AppLinkTheme } from "./AppLink/AppLink"
-export { Button, ButtonTheme } from "./Button/Button"
+export { Button, ButtonTheme, ButtonSize } from "./Button/Button"
 export { Spinner, SpinnerStatusEnum } from "./Spinner/Spinner"
+export { Input } from "./Input/Input"
+export { Text, TextTheme } from "./Text/Text"
+export { Modal } from "./Modal/Modal"

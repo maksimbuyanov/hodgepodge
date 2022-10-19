@@ -1,19 +1,31 @@
-import { configureStore, ReducersMapObject } from "@reduxjs/toolkit"
-import { StateSchema } from "@/app/providers/StoreProvider/config/StateSchema"
+import {
+  configureStore,
+  EnhancedStore,
+  ReducersMapObject,
+} from "@reduxjs/toolkit"
+import { StateSchema } from "./StateSchema"
 import { userReducer } from "@/entities/User"
-import { loginReducer } from "@/features/AuthByUsername"
+import { reducerManager } from "./reducerManager"
 
-// TODO подаставить тип функции стора
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-export function createReduxStore(initialState?: StateSchema) {
+export function createReduxStore(
+  initialState?: StateSchema,
+  asyncReducers?: ReducersMapObject<StateSchema>
+): EnhancedStore<StateSchema> {
   const rootReducers: ReducersMapObject<StateSchema> = {
+    ...asyncReducers,
     user: userReducer,
-    loginForm: loginReducer,
   }
 
-  return configureStore<StateSchema>({
-    reducer: rootReducers,
+  const manager = reducerManager(rootReducers)
+
+  const store = configureStore<StateSchema>({
+    reducer: manager.reduce,
     devTools: __IS_DEV__,
     preloadedState: initialState,
   })
+
+  // @ts-expect-error
+  store.reducerManager = manager
+
+  return store
 }
