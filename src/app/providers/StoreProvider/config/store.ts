@@ -1,7 +1,9 @@
 import {
+  AnyAction,
   configureStore,
   EnhancedStore,
   ReducersMapObject,
+  Middleware,
 } from "@reduxjs/toolkit"
 import { StateSchema } from "./StateSchema"
 import { userReducer } from "@/entities/User"
@@ -29,3 +31,9 @@ export function createReduxStore(
 
   return store
 }
+
+export type AppDispatch = EnhancedStore<
+  StateSchema,
+  AnyAction,
+  ReadonlyArray<Middleware<{}, StateSchema>>
+>["dispatch"]

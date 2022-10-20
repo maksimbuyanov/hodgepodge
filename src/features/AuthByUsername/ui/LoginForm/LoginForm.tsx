@@ -10,9 +10,11 @@ import { getLoginUsername } from "../../model/selector/getLoginUsername/getLogin
 import { getLoginsPassword } from "../../model/selector/getLoginsPassword/getLoginsPassword"
 import { getLoginsLoading } from "../../model/selector/getLoginsLoading/getLoginsLoading"
 import { getLoginsError } from "../../model/selector/getLoginsError/getLoginsError"
+import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch"
 
 export interface LoginFormProps {
   className?: string
+  onSuccess: () => void
 }
 
 const initialReducers: ReducersList = {
@@ -21,8 +23,8 @@ const initialReducers: ReducersList = {
 // TODO нет анимации появления при первом рендере
 const LoginForm: FC<LoginFormProps> = props => {
   const { t } = useTranslation()
-  const { className = "" } = props
-  const dispatch = useDispatch()
+  const { className = "", onSuccess } = props
+  const dispatch = useAppDispatch()
   const username = useSelector(getLoginUsername)
   const password = useSelector(getLoginsPassword)
   const isLoading = useSelector(getLoginsLoading)
@@ -30,20 +32,25 @@ const LoginForm: FC<LoginFormProps> = props => {
 
   const onChangeUsername = useCallback(
     (data: string) => {
+      // @ts-expect-error  TODO Убрать
       dispatch(loginActions.setUsername(data))
     },
     [dispatch]
   )
   const onChangePassword = useCallback(
     (data: string) => {
+      // @ts-expect-error  TODO Убрать
       dispatch(loginActions.setPassword(data))
     },
     [dispatch]
   )
-  const onLoginClick = useCallback(() => {
+  const onLoginClick = useCallback(async () => {
     // @ts-expect-error  TODO Убрать
-    dispatch(loginByUsername({ username, password }))
-  }, [dispatch, password, username])
+    const result = await dispatch(loginByUsername({ username, password }))
+    if (result.meta.requestStatus === "fulfilled" && onSuccess) {
+      onSuccess()
+    }
+  }, [dispatch, onSuccess, password, username])
   return (
     <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount={true}>
       <div className={classNames(cls.LoginForm, {}, [className])}>
