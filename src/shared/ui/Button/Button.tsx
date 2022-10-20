@@ -1,6 +1,7 @@
 import type { ButtonHTMLAttributes, FC } from "react"
 import cls from "./Button.module.scss"
 import { classNames } from "@/shared/lib"
+import { memo } from "react"
 
 export enum ButtonTheme {
   CLEAR = "clear",
@@ -55,3 +56,4 @@ export const Button: FC<ButtonProps> = props => {
     </button>
   )
 }
+export default memo(Button)

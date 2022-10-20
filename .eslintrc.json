@@ -96,7 +96,8 @@
       ],
       "object-curly-spacing": 0,
       // пробелы в фигурных скобках
-      "linebreak-style": "off"
+      "linebreak-style": "off",
+      "@typescript-eslint/no-misused-promises": "warn"
     },
     "globals": {
         "__IS_DEV__": true

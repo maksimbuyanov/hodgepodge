@@ -1,4 +1,4 @@
-import { FC } from "react"
+import { FC, memo } from "react"
 import cls from "./Text.module.scss"
 import { classNames } from "@/shared/lib"
 
@@ -29,3 +29,5 @@ export const Text: FC<TextProps> = props => {
     </div>
   )
 }
+
+export default memo(Text)

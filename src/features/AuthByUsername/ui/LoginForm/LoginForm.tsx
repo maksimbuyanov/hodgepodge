@@ -44,7 +44,7 @@ const LoginForm: FC<LoginFormProps> = props => {
     },
     [dispatch]
   )
-  const onLoginClick = useCallback(async () => {
+  const onLoginClick = useCallback<() => Promise<void>>(async () => {
     // @ts-expect-error  TODO Убрать
     const result = await dispatch(loginByUsername({ username, password }))
     if (result.meta.requestStatus === "fulfilled" && onSuccess) {

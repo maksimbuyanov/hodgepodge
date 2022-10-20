@@ -1,5 +1,5 @@
 import type { FC } from "react"
-import React, { useCallback, useState } from "react"
+import React, { memo, useCallback, useState } from "react"
 import { useTranslation } from "react-i18next"
 import cls from "./Navbar.module.scss"
 import { classNames } from "@/shared/lib"
@@ -52,3 +52,5 @@ export const Navbar: FC<NavbarProps> = props => {
     </nav>
   )
 }
+
+export default memo(Navbar)
