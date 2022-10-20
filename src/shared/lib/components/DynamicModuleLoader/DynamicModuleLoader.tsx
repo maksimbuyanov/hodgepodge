@@ -22,14 +22,19 @@ export const DynamicModuleLoader: FC<DynamicModuleLoaderProps> = props => {
   const dispatch = useDispatch()
   const store = useStore() as ReduxStoreWithManager
   useEffect(() => {
-    Object.entries(reducers).forEach(([key, value]: ReducersListEntry) => {
-      store.reducerManager.add(key, value)
-      dispatch({ type: `@INIT ${key}` })
+    Object.entries(reducers).forEach((ar: ReducersListEntry) => {
+      const [name, value] = ar
+      store.reducerManager.add(name, value)
+      // TODO убрать в конце 5 модуля
+      // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+      dispatch({ type: `@INIT ${name}` })
     })
 
     return () => {
       if (removeAfterUnmount) {
         Object.entries(reducers).forEach(([key]: ReducersListEntry) => {
+          // TODO убрать в конце 5 модуля
+          // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
           dispatch({ type: `@DESTROY ${key}` })
           store.reducerManager.remove(key)
         })
