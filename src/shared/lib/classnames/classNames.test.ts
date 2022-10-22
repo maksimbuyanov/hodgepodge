@@ -18,8 +18,7 @@ describe("classNames", () => {
     expect(
       classNames(
         "someclass",
-        // @ts-expect-error
-        { hovered: true, focused: "of course", active: false, onFocus: 0 },
+        { hovered: true, focused: "of course", active: false },
         ["class1", "class2"]
       )
     ).toBe(expected)
@@ -29,8 +28,7 @@ describe("classNames", () => {
     expect(
       classNames(
         "someclass",
-        // @ts-expect-error
-        { hovered: true, focused: "of course", active: false, onFocus: 0 },
+        { hovered: true, focused: "of course", active: false, onFocus: "" },
         ["class1", "class2"]
       )
     ).toBe(expected)
@@ -43,7 +41,6 @@ describe("classNames", () => {
         {
           hovered: true,
           active: false,
-          // @ts-expect-error
           onFocus: undefined,
         },
         ["class1", "class2"]

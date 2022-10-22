@@ -7,7 +7,7 @@ import React, {
   useState,
 } from "react"
 import cls from "./Modal.module.scss"
-import { classNames } from "@/shared/lib"
+import { classNames, Mods } from "@/shared/lib"
 import { Portal } from "@/shared/ui/Portal/Portal"
 
 interface ModalProps {
@@ -56,7 +56,7 @@ export const Modal: FC<ModalProps> = props => {
     },
     [closeHandler]
   )
-  const mods: Record<string, boolean> = {
+  const mods: Mods = {
     [cls.opened]: isOpen,
     [cls.isClosing]: isClosing,
   }

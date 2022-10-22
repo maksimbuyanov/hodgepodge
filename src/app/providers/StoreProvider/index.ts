@@ -5,3 +5,4 @@ export {
   ReduxStoreWithManager,
   StateSchemaKey,
 } from "./config/StateSchema"
+export { asyncThunkProp } from "./config/StateSchema"

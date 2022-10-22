@@ -1,0 +1,21 @@
+.ProfileCard {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border: 2px solid var(--invert-bg-color);
+  color: blue;
+}
+
+.header {
+  display: flex;
+}
+
+
+.data {
+  display: flex;
+  flex-direction: column;
+}
+
+.input:not(:last-child) {
+  margin-bottom: 10px;
+}

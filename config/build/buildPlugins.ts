@@ -8,7 +8,7 @@ import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer"
 export function buildPlugins(
   options: BuildOptions
 ): webpack.WebpackPluginInstance[] {
-  const { paths, isDev } = options
+  const { paths, isDev, apiUrl } = options
   const { html } = paths
   const isProd = !isDev
   return [
@@ -27,6 +27,7 @@ export function buildPlugins(
 
     new webpack.DefinePlugin({
       __IS_DEV__: JSON.stringify(isDev),
+      __API__: JSON.stringify(apiUrl),
     }),
 
     // Выдавал предупреждение, что автоматически добавляет его, по ключу hot в buildDevServer

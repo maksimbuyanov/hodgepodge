@@ -3,7 +3,7 @@ import cls from "./LoginForm.module.scss"
 import { classNames, DynamicModuleLoader, ReducersList } from "@/shared/lib"
 import { useTranslation } from "react-i18next"
 import { Button, ButtonTheme, Input, Text, TextTheme } from "@/shared/ui"
-import { useDispatch, useSelector } from "react-redux"
+import { useSelector } from "react-redux"
 import { loginActions, loginReducer } from "../../model/slice/loginSlice"
 import { loginByUsername } from "../../model/services/loginByUsername/loginByUsername"
 import { getLoginUsername } from "../../model/selector/getLoginUsername/getLoginUsername"
@@ -32,20 +32,17 @@ const LoginForm: FC<LoginFormProps> = props => {
 
   const onChangeUsername = useCallback(
     (data: string) => {
-      // @ts-expect-error  TODO Убрать
       dispatch(loginActions.setUsername(data))
     },
     [dispatch]
   )
   const onChangePassword = useCallback(
     (data: string) => {
-      // @ts-expect-error  TODO Убрать
       dispatch(loginActions.setPassword(data))
     },
     [dispatch]
   )
   const onLoginClick = useCallback<() => Promise<void>>(async () => {
-    // @ts-expect-error  TODO Убрать
     const result = await dispatch(loginByUsername({ username, password }))
     if (result.meta.requestStatus === "fulfilled" && onSuccess) {
       onSuccess()

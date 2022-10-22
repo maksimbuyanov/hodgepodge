@@ -2,16 +2,19 @@ import {
   AnyAction,
   configureStore,
   EnhancedStore,
-  ReducersMapObject,
   Middleware,
+  ReducersMapObject,
 } from "@reduxjs/toolkit"
 import { StateSchema } from "./StateSchema"
 import { userReducer } from "@/entities/User"
 import { reducerManager } from "./reducerManager"
+import { $api } from "@/shared/api/api"
+import { NavigateFunction } from "react-router-dom"
 
 export function createReduxStore(
   initialState?: StateSchema,
-  asyncReducers?: ReducersMapObject<StateSchema>
+  asyncReducers?: ReducersMapObject<StateSchema>,
+  navigate?: NavigateFunction
 ): EnhancedStore<StateSchema> {
   const rootReducers: ReducersMapObject<StateSchema> = {
     ...asyncReducers,
@@ -20,10 +23,19 @@ export function createReduxStore(
 
   const manager = reducerManager(rootReducers)
 
-  const store = configureStore<StateSchema>({
+  const store = configureStore({
     reducer: manager.reduce,
     devTools: __IS_DEV__,
     preloadedState: initialState,
+    middleware: getDefaultMiddleware =>
+      getDefaultMiddleware({
+        thunk: {
+          extraArgument: {
+            api: $api,
+            navigate,
+          },
+        },
+      }),
   })
 
   // @ts-expect-error

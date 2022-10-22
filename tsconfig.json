@@ -22,7 +22,8 @@
     // нужен для импорта позволяет работать с пакетами, которые используют common js как с обычными пакетами с помощью import
     "allowSyntheticDefaultImports": true,
     //позволяет синтетически сделать импорты привычными, многие библиотеки не поддерживают export default
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "strict": true
   },
   "ts-node": {
     "compilerOptions": {
