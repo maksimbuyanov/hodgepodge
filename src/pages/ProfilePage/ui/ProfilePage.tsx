@@ -24,8 +24,8 @@ const ProfilePage: FC<ProfilePageProps> = props => {
   const { t } = useTranslation("profile")
   const dispatch = useAppDispatch()
   useEffect(() => {
-    // @ts-expect-error
-    dispatch(fetchProfileData())
+    // TODO может убрать войд?
+    void dispatch(fetchProfileData())
   }, [dispatch])
 
   return (

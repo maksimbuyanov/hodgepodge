@@ -38,5 +38,5 @@ export interface asyncThunkProp<T> {
 
 export interface ThunkExtraArh {
   api: AxiosInstance
-  navigate: NavigateFunction
+  navigate?: NavigateFunction
 }

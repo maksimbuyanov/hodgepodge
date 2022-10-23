@@ -1,21 +1,24 @@
 import {
   AnyAction,
+  CombinedState,
   configureStore,
   EnhancedStore,
   Middleware,
+  Reducer,
   ReducersMapObject,
 } from "@reduxjs/toolkit"
-import { StateSchema } from "./StateSchema"
+import { StateSchema, ThunkExtraArh } from "./StateSchema"
 import { userReducer } from "@/entities/User"
 import { reducerManager } from "./reducerManager"
 import { $api } from "@/shared/api/api"
 import { NavigateFunction } from "react-router-dom"
 
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export function createReduxStore(
   initialState?: StateSchema,
   asyncReducers?: ReducersMapObject<StateSchema>,
   navigate?: NavigateFunction
-): EnhancedStore<StateSchema> {
+) {
   const rootReducers: ReducersMapObject<StateSchema> = {
     ...asyncReducers,
     user: userReducer,
@@ -23,17 +26,19 @@ export function createReduxStore(
 
   const manager = reducerManager(rootReducers)
 
+  const extraArg: ThunkExtraArh = {
+    api: $api,
+    navigate,
+  }
+
   const store = configureStore({
-    reducer: manager.reduce,
+    reducer: manager.reduce as Reducer<CombinedState<StateSchema>>,
     devTools: __IS_DEV__,
     preloadedState: initialState,
     middleware: getDefaultMiddleware =>
       getDefaultMiddleware({
         thunk: {
-          extraArgument: {
-            api: $api,
-            navigate,
-          },
+          extraArgument: extraArg,
         },
       }),
   })
@@ -44,8 +49,4 @@ export function createReduxStore(
   return store
 }
 
-export type AppDispatch = EnhancedStore<
-  StateSchema,
-  AnyAction,
-  ReadonlyArray<Middleware<{}, StateSchema>>
->["dispatch"]
+export type AppDispatch = ReturnType<typeof createReduxStore>["dispatch"]

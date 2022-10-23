@@ -9,7 +9,8 @@ import { Profile } from "@/entities/Profile"
 
 export const fetchProfileData = createAsyncThunk<
   Profile,
-  // fetchProfileDataProps,
+  // TODO
+  // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
   void,
   asyncThunkProp<string>
 >("profile/fetchProfileData", async (data, thunkAPI) => {

@@ -26,6 +26,7 @@ export default ({
   if (config) {
     if (config.module) {
       if (config.module.rules) {
+        // @ts-expect-error
         config.module.rules = config.module.rules.map((rule: RuleSetRule) => {
           if (/svg/.test(rule.test as string)) {
             return { ...rule, exclude: /\.svg/i }
