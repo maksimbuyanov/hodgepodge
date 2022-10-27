@@ -33,6 +33,10 @@
   background-color: var(--primary-color);
 }
 
+.readOnly {
+  opacity: 0.6;
+}
+
 @keyframes blink {
   0% {
     opacity: 0;

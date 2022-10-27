@@ -7,11 +7,11 @@ import {
   useState,
 } from "react"
 import cls from "./Input.module.scss"
-import { classNames } from "@/shared/lib"
+import { classNames, Mods } from "@/shared/lib"
 
 type HTMLInputProps = Omit<
   InputHTMLAttributes<HTMLInputElement>,
-  "value" | "onChange"
+  "value" | "onChange" | "readOnly"
 >
 
 interface InputProps extends HTMLInputProps {
@@ -20,6 +20,7 @@ interface InputProps extends HTMLInputProps {
   onChange?: (value: string) => void
   placeholder?: string
   autoFocus?: boolean
+  readOnly?: boolean
 }
 
 export const Input: FC<InputProps> = memo(function InputWithoutMemo(
@@ -32,10 +33,14 @@ export const Input: FC<InputProps> = memo(function InputWithoutMemo(
     type = "text",
     placeholder,
     autoFocus,
+    readOnly = false,
     ...otherProps
   } = props
 
   const [isFocuser, setIsFocuser] = useState(false)
+
+  const isCaretVisible = isFocuser && !readOnly
+
   const [caretPosition, setCaretPosition] = useState(0)
   const ref = useRef<HTMLInputElement>()
 
@@ -61,8 +66,12 @@ export const Input: FC<InputProps> = memo(function InputWithoutMemo(
     setCaretPosition(e?.target?.selectionStart || 0)
   }
 
+  const mods: Mods = {
+    [cls.readOnly]: readOnly,
+  }
+
   return (
-    <div className={classNames(cls.InputWrapper, {}, [className])}>
+    <div className={classNames(cls.InputWrapper, mods, [className])}>
       {placeholder && <div className={cls.placeholder}>{`${placeholder}`}</div>}
       <div className={cls.caretWrapper}>
         <input
@@ -75,9 +84,10 @@ export const Input: FC<InputProps> = memo(function InputWithoutMemo(
           onSelect={onSelect}
           autoFocus={autoFocus}
           ref={ref as any}
+          readOnly={readOnly}
           {...otherProps}
         />
-        {isFocuser && (
+        {isCaretVisible && (
           <span
             className={cls.caret}
             style={{ left: `${caretPosition * 10}px` }} // TODO подобрать шрифт у коготоро все символы одной ширины (моноширинный)
