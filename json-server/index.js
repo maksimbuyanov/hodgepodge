@@ -23,10 +23,7 @@ server.use(async (req, res, next) => {
 })
 
 server.use((req, res, next) => {
-  if (
-    !req.headers.authorization?.session_id &&
-    !req.path.includes(SERVER_HANDLERS.login)
-  ) {
+  if (!req.headers.authorization && !req.path.includes(SERVER_HANDLERS.login)) {
     return res.status(403).json({ message: "AUTH ERROR" })
   }
   next()

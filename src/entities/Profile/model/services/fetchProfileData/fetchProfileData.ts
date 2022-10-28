@@ -1,7 +1,4 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
-import { User, userActions } from "@/entities/User"
-import { USER_LOCALSTORAGE_KEY } from "@/shared/const/localStorage"
-import { RoutePath } from "@/shared/config"
 import { asyncThunkProp } from "@/app/providers/StoreProvider"
 import { Profile } from "@/entities/Profile"
 
@@ -9,15 +6,13 @@ import { Profile } from "@/entities/Profile"
 
 export const fetchProfileData = createAsyncThunk<
   Profile,
-  // TODO
-  // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-  void,
+  undefined, // TODO пробно указал, проверить
   asyncThunkProp<string>
 >("profile/fetchProfileData", async (data, thunkAPI) => {
-  const { rejectWithValue, dispatch, extra } = thunkAPI
+  const { rejectWithValue, extra } = thunkAPI
   try {
-    const responce = extra.api.get<Profile>("/profile")
-    return (await responce).data
+    const response = extra.api.get<Profile>("/profile")
+    return (await response).data
   } catch (e) {
     console.log(e)
     return rejectWithValue("error profile")

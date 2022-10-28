@@ -4,7 +4,11 @@ import { classNames, useAppDispatch } from "@/shared/lib"
 import { Button, ButtonSize, ButtonTheme, Text, TextTheme } from "@/shared/ui"
 import { useTranslation } from "react-i18next"
 import { useSelector } from "react-redux"
-import { getProfileReadOnly, profileActions } from "@/entities/Profile"
+import {
+  getProfileReadOnly,
+  profileActions,
+  updateProfileData,
+} from "@/entities/Profile"
 
 interface ProfilePageHeaderProps {
   className?: string
@@ -25,7 +29,7 @@ export const ProfilePageHeader: FC<ProfilePageHeaderProps> = props => {
     dispatch(profileActions.cancelEdit())
   }, [dispatch])
   const onSave = useCallback(() => {
-    dispatch(profileActions.setReadOnly(false))
+    void dispatch(updateProfileData())
   }, [dispatch])
   return (
     <div className={classNames(cls.ProfilePageHeader, {}, [className])}>
@@ -42,7 +46,7 @@ export const ProfilePageHeader: FC<ProfilePageHeaderProps> = props => {
       ) : (
         <>
           <Button
-            theme={ButtonTheme.OUTLINE}
+            theme={ButtonTheme.OUTLINE_RED}
             className={cls.editButton}
             size={ButtonSize.M}
             onClick={onCancelEdin}
@@ -51,7 +55,7 @@ export const ProfilePageHeader: FC<ProfilePageHeaderProps> = props => {
           </Button>
           <Button
             theme={ButtonTheme.OUTLINE}
-            className={cls.editButton}
+            className={cls.saveButton}
             size={ButtonSize.M}
             onClick={onSave}
           >

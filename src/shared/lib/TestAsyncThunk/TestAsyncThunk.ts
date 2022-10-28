@@ -1,11 +1,24 @@
 import { StateSchema } from "@/app/providers/StoreProvider"
 import { AsyncThunkAction } from "@reduxjs/toolkit"
-import { NavigateFunction } from "react-router-dom"
 import axios, { AxiosStatic } from "axios"
+import {
+  AsyncThunkFulfilledActionCreator,
+  AsyncThunkRejectedActionCreator,
+} from "@reduxjs/toolkit/src/createAsyncThunk"
 
 type ActionCreatorType<Return, Arg, RejectedValue> = (
   arg: Arg
 ) => AsyncThunkAction<Return, Arg, { rejectValue: RejectedValue }>
+
+type Result<Return, Arg, ThunkApiConfig> = Promise<
+  | ReturnType<AsyncThunkFulfilledActionCreator<Return, Arg>>
+  | ReturnType<AsyncThunkRejectedActionCreator<Arg, ThunkApiConfig>>
+> & {
+  abort: (reason?: string) => void
+  requestId: string
+  arg: Arg
+  unwrap: () => Promise<Return>
+}
 
 jest.mock("axios")
 const mockedAxios = jest.mocked(axios, true)
@@ -25,11 +38,9 @@ export class TestAsyncThunk<Return, Arg, RejectedValue> {
     this.navigate = jest.fn()
   }
 
-  // TODO разобраться с типами
-  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-  async callThunk(arg: Arg) {
+  callThunk(arg: Arg): Result<Return, Arg, { rejectValue: RejectedValue }> {
     const action = this.actionCreator(arg)
-    return await action(this.dispatch, this.getState, {
+    return action(this.dispatch, this.getState, {
       api: this.api,
       navigate: this.navigate,
     })
