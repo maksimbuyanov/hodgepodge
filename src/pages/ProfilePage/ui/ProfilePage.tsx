@@ -10,6 +10,7 @@ import { useTranslation } from "react-i18next"
 import {
   fetchProfileData,
   getProfileError,
+  getProfileErrors,
   getProfileForm,
   getProfileIsloading,
   getProfileReadOnly,
@@ -21,6 +22,7 @@ import { useSelector } from "react-redux"
 import { ProfilePageHeader } from "./ProfilePageHeader/ProfilePageHeader"
 import { Currency } from "@/entities/Currency/model/types/currency"
 import { Country } from "@/entities/Country"
+import { Text, TextTheme } from "@/shared/ui"
 
 interface ProfilePageProps {
   className?: string
@@ -33,13 +35,16 @@ const ProfilePage: FC<ProfilePageProps> = props => {
   const { t } = useTranslation("profile")
   const dispatch = useAppDispatch()
   useEffect(() => {
-    void dispatch(fetchProfileData())
+    if (__PROJECT__ !== "storybook") {
+      void dispatch(fetchProfileData())
+    }
   }, [dispatch])
 
   const formData = useSelector(getProfileForm)
-  const error = useSelector(getProfileError)
   const readOnly = useSelector(getProfileReadOnly)
   const isLoading = useSelector(getProfileIsloading)
+  const errors = useSelector(getProfileErrors)
+  const error = useSelector(getProfileError)
 
   const onChangeFirstName = useCallback(
     (data?: string) => {
@@ -97,6 +102,10 @@ const ProfilePage: FC<ProfilePageProps> = props => {
       <div className={classNames(cls.ProfilePage, {}, [className])}>
         {t("Страница профиля")}
         <ProfilePageHeader />
+        {errors?.length &&
+          errors.map(errorCode => (
+            <Text theme={TextTheme.Error} text={t(errorCode)} key={errorCode} />
+          ))}
         <ProfileCard
           data={formData}
           isLoading={isLoading}

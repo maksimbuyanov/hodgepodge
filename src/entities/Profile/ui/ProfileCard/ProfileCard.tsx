@@ -48,7 +48,7 @@ export const ProfileCard: FC<ProfileCardProps> = props => {
 
   if (error) {
     return (
-      // TODO Добавить интернациализацию
+      // TODO Добавить интернационализацию, СТОИТ ЛИ ВООБЩЕ ОСТАВЛЯТЬ?!
       <div className={classNames(cls.ProfileCard, {}, [cls.error])}>
         <Text theme={TextTheme.Error} title={error} align={TextAlign.CENTER} />
       </div>
