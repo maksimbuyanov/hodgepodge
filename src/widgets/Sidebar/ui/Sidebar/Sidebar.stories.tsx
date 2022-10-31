@@ -23,3 +23,5 @@ Dark.args = {
   children: "text",
 }
 Dark.decorators = [ThemeDecorator(Theme.DARK)]
+
+// TODO добавить работу со стором, добавить историю на не авторизовонного пользователя

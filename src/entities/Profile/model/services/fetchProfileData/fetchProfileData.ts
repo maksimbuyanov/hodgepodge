@@ -12,6 +12,9 @@ export const fetchProfileData = createAsyncThunk<
   const { rejectWithValue, extra } = thunkAPI
   try {
     const response = extra.api.get<Profile>("/profile")
+    if (!(await response).data) {
+      throw new Error() // нужно только для отработки тестов
+    }
     return (await response).data
   } catch (e) {
     console.log(e)
