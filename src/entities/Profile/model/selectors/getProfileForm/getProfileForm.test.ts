@@ -4,16 +4,16 @@ import { Country } from "@/entities/Country"
 import { Currency } from "@/entities/Currency"
 
 describe("getProfileForm.test", () => {
-  const data = {
-    city: "Tar-tarary",
-    age: 100,
-    username: "TwitterChief",
-    lastname: "Mask",
-    first: "Ilon",
-    country: Country.AZ,
-    currency: Currency.EUR,
-  }
-  test("return form data", () => {
+  test("return string", () => {
+    const data = {
+      city: "Tar-tarary",
+      age: 100,
+      username: "TwitterChief",
+      lastname: "Mask",
+      first: "Ilon",
+      country: Country.AZ,
+      currency: Currency.EUR,
+    }
     const state: DeepPartial<StateSchema> = { profile: { form: data } }
     expect(getProfileForm(state as StateSchema)).toEqual(data)
   })

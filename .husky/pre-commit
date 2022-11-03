@@ -2,6 +2,6 @@
 . "$(dirname "$0")/_/husky.sh"
 
 # TODO убрать!
-#npm run lint:ts:fix
-#npm run lint:scss:fix
-#npm run test:unit
+npm run lint:ts:fix
+npm run lint:scss:fix
+npm run test:unit
