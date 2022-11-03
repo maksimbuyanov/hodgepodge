@@ -20,11 +20,11 @@ export const loginSlice = createSlice({
     },
   },
   extraReducers: builder => {
-    builder.addCase(loginByUsername.pending, (state, action) => {
+    builder.addCase(loginByUsername.pending, (state, ___action) => {
       state.error = ""
       state.isLoading = true
     })
-    builder.addCase(loginByUsername.fulfilled, (state, action) => {
+    builder.addCase(loginByUsername.fulfilled, (state, ___action) => {
       state.isLoading = false
       state.password = ""
       state.username = ""

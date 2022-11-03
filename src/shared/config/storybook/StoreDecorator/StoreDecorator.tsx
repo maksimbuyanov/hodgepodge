@@ -1,14 +1,25 @@
 import { Story } from "@storybook/react"
 import { ReactElement } from "react"
-import { StoreProvider, StateSchema } from "@/app/providers/StoreProvider"
-import { DeepPartial } from "@reduxjs/toolkit"
+import { StateSchema, StoreProvider } from "@/app/providers/StoreProvider"
+import { loginReducer } from "@/features/AuthByUsername"
+import { profileReducer } from "@/entities/Profile"
+import { ReducersList } from "@/shared/lib"
+
+const defaultAsyncReducers: ReducersList = {
+  loginForm: loginReducer,
+  profile: profileReducer,
+}
 
 export const StoreDecorator =
-  (state: DeepPartial<StateSchema>) =>
+  (state: DeepPartial<StateSchema>, asyncReducers?: ReducersList) =>
+  // TODO
   // eslint-disable-next-line react/display-name
   (StoryComponent: Story): ReactElement => {
     return (
-      <StoreProvider initialState={state as StateSchema}>
+      <StoreProvider
+        initialState={state as StateSchema}
+        asyncReducers={{ ...defaultAsyncReducers, ...asyncReducers }}
+      >
         <StoryComponent />
       </StoreProvider>
     )

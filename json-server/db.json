@@ -1,12 +1,23 @@
 {
   "post": {
-    "id": 1,
+    "id": "1",
     "name": "Oleh"
   },
   "users": [
     {
+      "id": "1",
       "username": "admin",
       "password": "nimda"
     }
-  ]
+  ],
+  "profile": {
+    "first": "maXim",
+    "lastname": "Galkin, ept",
+    "age": 50,
+    "currency": "USD",
+    "country": "Azerbaijan",
+    "city": "Milan",
+    "username": "фатим",
+    "avatar": "https://mtdata.ru/u23/photoB13D/20982500931-0/original.png"
+  }
 }

@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next"
 import type { FC } from "react"
-import React from "react"
+import React, { memo } from "react"
 import { Button, ButtonTheme } from "@/shared/ui"
 import { classNames } from "@/shared/lib"
 
@@ -29,3 +29,5 @@ export const LangSwitcher: FC<LangSwitcherProps> = props => {
     </Button>
   )
 }
+
+export default memo(LangSwitcher)

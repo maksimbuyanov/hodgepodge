@@ -3,6 +3,7 @@ import type { LinkProps } from "react-router-dom"
 import { Link } from "react-router-dom"
 import cls from "./AppLink.module.scss"
 import { classNames } from "@/shared/lib"
+import { memo } from "react"
 
 export const enum AppLinkTheme {
   PRIMARY = "primary",
@@ -32,3 +33,5 @@ export const AppLink: FC<AppLinkProps> = props => {
     </Link>
   )
 }
+
+export default memo(AppLink)

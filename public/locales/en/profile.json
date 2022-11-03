@@ -1,0 +1,20 @@
+{
+  "Страница профиля": "Profile Page",
+  "Профиль": "Profile",
+  "Редактировать": "Edit",
+  "Отменить редактирование": "Cancel",
+  "Сохранить": "Save",
+  "Город": "City",
+  "Страна": "Country",
+  "Валюта": "Currency",
+  "Возраст": "Age",
+  "Ваша фамилия": "Surname",
+  "Ваше имя": "Name",
+  "Имя пользователя": "User name",
+  "Аватар": "Insert URL",
+  "INCORRECT_USER_DATA": "Input correct data about user",
+  "INCORRECT_AGE": "Input correct age",
+  "INCORRECT_CITY": "Input correct city",
+  "NO_DATA": "profile data is empty",
+  "SERVER_ERROR": "Error from server, request later please"
+}

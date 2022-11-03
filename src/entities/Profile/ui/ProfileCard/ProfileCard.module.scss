@@ -1,0 +1,42 @@
+.ProfileCard {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border: 2px solid var(--invert-bg-color);
+  color: blue;
+}
+
+.editind {
+  border: 2px solid var(--invert-primary-color);
+}
+
+.header {
+  display: flex;
+}
+
+.data {
+  display: flex;
+  flex-direction: column;
+}
+
+.input:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.loading,
+.error {
+  height: 300px;
+  align-self: center;
+  justify-self: center;
+}
+
+.avatar {
+  width: fit-content;
+  max-height: 150px;
+}
+
+.avatarWrapper {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}

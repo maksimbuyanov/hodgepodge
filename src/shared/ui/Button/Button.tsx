@@ -1,12 +1,14 @@
 import type { ButtonHTMLAttributes, FC } from "react"
 import cls from "./Button.module.scss"
-import { classNames } from "@/shared/lib"
+import { classNames, Mods } from "@/shared/lib"
+import { memo } from "react"
 
 export enum ButtonTheme {
   CLEAR = "clear",
   CLEAR_INVERTED = "clearInverted",
   ERROR = "error",
   OUTLINE = "outline",
+  OUTLINE_RED = "outline_red",
   BACKGROUND = "background",
   BACKGROUND_INVERTED = "backgroundInverted",
 }
@@ -35,7 +37,7 @@ export const Button: FC<ButtonProps> = props => {
     disabled = false,
     ...otherProps
   } = props
-  const mods: Record<string, boolean> = {
+  const mods: Mods = {
     [cls.square]: square,
     [cls.disabled]: disabled,
   }
@@ -55,3 +57,4 @@ export const Button: FC<ButtonProps> = props => {
     </button>
   )
 }
+export default memo(Button)

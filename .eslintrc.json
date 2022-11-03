@@ -42,6 +42,16 @@
           }
         },
         {
+          "files": [
+            "model.ts",
+            "**/src/**/shared/ui/**/*.tsx"
+          ],
+          "rules": {
+            // в базовых компонентах постоянно рест/спред пропсы стандартным HTML компонентам
+            "react/jsx-props-no-spreading": 0
+          }
+        },
+        {
             "files": ["**/src/**/*.test.{ts,tsx}"],
             "rules": {
                 // не проверяет есть ли перевод для слов в файлах с тестами, хз, может потом придется выключить
@@ -89,14 +99,19 @@
           "markupOnly": true,
           "ignoreAttribute": [
             "data-testid",
-            "to"
+            "to",
+            "reducerName"
           ]
         }
       ],
-      "object-curly-spacing": 0
+      "object-curly-spacing": 0,
       // пробелы в фигурных скобках
+      "linebreak-style": "off",
+      "@typescript-eslint/no-misused-promises": "warn"
     },
     "globals": {
-        "__IS_DEV__": true
+        "__IS_DEV__": true,
+        "__API__": true,
+        "__PROJECT__": true
     }
 }

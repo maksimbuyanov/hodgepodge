@@ -1,7 +1,7 @@
 import React from "react"
 import { ComponentMeta, ComponentStory } from "@storybook/react"
 import { Sidebar } from "./Sidebar"
-import { ThemeDecorator } from "@/shared/config/storybook/styleDecorator/ThemeDecorator"
+import { StoreDecorator, ThemeDecorator } from "@/shared/config"
 import { Theme } from "@/app/providers/ThemeProvider"
 
 export default {
@@ -18,8 +18,18 @@ export const Light = Template.bind({})
 Light.args = {
   children: "text",
 }
+Light.decorators = [
+  StoreDecorator({
+    user: { authData: { username: "asd", id: "asda" } },
+  }),
+]
 export const Dark = Template.bind({})
 Dark.args = {
   children: "text",
 }
-Dark.decorators = [ThemeDecorator(Theme.DARK)]
+Dark.decorators = [
+  ThemeDecorator(Theme.DARK),
+  StoreDecorator({
+    user: { authData: { username: "asd", id: "asda" } },
+  }),
+]

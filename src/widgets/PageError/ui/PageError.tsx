@@ -1,4 +1,4 @@
-import { FC } from "react"
+import { FC, memo } from "react"
 import cls from "./PageError.module.scss"
 import { classNames } from "@/shared/lib"
 import { useTranslation } from "react-i18next"
@@ -23,3 +23,5 @@ export const PageError: FC<PageErrorProps> = props => {
     </div>
   )
 }
+
+export default memo(PageError)

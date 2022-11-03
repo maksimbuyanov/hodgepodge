@@ -1,9 +1,11 @@
 .title {
+  margin: unset;
   color: var(--primary-color);
   font: var(--font-l);
 }
 
 .text {
+  margin: unset;
   color: var(--secondaty-color);
   font: var(--font-m);
 }
@@ -16,4 +18,16 @@
   .text {
     color: var(--red-dark);
   }
+}
+
+.left {
+  text-align: left;
+}
+
+.right {
+  text-align: right;
+}
+
+.center {
+  text-align: center;
 }

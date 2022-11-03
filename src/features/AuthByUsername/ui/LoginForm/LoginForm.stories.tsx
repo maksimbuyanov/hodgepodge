@@ -21,14 +21,14 @@ export const Default = Template.bind({})
 Default.args = {}
 Default.decorators = [
   StoreDecorator({
-    loginForm: { username: "user", password: "pass" },
+    loginForm: { username: "user", password: "pass", isLoading: false },
   }),
 ]
 export const DefaultDark = Template.bind({})
 DefaultDark.args = {}
 DefaultDark.decorators = [
   StoreDecorator({
-    loginForm: { username: "user", password: "pass" },
+    loginForm: { username: "user", password: "pass", isLoading: false },
   }),
   ThemeDecorator(Theme.DARK),
 ]
@@ -36,7 +36,12 @@ export const Error = Template.bind({})
 Error.args = {}
 Error.decorators = [
   StoreDecorator({
-    loginForm: { username: "user", password: "pass", error: "Error" },
+    loginForm: {
+      username: "user",
+      password: "pass",
+      error: "Error",
+      isLoading: false,
+    },
   }),
 ]
 export const Loading = Template.bind({})

@@ -22,7 +22,8 @@
     // нужен для импорта позволяет работать с пакетами, которые используют common js как с обычными пакетами с помощью import
     "allowSyntheticDefaultImports": true,
     //позволяет синтетически сделать импорты привычными, многие библиотеки не поддерживают export default
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "strict": true
   },
   "ts-node": {
     "compilerOptions": {
@@ -30,15 +31,11 @@
     }
   },
   "include": [
-    "./config/jest/setupTest.ts",
-    "./src/**/*.ts",
-    "./src/**/*.tsx",
-    "./config/**/*.ts",
-    "./config/**/*.tsx",
-    "./config/**/*.js",
+    "./src/**/*",
+    "./config/**/*",
     "./scripts/**/*.js",
-    "./*.ts",
-    "./json-server/**/*.*"
+    "./*",
+    "./json-server/**/*"
   ],
   "exclude": [
     "./node_modules/**/*.*",

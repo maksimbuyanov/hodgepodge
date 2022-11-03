@@ -11,6 +11,7 @@ const SERVER_DELAY = 800
 
 const SERVER_HANDLERS = {
   login: "/login",
+  profile: "/profile",
 }
 
 server.use(jsonServer.defaults({ bodyParser: true }))
@@ -42,6 +43,17 @@ server.post(SERVER_HANDLERS.login, (req, res) => {
     return res.json(userFromBd)
   }
   return res.status(403).json({ message: "USER NOT FOUND" })
+})
+server.get(SERVER_HANDLERS.profile, (req, res) => {
+  const db = JSON.parse(
+    fs.readFileSync(path.resolve(__dirname, "db.json"), "UTF-8")
+  )
+  const { profile } = db
+
+  if (profile) {
+    return res.json(profile)
+  }
+  return res.status(403).json({ message: "PROFILE REQUEST ERROR" })
 })
 
 server.use(router)
