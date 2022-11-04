@@ -1,4 +1,4 @@
-export { Profile, ProfileSchema } from "./model/types/profile"
+export type { Profile, ProfileSchema } from "./model/types/profile"
 export { profileReducer, profileActions } from "./model/slice/slice"
 export { fetchProfileData } from "./model/services/fetchProfileData/fetchProfileData"
 export { updateProfileData } from "./model/services/updateProfileData/updateProfileData"

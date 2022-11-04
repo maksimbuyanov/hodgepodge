@@ -122,7 +122,7 @@ export const ProfileCard: FC<ProfileCardProps> = props => {
           readOnly={readOnly}
         />
         <Input
-          value={data?.avatar}
+          value={__PROJECT__ === "storybook" ? "storybook path" : data?.avatar}
           placeholder={t("Аватар")}
           className={cls.input}
           onChange={onChangeAvatar}
