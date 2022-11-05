@@ -12,6 +12,7 @@ export default {
   },
   args: {
     to: "/",
+    children: "text",
   },
 } as ComponentMeta<typeof AppLink>
 
@@ -19,13 +20,20 @@ const Template: ComponentStory<typeof AppLink> = args => <AppLink {...args} />
 
 export const Light = Template.bind({})
 Light.args = {
-  children: "text",
   theme: AppLinkTheme.PRIMARY,
+}
+export const SecondaryTheme = Template.bind({})
+SecondaryTheme.args = {
+  theme: AppLinkTheme.SECONDARY,
 }
 
 export const Dark = Template.bind({})
 Dark.args = {
-  children: "text",
   theme: AppLinkTheme.PRIMARY,
 }
 Dark.decorators = [ThemeDecorator(Theme.DARK)]
+
+export const Blood = Template.bind({
+  theme: AppLinkTheme.PRIMARY,
+})
+Blood.decorators = [ThemeDecorator(Theme.BLOOD)]

@@ -12,7 +12,7 @@ export default {
     backgroundColor: { control: "color" },
   },
   args: {
-    to: "/",
+    src: image,
   },
 } as ComponentMeta<typeof Avatar>
 
@@ -20,18 +20,20 @@ const Template: ComponentStory<typeof Avatar> = args => <Avatar {...args} />
 
 export const Light = Template.bind({})
 Light.args = {
-  src: image,
   size: 150,
 }
 export const Small = Template.bind({})
 Small.args = {
-  src: image,
   size: 50,
 }
 
 export const Dark = Template.bind({})
 Dark.args = {
-  src: image,
   size: 150,
 }
 Dark.decorators = [ThemeDecorator(Theme.DARK)]
+
+export const Blood = Template.bind({
+  size: 150,
+})
+Blood.decorators = [ThemeDecorator(Theme.BLOOD)]

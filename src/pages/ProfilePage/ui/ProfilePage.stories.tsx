@@ -112,3 +112,22 @@ Dark.decorators = [
     },
   }),
 ]
+
+export const Blood = Template.bind({})
+Blood.decorators = [
+  ThemeDecorator(Theme.BLOOD),
+  StoreDecorator({
+    profile: {
+      form: {
+        city: "Tar-tarary",
+        age: 100,
+        username: "TwitterChief",
+        lastname: "Mask",
+        first: "Ilon",
+        country: Country.AZ,
+        currency: Currency.EUR,
+        avatar: images,
+      },
+    },
+  }),
+]

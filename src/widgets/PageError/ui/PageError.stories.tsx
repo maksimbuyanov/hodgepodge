@@ -26,3 +26,6 @@ Dark.args = {
   children: "text",
 }
 Dark.decorators = [ThemeDecorator(Theme.DARK)]
+
+export const Blood = Template.bind({})
+Blood.decorators = [ThemeDecorator(Theme.BLOOD)]

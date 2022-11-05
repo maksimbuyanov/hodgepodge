@@ -33,3 +33,9 @@ Dark.decorators = [
     user: { authData: { username: "asd", id: "asda" } },
   }),
 ]
+
+export const Blood = Template.bind({})
+Blood.decorators = [
+  ThemeDecorator(Theme.BLOOD),
+  StoreDecorator({ user: { authData: { username: "Abdulai", id: "500" } } }),
+]

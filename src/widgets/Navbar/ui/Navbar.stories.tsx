@@ -37,3 +37,9 @@ withUser.args = {
 withUser.decorators = [
   StoreDecorator({ user: { authData: { username: "Abdulai", id: "500" } } }),
 ]
+
+export const Blood = Template.bind({})
+Blood.decorators = [
+  ThemeDecorator(Theme.BLOOD),
+  StoreDecorator({ user: { authData: { username: "Abdulai", id: "500" } } }),
+]

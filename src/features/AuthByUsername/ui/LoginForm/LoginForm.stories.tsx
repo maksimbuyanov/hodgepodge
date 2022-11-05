@@ -51,3 +51,11 @@ Loading.decorators = [
     loginForm: { isLoading: true },
   }),
 ]
+
+export const Blood = Template.bind({})
+Blood.decorators = [
+  ThemeDecorator(Theme.BLOOD),
+  StoreDecorator({
+    loginForm: { username: "user", password: "pass", isLoading: false },
+  }),
+]
