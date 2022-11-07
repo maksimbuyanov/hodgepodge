@@ -19,5 +19,78 @@
     "city": "Milan",
     "username": "фатим",
     "avatar": "https://mtdata.ru/u23/photoB13D/20982500931-0/original.png"
-  }
+  },
+  "articles": [
+    {
+      "id": "1",
+      "title": "Песня про Антошку",
+      "image": "https://i.ytimg.com/vi/AotASl25CCg/maxresdefault.jpg",
+      "subtitle": "который не очень любит работать",
+      "views": 2020,
+      "createdAt": "26.10.2022",
+      "type": ["Про мальчика","Русская"],
+      "blocks": [
+        {
+          "id": "1",
+          "type": "TEXT",
+          "title": "TITLE OF THE PERFECT BLOCK",
+          "paragraphs": [
+            "Антошка Антошка",
+            "Пойдем копать картошку",
+            "Антошка Антошка",
+            "Пойдем копать карто-о-шку"
+          ]
+        },
+        {
+          "id": "2",
+          "type": "TEXT",
+          "title": "Второй куплет",
+          "paragraphs": [
+            "Ти ли ти ли",
+            "Тра ли вали",
+            "Это мы не проходили",
+            "Это нам не задавали"
+          ]
+        },
+        {
+          "id": "3",
+          "type": "IMAGE",
+          "title": "Тот самый Антошка",
+          "src": "https://skazki.land/api/get-resized-image/antoshka-289f5.jpg?width=1024&height=1024&fit=inside"
+        }
+      ]
+    }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "text": "some test",
+      "articleId": "1",
+      "userId": "1"
+    },
+    {
+      "id": "2",
+      "text": "some test1",
+      "articleId": "1",
+      "userId": "1"
+    },
+    {
+      "id": "3",
+      "text": "some test2",
+      "articleId": "1",
+      "userId": "2"
+    },
+    {
+      "id": "4",
+      "text": "some test3",
+      "articleId": "1",
+      "userId": "2"
+    },
+    {
+      "id": "5",
+      "text": "some test4",
+      "articleId": "1",
+      "userId": "2"
+    }
+  ]
 }
