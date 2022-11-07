@@ -56,6 +56,6 @@ export const Blood = Template.bind({})
 Blood.decorators = [
   ThemeDecorator(Theme.BLOOD),
   StoreDecorator({
-    loginForm: { username: "user", password: "pass", isLoading: false },
+    loginForm: { username: "user", password: "password", isLoading: false },
   }),
 ]
