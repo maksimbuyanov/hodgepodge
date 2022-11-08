@@ -6,8 +6,7 @@ import { Theme } from "@/app/providers/ThemeProvider"
 import { StoreDecorator } from "@/shared/config"
 
 export default {
-  title:
-    "src/entities/Article/ui/ArticleImageBlockComponent/ArticleImageBlockComponent",
+  title: "entities/ArticleImageBlockComponent",
   component: ArticleImageBlockComponent,
   argTypes: {
     backgroundColor: { control: "color" },

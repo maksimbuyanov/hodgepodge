@@ -6,14 +6,19 @@ import { Theme } from "@/app/providers/ThemeProvider"
 import { StoreDecorator } from "@/shared/config"
 
 export default {
-  title: "src/entities/Article/ui/ArticleDetails/ArticleDetails",
+  title: "entities/ArticleDetails",
   component: ArticleDetails,
   argTypes: {
     backgroundColor: { control: "color" },
   },
+  args: {
+    id: "1",
+  },
 } as ComponentMeta<typeof ArticleDetails>
 
-const Template: ComponentStory<typeof ArticleDetails> = () => <ArticleDetails />
+const Template: ComponentStory<typeof ArticleDetails> = args => (
+  <ArticleDetails {...args} />
+)
 
 export const Light = Template.bind({})
 Light.decorators = [StoreDecorator({})]

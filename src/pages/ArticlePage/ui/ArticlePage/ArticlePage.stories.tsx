@@ -6,7 +6,7 @@ import { Theme } from "@/app/providers/ThemeProvider"
 import { StoreDecorator } from "@/shared/config"
 
 export default {
-  title: "src/pages/ArticlePage/ui/ArticlePage/ArticlePage",
+  title: "page/ArticlePage",
   component: ArticlePage,
   argTypes: {
     backgroundColor: { control: "color" },
