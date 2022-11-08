@@ -8,19 +8,19 @@
   &::before {
     position: absolute;
     top: 0;
-    left: -150px;
+    left: -100%;
     display: block;
-    width: 80%;
+    width: 90%;
     height: 100%;
-    animation: load 1s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-    background: linear-gradient(to right, transparent 0%, var(--skeleton-color) 50%, transparent 100%);
+    animation: load 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    background: linear-gradient(to right, transparent 0%, var(--skeleton-color) 40%, transparent 100%);
     content: "";
   }
 }
 
 @keyframes load {
   from {
-    left: -150px;
+    left: -80%;
   }
 
   to {

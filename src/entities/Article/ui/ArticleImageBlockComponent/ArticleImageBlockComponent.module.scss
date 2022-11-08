@@ -1,3 +1,15 @@
 .ArticleImageBlockComponent {
-  color: red;
+  display: flex;
+  flex-direction: column;
+}
+
+.image {
+  display: inline-block;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.title {
+  display: inline-block;
+  margin: 0 auto;
 }

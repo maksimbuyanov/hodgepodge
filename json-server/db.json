@@ -57,6 +57,11 @@
           "type": "IMAGE",
           "title": "Тот самый Антошка",
           "src": "https://skazki.land/api/get-resized-image/antoshka-289f5.jpg?width=1024&height=1024&fit=inside"
+        }  ,
+        {
+          "id": "4",
+          "type": "CODE",
+          "code": "import React from \"react\"\nimport { ComponentMeta, ComponentStory } from \"@storybook/react\"\nimport { ThemeDecorator } from \"@/shared/config/storybook/styleDecorator/ThemeDecorator\"\nimport { Theme } from \"@/app/providers/ThemeProvider\"\nimport { Select } from \"./Select\"\n\nexport default {\n  title: \"shared/Select\",\n  component: Select,\n  argTypes: {\n    backgroundColor: { control: \"color\" },\n  },\n  args: {\n    label: \"Test text\",\n    options: [\n      { value: \"123\", content: \"123\" },\n      { value: \"11123\", content: \"11123\" },\n    ],\n  },\n} as ComponentMeta<typeof Select>\n\nconst Template: ComponentStory<typeof Select> = args => <Select {...args} />\n\nexport const Light = Template.bind({})\n\nexport const ReadOnly = Template.bind({})\nReadOnly.args = {\n  readOnly: true,\n}\n\nexport const Dark = Template.bind({})\nDark.decorators = [ThemeDecorator(Theme.DARK)]\n\nexport const Blood = Template.bind({})\nBlood.decorators = [ThemeDecorator(Theme.BLOOD)]\n"
         }
       ]
     }
