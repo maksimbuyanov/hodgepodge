@@ -2,11 +2,13 @@ export type ArticleBlock =
   | ArticleCodeBlock
   | ArticleImageBlock
   | ArticleTextBlock
+  | ArticleCopyrightBlock
 
 export enum ArticleBlockType {
   CODE = "CODE",
   IMAGE = "IMAGE",
   TEXT = "TEXT",
+  COPYRIGHT = "COPYRIGHT",
 }
 
 export interface ArticleBlockBase {
@@ -26,6 +28,11 @@ export interface ArticleTextBlock extends ArticleBlockBase {
   type: ArticleBlockType.TEXT
   title?: string
   paragraphs: string[]
+}
+export interface ArticleCopyrightBlock extends ArticleBlockBase {
+  type: ArticleBlockType.COPYRIGHT
+  text?: string
+  url?: string
 }
 
 export enum ArticleType {

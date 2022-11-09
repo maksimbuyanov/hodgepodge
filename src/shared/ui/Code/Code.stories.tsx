@@ -11,7 +11,7 @@ export default {
     backgroundColor: { control: "color" },
   },
   args: {
-    children: `import {FC} from 'react';
+    text: `import {FC} from 'react';
 import {classNames} from '@/shared/lib';
 import cls from '@/shared/ui/Code/Code.module.scss';
 import {Button} from '@/shared/ui';

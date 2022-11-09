@@ -31,7 +31,7 @@ export default {
         "    </pre>\n" +
         "    </pre>\n" +
         "  )\n" +
-        "}`,",
+        "}`",
     },
   },
 } as ComponentMeta<typeof ArticleCodeBlockComponent>

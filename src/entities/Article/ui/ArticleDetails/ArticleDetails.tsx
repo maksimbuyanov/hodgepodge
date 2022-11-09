@@ -30,6 +30,8 @@ import { ArticleBlock, ArticleBlockType } from "../../model/types/article"
 import ArticleCodeBlockComponent from "../ArticleCodeBlockComponent/ArticleCodeBlockComponent"
 import ArticleImageBlockComponent from "../ArticleImageBlockComponent/ArticleImageBlockComponent"
 import ArticleTextBlockComponent from "../ArticleTextBlockComponent/ArticleTextBlockComponent"
+import { parseViewers } from "../../model/lib/parseViewers/parseViewers"
+import ArticleCopyrightBlockComponent from "../ArticleCopyrightBlockComponent/ArticleCopyrightBlockComponent"
 
 interface ArticleDetailsProps {
   className?: string
@@ -51,11 +53,13 @@ export const ArticleDetails: FC<ArticleDetailsProps> = props => {
   const renderBlock = useCallback((block: ArticleBlock) => {
     switch (block.type) {
       case ArticleBlockType.CODE:
-        return <ArticleCodeBlockComponent block={block} />
+        return <ArticleCodeBlockComponent block={block} key={block.id} />
       case ArticleBlockType.IMAGE:
-        return <ArticleImageBlockComponent block={block} />
+        return <ArticleImageBlockComponent block={block} key={block.id} />
       case ArticleBlockType.TEXT:
-        return <ArticleTextBlockComponent block={block} />
+        return <ArticleTextBlockComponent block={block} key={block.id} />
+      case ArticleBlockType.COPYRIGHT:
+        return <ArticleCopyrightBlockComponent block={block} key={block.id} />
       default:
         return null
     }
@@ -64,7 +68,7 @@ export const ArticleDetails: FC<ArticleDetailsProps> = props => {
   let content: ReactNode
 
   useEffect(() => {
-    void dispatch(fetchArticleById(id))
+    if (__PROJECT__ !== "storybook") void dispatch(fetchArticleById(id))
   }, [dispatch, id])
   if (isLoading) {
     content = (
@@ -107,7 +111,7 @@ export const ArticleDetails: FC<ArticleDetailsProps> = props => {
         />
         <div className={cls.articleInfo}>
           <Icon Svg={EyeIcon} />
-          <Text text={String(article?.views)} />
+          <Text text={parseViewers(article?.views)} />
         </div>
         <div className={cls.articleInfo}>
           <Icon Svg={CalendarIcon} />

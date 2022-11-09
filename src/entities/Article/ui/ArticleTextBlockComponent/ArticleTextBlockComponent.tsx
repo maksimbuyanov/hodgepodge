@@ -16,10 +16,8 @@ export const ArticleTextBlockComponent: FC<
   return (
     <div className={classNames(cls.ArticleTextBlockComponent, {}, [className])}>
       {block.title && <Text title={block.title} className={cls.title} />}
-      {block.paragraphs.map(paragraph => {
-        return (
-          <Text text={paragraph} key={paragraph} className={cls.paragraph} />
-        )
+      {block.paragraphs.map((paragraph, index) => {
+        return <Text text={paragraph} key={index} className={cls.paragraph} />
       })}
     </div>
   )

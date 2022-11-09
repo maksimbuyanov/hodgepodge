@@ -1,5 +1,6 @@
 .link {
   display: flex;
+  min-height: 30px;
   align-items: stretch;
   margin-top: 10px;
   gap: 10px;
@@ -12,7 +13,9 @@
 }
 
 .icon {
-  fill: var(--invert-primary-color);
+  fill: currentcolor;
+
+  // fill: var(--invert-primary-color);
 }
 
 .collapsed {

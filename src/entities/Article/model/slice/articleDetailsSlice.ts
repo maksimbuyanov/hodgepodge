@@ -10,11 +10,7 @@ const initialState: ArticleDetailsSchema = {
 export const articleDetailsSlice = createSlice({
   name: "articleDetails",
   initialState,
-  reducers: {
-    setReadOnly: (state, action: PayloadAction<boolean>) => {
-      state.isLoading = action.payload
-    },
-  },
+  reducers: {},
 
   extraReducers: builder => {
     builder.addCase(fetchArticleById.pending, (state, ___action) => {
