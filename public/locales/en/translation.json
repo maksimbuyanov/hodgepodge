@@ -16,5 +16,6 @@
   "Форма авторизации": "Auth form",
   "Пользователь не найден": "User not found",
   "Выйти": "Log out",
-  "Не найден пользователь": "User not found"
+  "Не найден пользователь": "User not found",
+  "Комментарии отсутствуют": "Comments list is empty"
 }
