@@ -54,8 +54,9 @@ jobs:
       - name: make report
         uses: actions/upload-artifact@v3
         with:
-          name: my-artifact
+          name: 'loki difference ${{ github.run_number }}'
           path: .loki/
+          retention-days: 2
         if: failure()
 
 
