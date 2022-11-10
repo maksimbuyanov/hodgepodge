@@ -25,7 +25,6 @@
     "storybook": "start-storybook -p 6006 -c ./config/storybook",
     "storybook:build": "build-storybook -c ./config/storybook --loglevel silly",
     "showDifferentUI": "npm run storybook:build && npm run test:ui:ci && npm run test:ui:report",
-    "saveReport": "npm run test:ui:report && git checkout -b report && git add .loki/report.html -f && git add .loki/report.json -f && git commit -m '123' && git push -u origin report",
     "prepare": "husky install"
   },
   "keywords": [],
