@@ -1,9 +1,15 @@
 .app_blood_theme {
   --bg-color: #38756e;
-  //--invert-bg-color: #f4fbfa;
-  --invert-bg-color: #f400fa;
-  --primary-color: #aaa32b;
-  --secondaty-color: #706d26;
+  --invert-bg-color: #f4fbfa;
+  --primary-color: #e3da4a;
+  --secondaty-color: #aaa32b;
   --invert-primary-color: #375955;
   --invert-secondaty-color: #1c3b37;
+
+  // skeleton
+  --skeleton-color: #2c5e57;
+  --skeleton-shadow: #489d91;
+
+  // code
+  --code-bg: #458f87;
 }

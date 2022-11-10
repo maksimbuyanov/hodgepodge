@@ -1,0 +1,23 @@
+.Code {
+  position: relative;
+  overflow: auto;
+  padding: 20px;
+  border: 1px solid var(--primary-color);
+  background-color: var(--code-bg);
+}
+
+.copy_button {
+  position: static;
+  top: 20px;
+  right: 20px;
+}
+
+.icon {
+  fill: none;
+  stroke: currentcolor;
+
+  &:hover,
+  &:focus {
+    color: var(--primary-color);
+  }
+}

@@ -1,0 +1,11 @@
+.link {
+  width: max-content;
+  margin-left: auto;
+  text-decoration: underline;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    cursor: pointer;
+    transform: translateY(-5px);
+  }
+}

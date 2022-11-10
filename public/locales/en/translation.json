@@ -4,6 +4,8 @@
   "О нас": "to About",
   "Профиль": "to Profile",
   "На главную": "to Main",
+  "Статья подробно": "to ArticlesDetail",
+  "Статьи": "to Articles",
   "Страница не найдена": "Not found this page",
   "Произошла непредвиденная ошибка": "Some error has happened",
   "Обновить страницу": "Restart site",
@@ -14,5 +16,6 @@
   "Форма авторизации": "Auth form",
   "Пользователь не найден": "User not found",
   "Выйти": "Log out",
-  "Не найден пользователь": "User not found"
+  "Не найден пользователь": "User not found",
+  "Комментарии отсутствуют": "Comments list is empty"
 }

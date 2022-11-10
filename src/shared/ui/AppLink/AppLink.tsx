@@ -24,6 +24,7 @@ export const AppLink: FC<AppLinkProps> = props => {
     ...otherProps
   } = props
   return (
+    // <div className={cls.LinkWrapper}>
     <Link
       className={classNames(cls.AppLink, {}, [className, cls[theme]])}
       to={to}
@@ -31,6 +32,7 @@ export const AppLink: FC<AppLinkProps> = props => {
     >
       {children}
     </Link>
+    // </div>
   )
 }
 

@@ -2,6 +2,15 @@
   padding: 6px 15px;
   color: var(--invert-primary-color);
   cursor: pointer;
+  transition: color 0.3s ease, opacity 0.3s ease, scale 0.3s ease;
+
+  &:hover,
+  &:focus {
+    color: var(--invert-secondaty-color);
+    opacity: 0.9;
+    outline: none;
+    scale: 1.05;
+  }
 }
 
 .clear,

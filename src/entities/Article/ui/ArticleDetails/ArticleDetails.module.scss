@@ -1,0 +1,36 @@
+.ArticleDetails {
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+}
+
+.skeleton {
+  display: flex;
+  flex-direction: column;
+
+  :nth-child(n+3) {
+    margin-top: 15px;
+  }
+}
+
+.avatar {
+  margin: 0 auto 20px;
+}
+
+.title {
+  // TODO Проверить нужно ли
+  margin-top: 20px;
+}
+
+.articleInfo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatarWrapper {
+  // TODO Проверить нужно ли
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}

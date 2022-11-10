@@ -1,9 +1,7 @@
-import React, { FC, memo, Suspense, useCallback, useMemo } from "react"
+import React, { FC, memo, Suspense, useCallback } from "react"
 import { Route, Routes } from "react-router-dom"
 import { routeConfig } from "@/shared/config"
 import { Loader } from "@/features/Loader"
-import { useSelector } from "react-redux"
-import { getUserData } from "@/entities/User"
 import { AppRoutesProps } from "@/shared/config/routerConfig/routerConfig"
 import { RequireAuth } from "@/app/providers/router/RequireAuth"
 
