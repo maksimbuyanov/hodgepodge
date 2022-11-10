@@ -54,8 +54,8 @@ jobs:
       - name: make report
       - uses: actions/upload-artifact@v3
         with:
-        name: my-artifact
-        path: .loki/
+          name: my-artifact
+          path: .loki/
         if: failure()
 
 
