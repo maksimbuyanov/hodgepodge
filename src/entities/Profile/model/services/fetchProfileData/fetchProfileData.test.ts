@@ -11,13 +11,13 @@ describe("fetchProfileData", () => {
     username: "TwitterChief",
     lastname: "Mask",
     first: "Ilon",
-    country: Country.AZ,
+    country: Country.RU,
     currency: Currency.EUR,
   }
   test("success with class", async () => {
     const thunk = new TestAsyncThunk(fetchProfileData)
     thunk.api.get.mockReturnValue(Promise.resolve({ data: profileValue }))
-    const result = await thunk.callThunk(undefined)
+    const result = await thunk.callThunk("1")
     expect(thunk.api.get).toHaveBeenCalled()
     expect(result.meta.requestStatus).toBe("fulfilled")
     expect(result.payload).toEqual(profileValue)
@@ -26,7 +26,7 @@ describe("fetchProfileData", () => {
   test("error with class", async () => {
     const thunk = new TestAsyncThunk(fetchProfileData)
     thunk.api.get.mockReturnValue(Promise.resolve({ status: 403 }))
-    const result = await thunk.callThunk(undefined)
+    const result = await thunk.callThunk("1")
     expect(thunk.api.get).toHaveBeenCalled()
     expect(result.meta.requestStatus).toBe("rejected")
     expect(result.payload).toBe("error profile")

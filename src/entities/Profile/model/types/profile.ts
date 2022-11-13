@@ -18,6 +18,7 @@ export interface Profile {
   avatar?: string
   currency?: Currency
   country?: Country
+  id?: string
 }
 
 export interface ProfileSchema {

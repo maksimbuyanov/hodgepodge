@@ -23,7 +23,8 @@
     "allowSyntheticDefaultImports": true,
     //позволяет синтетически сделать импорты привычными, многие библиотеки не поддерживают export default
     "strictNullChecks": true,
-    "strict": true
+    "strict": true,
+    "sourceMap": true
   },
   "ts-node": {
     "compilerOptions": {

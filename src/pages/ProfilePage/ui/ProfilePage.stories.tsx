@@ -14,14 +14,42 @@ export default {
   argTypes: {
     backgroundColor: { control: "color" },
   },
+  decorators: [
+    StoreDecorator({
+      profile: {
+        form: {
+          city: "Tar-tarary",
+          age: 100,
+          username: "TwitterChief",
+          lastname: "Mask",
+          first: "Ilon",
+          country: Country.AZ,
+          currency: Currency.EUR,
+          avatar: images,
+          id: "123",
+        },
+        data: { id: "123" },
+        readonly: true,
+        isLoading: false,
+        error: "",
+      },
+    }),
+  ],
 } as ComponentMeta<typeof ProfilePage>
 
 const Template: ComponentStory<typeof ProfilePage> = () => <ProfilePage />
 
 export const Light = Template.bind({})
-Light.decorators = [
+
+export const OnEdit = Template.bind({})
+OnEdit.decorators = [
   StoreDecorator({
+    user: { authData: { id: "123" } },
     profile: {
+      data: { id: "123" },
+      isLoading: false,
+      error: "",
+      readonly: false,
       form: {
         city: "Tar-tarary",
         age: 100,
@@ -35,9 +63,10 @@ Light.decorators = [
     },
   }),
 ]
-export const ReadOnly = Template.bind({})
-ReadOnly.decorators = [
+export const CantEdit = Template.bind({})
+CantEdit.decorators = [
   StoreDecorator({
+    user: { authData: { id: "1233" } },
     profile: {
       readonly: true,
       form: {
@@ -49,7 +78,9 @@ ReadOnly.decorators = [
         country: Country.AZ,
         currency: Currency.EUR,
         avatar: images,
+        id: "123",
       },
+      data: { id: "123" },
     },
   }),
 ]

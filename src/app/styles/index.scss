@@ -23,6 +23,7 @@ body {
   width: 100%; // TODO проверить будет ли контент залазить на сайдбар
   height: calc(100vh - var(--navbar-heigth));
   flex-grow: 1;
+  flex-shrink: 100;
   padding: 20px;
   overflow-y: auto;
 }

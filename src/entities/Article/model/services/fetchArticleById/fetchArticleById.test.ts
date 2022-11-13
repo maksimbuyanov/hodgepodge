@@ -2,7 +2,7 @@ import { fetchArticleById } from "./fetchArticleById"
 import { TestAsyncThunk } from "@/shared/lib/TestAsyncThunk/TestAsyncThunk"
 import { Article, ArticleBlockType, ArticleType } from "../../types/article"
 
-describe("fetchProfileData", () => {
+describe("fetchArticleById", () => {
   const article: Article = {
     id: "1",
     title: "Песня про Антошку",

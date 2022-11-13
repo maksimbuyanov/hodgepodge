@@ -121,13 +121,17 @@ export const ProfileCard: FC<ProfileCardProps> = props => {
           onChange={onChangeCity}
           readOnly={readOnly}
         />
-        <Input
-          value={__PROJECT__ === "storybook" ? "storybook path" : data?.avatar}
-          placeholder={t("Аватар")}
-          className={cls.input}
-          onChange={onChangeAvatar}
-          readOnly={readOnly}
-        />
+        {!readOnly && (
+          <Input
+            value={
+              __PROJECT__ === "storybook" ? "storybook path" : data?.avatar
+            }
+            placeholder={t("Аватар")}
+            className={cls.input}
+            onChange={onChangeAvatar}
+            readOnly={readOnly}
+          />
+        )}
       </div>
     </div>
   )

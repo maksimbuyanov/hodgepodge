@@ -12,6 +12,7 @@ import { AxiosInstance } from "axios"
 import { NavigateFunction } from "react-router-dom"
 import { ArticleDetailsSchema } from "@/entities/Article"
 import { ArticleDetailsPageSchema } from "@/pages/ArticleDetailsPage"
+import { AddCommentFormSchema } from "@/features/AddCommentForm"
 
 export interface StateSchema {
   user: UserSchema
@@ -21,6 +22,7 @@ export interface StateSchema {
   profile?: ProfileSchema
   articleDetails?: ArticleDetailsSchema
   articleDetailsComments?: ArticleDetailsPageSchema
+  addCommentForm?: AddCommentFormSchema
 }
 
 export type StateSchemaKey = keyof StateSchema
