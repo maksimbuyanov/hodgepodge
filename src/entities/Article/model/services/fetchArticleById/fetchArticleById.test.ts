@@ -1,11 +1,17 @@
 import { fetchArticleById } from "./fetchArticleById"
 import { TestAsyncThunk } from "@/shared/lib/TestAsyncThunk/TestAsyncThunk"
 import { Article, ArticleBlockType, ArticleType } from "../../types/article"
+import image from "@/shared/assets/forTests/user.png"
 
 describe("fetchArticleById", () => {
   const article: Article = {
     id: "1",
     title: "Песня про Антошку",
+    user: {
+      id: "1",
+      username: "TwitterChief",
+      avatar: image,
+    },
     image: "https://i.ytimg.com/vi/AotASl25CCg/maxresdefault.jpg",
     subtitle: "который не очень любит работать",
     views: 2020,

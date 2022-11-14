@@ -8,16 +8,6 @@
   color: var(--secondaty-color);
 }
 
-.error {
-  .title {
-    color: var(--red-light);
-  }
-
-  .text {
-    color: var(--red-dark);
-  }
-}
-
 .left {
   text-align: left;
 }
@@ -67,5 +57,25 @@
 
   .text {
     font: var(--font-xl);
+  }
+}
+
+.error {
+  .title {
+    color: var(--red-light);
+  }
+
+  .text {
+    color: var(--red-dark);
+  }
+}
+
+.bold {
+  .title {
+    font-weight: 800;
+  }
+
+  .text {
+    font-weight: 700;
   }
 }
