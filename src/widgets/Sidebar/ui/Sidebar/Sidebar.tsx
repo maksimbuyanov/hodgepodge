@@ -6,7 +6,8 @@ import { ThemeSwitcher } from "@/widgets/ThemeSwitcher"
 import { LangSwitcher } from "@/widgets/LangSwitcher"
 import { Button, ButtonTheme, ButtonSize } from "@/shared/ui"
 import SidebarItem from "../SidebarItem/SidebarItem"
-import { SidebarItemsList } from "@/widgets/Sidebar/model/items"
+import { useSelector } from "react-redux"
+import { getSidebarItems } from "../../model/selectors/getSidebarItems"
 
 interface SidebarProps {
   className?: string
@@ -15,6 +16,7 @@ interface SidebarProps {
 export const Sidebar: FC<SidebarProps> = props => {
   const { className = "", children, ...otherProps } = props
   const [collapsed, setCollapsed] = useState(false)
+  const sidebarItemsList = useSelector(getSidebarItems)
   const toggle = (): void => {
     setCollapsed(prev => !prev)
   }
@@ -39,7 +41,7 @@ export const Sidebar: FC<SidebarProps> = props => {
         {collapsed ? ">" : "<"}
       </Button>
       <nav className={cls.items}>
-        {SidebarItemsList.map(item => (
+        {sidebarItemsList.map(item => (
           <SidebarItem item={item} key={item.path} collapsed={collapsed} />
         ))}
       </nav>
