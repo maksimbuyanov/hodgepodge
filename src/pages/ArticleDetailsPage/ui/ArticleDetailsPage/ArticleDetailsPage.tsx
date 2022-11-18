@@ -1,4 +1,4 @@
-import { FC, memo, useCallback, useEffect } from "react"
+import { FC, memo, useCallback } from "react"
 import cls from "./ArticleDetailsPage.module.scss"
 import {
   classNames,
@@ -9,8 +9,8 @@ import {
 } from "@/shared/lib"
 import { useTranslation } from "react-i18next"
 import { ArticleDetails } from "@/entities/Article"
-import { useParams } from "react-router-dom"
-import { Text } from "@/shared/ui"
+import { useNavigate, useParams } from "react-router-dom"
+import { Button, ButtonTheme, Text } from "@/shared/ui"
 import { CommentList } from "@/entities/Comment"
 import {
   articleDetailsCommentsReducer,
@@ -24,6 +24,7 @@ import {
 import { fetchCommentsByArticleId } from "../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId"
 import { AddCommentForm } from "@/features/AddCommentForm"
 import { addCommentForArticle } from "../../model/services/addCommentForArticle/addCommentForArticle"
+import { RoutePath } from "@/shared/config"
 
 interface ArticleDetailsPageProps {
   className?: string
@@ -40,6 +41,10 @@ export const ArticleDetailsPage: FC<ArticleDetailsPageProps> = props => {
   const commentsError = useSelector(getArticleCommentsError)
   const comments = useSelector(getArticleComments.selectAll)
   const dispatch = useAppDispatch()
+  const navigate = useNavigate()
+  const onBackToList = useCallback(() => {
+    navigate(RoutePath.articles)
+  }, [navigate])
 
   useInitialEffect(() => {
     void dispatch(fetchCommentsByArticleId(id))
@@ -61,6 +66,9 @@ export const ArticleDetailsPage: FC<ArticleDetailsPageProps> = props => {
   return (
     <DynamicModuleLoader reducers={reducers}>
       <div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
+        <Button theme={ButtonTheme.OUTLINE} onClick={onBackToList}>
+          {t("Назад к списку")}
+        </Button>
         <ArticleDetails id={id} />
         <Text title={t("Комментарии")} />
         <AddCommentForm onSendComment={onSendComment} />

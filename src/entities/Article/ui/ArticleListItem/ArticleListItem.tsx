@@ -1,12 +1,20 @@
-import { FC } from "react"
+import { FC, useCallback } from "react"
 import cls from "./ArticleListItem.module.scss"
 import { classNames } from "@/shared/lib"
-import { Article, ArticleView } from "../../model/types/article"
+import {
+  Article,
+  ArticleBlockType,
+  ArticleTextBlock,
+  ArticleView,
+} from "../../model/types/article"
 import { Avatar, Button, ButtonTheme, Icon, Text, TextTheme } from "@/shared/ui"
 import { parseViewers } from "@/entities/Article/model/lib/parseViewers/parseViewers"
 import EyeIcon from "@/shared/assets/eye-20-20.svg"
 import { Card } from "@/shared/ui/Card/Card"
 import { useTranslation } from "react-i18next"
+import { ArticleTextBlockComponent } from "@/entities/Article/ui/ArticleTextBlockComponent/ArticleTextBlockComponent"
+import { useNavigate } from "react-router-dom"
+import { RoutePath } from "@/shared/config"
 
 interface ArticleListItemProps {
   className?: string
@@ -17,8 +25,15 @@ interface ArticleListItemProps {
 export const ArticleListItem: FC<ArticleListItemProps> = props => {
   const { className = "", article, view } = props
   const { t } = useTranslation("article")
+  const navigate = useNavigate()
+  const onOpenArticle = useCallback(() => {
+    navigate(RoutePath.articles_detail + article.id)
+  }, [article.id, navigate])
 
   if (view === ArticleView.COLUMN) {
+    const testBlock = article.blocks.find(block => {
+      return block.type === ArticleBlockType.TEXT
+    })
     return (
       <div
         className={classNames(cls.ArticleListItem, {}, [className, cls[view]])}
@@ -36,8 +51,16 @@ export const ArticleListItem: FC<ArticleListItemProps> = props => {
           <Text title={article.title} className={cls.title} />
           <Text text={article.type.join(", ")} className={cls.types} />
           <img src={article.image} alt={article.title} className={cls.img} />
+          {testBlock && (
+            <ArticleTextBlockComponent
+              block={testBlock as ArticleTextBlock}
+              className={cls.textBlock}
+            />
+          )}
           <div className={cls.footer}>
-            <Button theme={ButtonTheme.OUTLINE}>{t("Читать далее")}</Button>
+            <Button theme={ButtonTheme.OUTLINE} onClick={onOpenArticle}>
+              {t("Читать далее")}
+            </Button>
             <Text text={parseViewers(article.views)} className={cls.views} />
             <Icon Svg={EyeIcon} className={cls.icon} />
           </div>
@@ -50,7 +73,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = props => {
     <div
       className={classNames(cls.ArticleListItem, {}, [className, cls[view]])}
     >
-      <Card>
+      <Card onClick={onOpenArticle}>
         <div className={cls.imageWrapper}>
           <img src={article.image} alt={article.title} className={cls.img} />
           <Text
