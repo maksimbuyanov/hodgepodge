@@ -10,7 +10,7 @@ import {
 import { useTranslation } from "react-i18next"
 import { ArticleDetails } from "@/entities/Article"
 import { useNavigate, useParams } from "react-router-dom"
-import { Button, ButtonTheme, Text } from "@/shared/ui"
+import { Button, ButtonTheme, Page, Text } from "@/shared/ui"
 import { CommentList } from "@/entities/Comment"
 import {
   articleDetailsCommentsReducer,
@@ -58,14 +58,14 @@ export const ArticleDetailsPage: FC<ArticleDetailsPageProps> = props => {
   )
   if (!id) {
     return (
-      <div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
+      <Page className={classNames(cls.ArticleDetailsPage, {}, [className])}>
         {t("Статья не найдена")}
-      </div>
+      </Page>
     )
   }
   return (
     <DynamicModuleLoader reducers={reducers}>
-      <div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
+      <Page className={classNames(cls.ArticleDetailsPage, {}, [className])}>
         <Button theme={ButtonTheme.OUTLINE} onClick={onBackToList}>
           {t("Назад к списку")}
         </Button>
@@ -77,7 +77,7 @@ export const ArticleDetailsPage: FC<ArticleDetailsPageProps> = props => {
           comments={comments}
           isLoading={commentsIsLoading}
         />
-      </div>
+      </Page>
     </DynamicModuleLoader>
   )
 }

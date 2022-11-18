@@ -5,7 +5,6 @@ import { ThemeDecorator } from "@/shared/config/storybook/styleDecorator/ThemeDe
 import { Theme } from "@/app/providers/ThemeProvider"
 import { StoreDecorator } from "@/shared/config"
 import {
-  Article,
   ArticleBlockType,
   ArticleType,
   ArticleView,
@@ -13,6 +12,7 @@ import {
 import { Country } from "@/entities/Country"
 import { Currency } from "@/entities/Currency"
 import images from "@/shared/assets/forTests/user.png"
+
 const article = {
   id: "1",
   user: {

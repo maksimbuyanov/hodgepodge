@@ -30,18 +30,18 @@ export const Navbar: FC<NavbarProps> = props => {
 
   if (userData) {
     return (
-      <nav className={classNames(cls.Navbar, {}, [className])}>
+      <header className={classNames(cls.Navbar, {}, [className])}>
         <div className={classNames(cls.links)}>
           <Button theme={ButtonTheme.CLEAR_INVERTED} onClick={logout}>
             {t("Выйти")}
           </Button>
         </div>
-      </nav>
+      </header>
     )
   }
 
   return (
-    <nav className={classNames(cls.Navbar, {}, [className])}>
+    <header className={classNames(cls.Navbar, {}, [className])}>
       <div className={classNames(cls.links)}>
         <Button theme={ButtonTheme.CLEAR_INVERTED} onClick={onOpenModal}>
           {t("Войти")}
@@ -49,7 +49,7 @@ export const Navbar: FC<NavbarProps> = props => {
 
         <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />
       </div>
-    </nav>
+    </header>
   )
 }
 

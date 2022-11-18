@@ -8,12 +8,12 @@ import { RequireAuth } from "@/app/providers/router/RequireAuth"
 const AppRouter: FC = () => {
   const renderWithWrapper = useCallback((route: AppRoutesProps) => {
     const { element, path, authOnly } = route
-    const el = <div className="page-wrapper">{element}</div>
+
     return (
       <Route
         key={path}
         path={path}
-        element={authOnly ? <RequireAuth>{el}</RequireAuth> : el}
+        element={authOnly ? <RequireAuth>{element}</RequireAuth> : element}
       />
     )
   }, [])

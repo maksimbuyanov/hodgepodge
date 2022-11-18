@@ -21,7 +21,7 @@ export const ArticleListItemSkeleton: FC<
       <div
         className={classNames(cls.ArticleListItem, {}, [className, cls[view]])}
       >
-        <Card>
+        <Card className={cls.skeletonCart}>
           <div className={cls.header}>
             <Skeleton width={30} height={30} border={"50%"} />
             <Skeleton width={150} height={16} className={cls.username} />
@@ -30,7 +30,7 @@ export const ArticleListItemSkeleton: FC<
           <Skeleton width={250} height={24} className={cls.title} />
           <Skeleton height={150} className={cls.img} />
           <div className={cls.footer}>
-            <Skeleton width={200} height={32} className={cls.views} />
+            <Skeleton width={200} height={32} />
           </div>
         </Card>
       </div>
@@ -40,7 +40,7 @@ export const ArticleListItemSkeleton: FC<
     <div
       className={classNames(cls.ArticleListItem, {}, [className, cls[view]])}
     >
-      <Card>
+      <Card className={cls.skeletonCart}>
         <div className={cls.imageWrapper}>
           <Skeleton width={200} height={200} className={cls.img} />
           <Skeleton className={cls.date} width={150} />

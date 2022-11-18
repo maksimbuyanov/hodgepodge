@@ -23,7 +23,7 @@ import { useSelector } from "react-redux"
 import { ProfilePageHeader } from "./ProfilePageHeader/ProfilePageHeader"
 import { Currency } from "@/entities/Currency"
 import { Country } from "@/entities/Country"
-import { Text, TextTheme } from "@/shared/ui"
+import { Page, Text, TextTheme } from "@/shared/ui"
 import { useParams } from "react-router-dom"
 
 interface ProfilePageProps {
@@ -102,7 +102,7 @@ const ProfilePage: FC<ProfilePageProps> = props => {
 
   return (
     <DynamicModuleLoader reducers={reducers}>
-      <div className={classNames(cls.ProfilePage, {}, [className])}>
+      <Page className={classNames(cls.ProfilePage, {}, [className])}>
         {t("Страница профиля")}
         <ProfilePageHeader />
         {errors?.length &&
@@ -123,7 +123,7 @@ const ProfilePage: FC<ProfilePageProps> = props => {
           onChangeUsername={onChangeUsername}
           onChangeAvatar={onChangeAvatar}
         />
-      </div>
+      </Page>
     </DynamicModuleLoader>
   )
 }

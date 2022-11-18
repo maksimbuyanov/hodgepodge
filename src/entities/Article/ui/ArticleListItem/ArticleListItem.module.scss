@@ -9,6 +9,11 @@
   transform: scale(1);
   transition: all 0.3s ease;
 
+  .skeletonCart {
+    background-color: var(--invert-bg-color);
+  }
+
+
   .date {
     position: absolute;
     top: 0;
@@ -73,6 +78,10 @@
 }
 
 .column {
+  .skeletonCart {
+    background-color: var(--invert-bg-color);
+  }
+
   .header {
     display: flex;
     align-items: center;
@@ -106,3 +115,4 @@
     margin-left: auto;
   }
 }
+
