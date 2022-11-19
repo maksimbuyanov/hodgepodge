@@ -13,9 +13,11 @@ import { ArticleDetailsSchema } from "@/entities/Article"
 import { ArticleDetailsPageSchema } from "@/pages/ArticleDetailsPage"
 import { AddCommentFormSchema } from "@/features/AddCommentForm"
 import { ArticlesPageSchema } from "@/pages/ArticlePage"
+import { ScrollSaveSchema } from "@/features/ScrollSave"
 
 export interface StateSchema {
   user: UserSchema
+  scrollSave: ScrollSaveSchema
 
   // async
   loginForm?: LoginSchema

@@ -7,7 +7,7 @@ import {
   useAppDispatch,
   useInitialEffect,
 } from "@/shared/lib"
-import { Page, Text } from "@/shared/ui"
+import { Text } from "@/shared/ui"
 import { useTranslation } from "react-i18next"
 import {
   ArticleList,
@@ -27,6 +27,7 @@ import {
 } from "../../model/selectors/articlesPageSelectors"
 import { fetchNextArticlesPage } from "../../model/services/fetchNextArticlesPage/fetchNextArticlesPage"
 import { initArticlesPage } from "../../model/services/initArticlesPage/initArticlesPage"
+import { Page } from "@/widgets/Page"
 
 interface ArticlePageProps {
   className?: string

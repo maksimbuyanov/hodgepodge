@@ -23,8 +23,9 @@ import { useSelector } from "react-redux"
 import { ProfilePageHeader } from "./ProfilePageHeader/ProfilePageHeader"
 import { Currency } from "@/entities/Currency"
 import { Country } from "@/entities/Country"
-import { Page, Text, TextTheme } from "@/shared/ui"
+import { Text, TextTheme } from "@/shared/ui"
 import { useParams } from "react-router-dom"
+import { Page } from "@/widgets/Page"
 
 interface ProfilePageProps {
   className?: string

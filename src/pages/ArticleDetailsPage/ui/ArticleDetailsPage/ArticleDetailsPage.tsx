@@ -10,7 +10,7 @@ import {
 import { useTranslation } from "react-i18next"
 import { ArticleDetails } from "@/entities/Article"
 import { useNavigate, useParams } from "react-router-dom"
-import { Button, ButtonTheme, Page, Text } from "@/shared/ui"
+import { Button, ButtonTheme, Text } from "@/shared/ui"
 import { CommentList } from "@/entities/Comment"
 import {
   articleDetailsCommentsReducer,
@@ -25,6 +25,7 @@ import { fetchCommentsByArticleId } from "../../model/services/fetchCommentsByAr
 import { AddCommentForm } from "@/features/AddCommentForm"
 import { addCommentForArticle } from "../../model/services/addCommentForArticle/addCommentForArticle"
 import { RoutePath } from "@/shared/config"
+import { Page } from "@/widgets/Page"
 
 interface ArticleDetailsPageProps {
   className?: string
