@@ -7,6 +7,7 @@ import {
   useAppDispatch,
   useInitialEffect,
 } from "@/shared/lib"
+import { Text, Page } from "@/shared/ui"
 import { useTranslation } from "react-i18next"
 import {
   ArticleList,
@@ -25,7 +26,8 @@ import {
   getArticlesPageIsLoading,
   getArticlesPageView,
 } from "../../model/selectors/articlesPageSelectors"
-import { Page } from "@/shared/ui"
+
+import { fetchNextArticlesPage } from "@/pages/ArticlePage/model/services/fetchNextArticlesPage/fetchNextArticlesPage"
 
 interface ArticlePageProps {
   className?: string
@@ -43,6 +45,7 @@ export const ArticlePage: FC<ArticlePageProps> = props => {
   const isLoading = useSelector(getArticlesPageIsLoading)
   const error = useSelector(getArticlesPageError)
   const view = useSelector(getArticlesPageView)
+
   useInitialEffect(() => {
     dispatch(articlesPageActions.initState())
     void dispatch(fetchArticlesList({ page: 1 }))
@@ -53,9 +56,27 @@ export const ArticlePage: FC<ArticlePageProps> = props => {
     },
     [dispatch]
   )
+  const onLoadNextPart = useCallback(() => {
+    void dispatch(fetchNextArticlesPage())
+  }, [dispatch])
+  if (error) {
+    return (
+      <DynamicModuleLoader reducers={reducers}>
+        <Page
+          className={classNames(cls.ArticlePage, {}, [className])}
+          onScrollEnd={onLoadNextPart}
+        >
+          <Text title={t("Ошибка запроса")} />
+        </Page>
+      </DynamicModuleLoader>
+    )
+  }
   return (
     <DynamicModuleLoader reducers={reducers}>
-      <Page className={classNames(cls.ArticlePage, {}, [className])}>
+      <Page
+        className={classNames(cls.ArticlePage, {}, [className])}
+        onScrollEnd={onLoadNextPart}
+      >
         <ArticleViewSelector view={view} onViewClick={onChangeView} />
         <ArticleList view={view} isLoading={isLoading} articles={articles} />
       </Page>

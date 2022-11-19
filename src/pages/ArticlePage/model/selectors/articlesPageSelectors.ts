@@ -8,8 +8,8 @@ export const getArticlesPageError = (state: StateSchema) =>
 export const getArticlesPageView = (state: StateSchema) =>
   state.articlesPage?.view ?? ArticleView.GRID
 export const getArticlesPageNumber = (state: StateSchema) =>
-  state.articlesPage?.page
+  state.articlesPage?.page as number
 export const getArticlesPageLimit = (state: StateSchema) =>
   state.articlesPage?.limit ?? 9
 export const getArticlesPageHasMore = (state: StateSchema) =>
-  state.articlesPage?.isLoading
+  state.articlesPage?.hasMore

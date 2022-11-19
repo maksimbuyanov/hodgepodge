@@ -1,29 +1,36 @@
-import { MutableRefObject, useEffect, useRef } from "react"
+import { MutableRefObject, useEffect } from "react"
 
 export interface UseInfiniteScroll {
-  callback: () => void
+  callback?: () => void
   triggerRef: MutableRefObject<HTMLElement>
   wrapperRef: MutableRefObject<HTMLElement>
 }
 
-export const useInfiniteScroll = (props: UseInfiniteScroll) => {
+export const useInfiniteScroll = (props: UseInfiniteScroll): void => {
   const { callback, wrapperRef, triggerRef } = props
 
   useEffect(() => {
-    const options = {
-      root: wrapperRef.current,
-      rootMargin: "0px",
-      threshold: 1.0,
-    }
-    const obs = new IntersectionObserver(([entry]) => {
-      console.log("Объект в поле видимости")
-    }, options)
-    obs.observe(triggerRef.current)
+    let obs: IntersectionObserver | null = null
+    const wrapper = wrapperRef.current
+    const trigger = triggerRef.current
 
+    if (callback) {
+      const options = {
+        root: wrapper,
+        rootMargin: "0px",
+        threshold: 1.0,
+      }
+      obs = new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting) {
+          callback()
+        }
+      }, options)
+      obs.observe(trigger)
+    }
     return () => {
       if (obs) {
-        obs.unobserve(triggerRef.current)
+        obs.unobserve(trigger)
       }
     }
-  }, [triggerRef, wrapperRef])
+  }, [callback, triggerRef, wrapperRef])
 }

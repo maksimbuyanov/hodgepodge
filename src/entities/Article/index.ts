@@ -1,6 +1,6 @@
+export { Article, ArticleView } from "./model/types/article"
 export { default as ArticleDetails } from "./ui/ArticleDetails/ArticleDetails"
 export { default as ArticleList } from "./ui/ArticleList/ArticleList"
 export { default as ArticleViewSelector } from "./ui/ArticleViewSelector/ArticleViewSelector"
-export { Article, ArticleView } from "./model/types/article"
 export type { ArticleDetailsSchema } from "./model/types/ArticleDetailsSchema"
 export { getArticleDetailsData } from "./model/selectors/articleDetails"
