@@ -1,5 +1,11 @@
 import { User } from "@/entities/User"
 
+export enum ArticleSortField {
+  VIEWS = "views",
+  TITLE = "title",
+  CREATED = "createdAt",
+}
+
 export type ArticleBlock =
   | ArticleCodeBlock
   | ArticleImageBlock
@@ -45,6 +51,9 @@ export enum ArticleType {
   СКАЗКА = "Сказка",
   РУССКАЯ = "Русская",
   ЗАРУБЕЖНАЯ = "Зарубежная",
+  РАЗРАБОТКА_ВЕБ_САЙТОВ = "Разработка веб-сайтов",
+  JS = "JavaScript",
+  TS = "TypeScript",
 }
 
 export interface Article {
