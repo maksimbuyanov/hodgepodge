@@ -7,7 +7,7 @@ import {
   useAppDispatch,
   useInitialEffect,
 } from "@/shared/lib"
-import { Text, Page } from "@/shared/ui"
+import { Page, Text } from "@/shared/ui"
 import { useTranslation } from "react-i18next"
 import {
   ArticleList,
@@ -19,15 +19,14 @@ import {
   articlesPageReducer,
   getArticles,
 } from "../../model/slice/articlesPageSlice"
-import { fetchArticlesList } from "../../model/services/fetchArticlesList/fetchArticlesList"
 import { useSelector } from "react-redux"
 import {
   getArticlesPageError,
   getArticlesPageIsLoading,
   getArticlesPageView,
 } from "../../model/selectors/articlesPageSelectors"
-
-import { fetchNextArticlesPage } from "@/pages/ArticlePage/model/services/fetchNextArticlesPage/fetchNextArticlesPage"
+import { fetchNextArticlesPage } from "../../model/services/fetchNextArticlesPage/fetchNextArticlesPage"
+import { initArticlesPage } from "../../model/services/initArticlesPage/initArticlesPage"
 
 interface ArticlePageProps {
   className?: string
@@ -47,8 +46,7 @@ export const ArticlePage: FC<ArticlePageProps> = props => {
   const view = useSelector(getArticlesPageView)
 
   useInitialEffect(() => {
-    dispatch(articlesPageActions.initState())
-    void dispatch(fetchArticlesList({ page: 1 }))
+    void dispatch(initArticlesPage())
   })
   const onChangeView = useCallback(
     (view: ArticleView) => {
@@ -72,7 +70,7 @@ export const ArticlePage: FC<ArticlePageProps> = props => {
     )
   }
   return (
-    <DynamicModuleLoader reducers={reducers}>
+    <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
       <Page
         className={classNames(cls.ArticlePage, {}, [className])}
         onScrollEnd={onLoadNextPart}

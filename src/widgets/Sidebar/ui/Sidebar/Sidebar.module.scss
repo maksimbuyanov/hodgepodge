@@ -2,6 +2,7 @@
   position: relative;
   width: var(--sidebar-width);
   height: calc(100vh - var(--navbar-heigth));
+  margin: 0;
   background: var(--invert-bg-color);
   transition: width 0.3s;
 }

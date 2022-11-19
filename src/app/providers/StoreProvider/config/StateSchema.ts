@@ -9,7 +9,6 @@ import {
 } from "@reduxjs/toolkit"
 import { ProfileSchema } from "@/entities/Profile"
 import { AxiosInstance } from "axios"
-import { NavigateFunction } from "react-router-dom"
 import { ArticleDetailsSchema } from "@/entities/Article"
 import { ArticleDetailsPageSchema } from "@/pages/ArticleDetailsPage"
 import { AddCommentFormSchema } from "@/features/AddCommentForm"
@@ -47,5 +46,4 @@ export interface asyncThunkProp<T> {
 
 export interface ThunkExtraArh {
   api: AxiosInstance
-  navigate?: NavigateFunction
 }
