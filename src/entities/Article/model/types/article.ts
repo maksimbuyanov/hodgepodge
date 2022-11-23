@@ -44,16 +44,16 @@ export interface ArticleCopyrightBlock extends ArticleBlockBase {
 }
 
 export enum ArticleType {
-  ПРО_МАЛЬЧИКА = "Про мальчика",
-  ПРО_ДЕВОЧКУ = "Про девочку",
-  ПРО_ЗВЕРЮШКУ = "Про зверешку",
-  ПРО_ПРИРОДУ = "Про природу",
-  СКАЗКА = "Сказка",
-  РУССКАЯ = "Русская",
-  ЗАРУБЕЖНАЯ = "Зарубежная",
-  РАЗРАБОТКА_ВЕБ_САЙТОВ = "Разработка веб-сайтов",
+  ABOUT_BOY = "Про мальчика",
+  ABOUT_GIRL = "Про девочку",
+  ABOUT_ANIMAL = "Про зверешку",
+  ABOUT_FAUNA = "Про природу",
+  DREAM = "Сказка",
+  RUSSIAN = "Русская",
+  NO_RUSSIAN = "Зарубежная",
+  WEB_DEV = "Разработка веб-сайтов",
   JS = "JavaScript",
-  TS = "TypeScript",
+  TS = "TypeScriptttt",
 }
 
 export interface Article {

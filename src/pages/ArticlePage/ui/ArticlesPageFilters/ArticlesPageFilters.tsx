@@ -12,14 +12,18 @@ import {
   getArticlesPageOrder,
   getArticlesPageSearch,
   getArticlesPageSort,
+  getArticlesPageType,
   getArticlesPageView,
 } from "../../model/selectors/articlesPageSelectors"
 import { articlesPageActions } from "../../model/slice/articlesPageSlice"
 import { Input } from "@/shared/ui"
 import { useTranslation } from "react-i18next"
-import { Card } from "@/shared/ui/Card/Card"
+import { Card } from "@/shared/ui/Card/Card" // TODO
 import { SortOrder } from "@/shared/types"
-import { fetchArticlesList } from "@/pages/ArticlePage/model/services/fetchArticlesList/fetchArticlesList"
+import { fetchArticlesList } from "../../model/services/fetchArticlesList/fetchArticlesList"
+import { TabItem } from "@/shared/ui/Tabs/Tabs" // TODO
+import { ArticleType } from "@/entities/Article/model/types/article"
+import { ArticleTabs } from "@/entities/Article/ui/ArticleTabs/ArticleTabs" // TODO
 
 interface ArticlesPageFiltersProps {
   className?: string
@@ -33,6 +37,7 @@ export const ArticlesPageFilters: FC<ArticlesPageFiltersProps> = props => {
   const order = useSelector(getArticlesPageOrder)
   const sort = useSelector(getArticlesPageSort)
   const search = useSelector(getArticlesPageSearch)
+  const type = useSelector(getArticlesPageType)
   const fetchData = useCallback(() => {
     void dispatch(fetchArticlesList({ replace: true }))
   }, [dispatch])
@@ -69,6 +74,15 @@ export const ArticlesPageFilters: FC<ArticlesPageFiltersProps> = props => {
     },
     [dispatch, debouncedFetchData]
   )
+  const onChangeType = useCallback(
+    (tab: TabItem) => {
+      dispatch(articlesPageActions.setType(tab.value as ArticleType))
+      dispatch(articlesPageActions.setPage(1))
+      fetchData()
+    },
+    [dispatch, fetchData]
+  )
+
   return (
     <div className={classNames("", {}, [className])}>
       <div className={cls.sortWrapper}>
@@ -87,6 +101,7 @@ export const ArticlesPageFilters: FC<ArticlesPageFiltersProps> = props => {
           onChange={onChangeSearch}
         />
       </Card>
+      <ArticleTabs onChange={onChangeType} value={type} />
     </div>
   )
 }

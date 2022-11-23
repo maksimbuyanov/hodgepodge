@@ -259,11 +259,7 @@
       "subtitle": "Блог компании Microsoft",
       "views": 115869,
       "createdAt": "04.01.2015",
-      "type": [
-        "Разработка веб-сайтов",
-        "JavaScript",
-        "TypeScript"
-      ],
+      "type": ["TypeScriptttt"],
       "blocks": [
         {
           "id": "0",
@@ -408,11 +404,7 @@
       "subtitle": "Блог компании Microsoft",
       "views": 122869,
       "createdAt": "05.01.2015",
-      "type": [
-        "Разработка веб-сайтов",
-        "JavaScript",
-        "TypeScript"
-      ],
+      "type": ["JavaScript"],
       "blocks": [
         {
           "id": "0",

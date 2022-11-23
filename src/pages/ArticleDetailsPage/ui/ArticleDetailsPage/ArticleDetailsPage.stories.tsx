@@ -13,10 +13,10 @@ const article = {
   id: "1",
   title: "Песня про Антошку",
   image: "https://i.ytimg.com/vi/AotASl25CCg/maxresdefault.jpg",
-  subtitle: "который не очень любит работать",
   views: 2020,
+  subtitle: "который не очень любит работать",
   createdAt: "26.10.2022",
-  type: [ArticleType.ПРО_МАЛЬЧИКА, ArticleType.РУССКАЯ],
+  type: [ArticleType.ABOUT_BOY, ArticleType.RUSSIAN],
   blocks: [
     {
       id: "1",

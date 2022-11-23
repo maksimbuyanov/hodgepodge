@@ -5,7 +5,7 @@ import {
 } from "@reduxjs/toolkit"
 import { StateSchema } from "@/app/providers/StoreProvider"
 import { Article, ArticleSortField, ArticleView } from "@/entities/Article"
-import { ArticlesPageSchema } from "../types/articlePageSchema"
+import { ArticlesPageSchema, ArticleTabsType } from "../types/articlePageSchema"
 import { fetchArticlesList } from "../services/fetchArticlesList/fetchArticlesList"
 import { LOCAL_STORAGE_ARTICLES_VIEW } from "@/shared/const/localStorage"
 import { SortOrder } from "@/shared/types"
@@ -32,6 +32,7 @@ const articlesPageSlice = createSlice({
     order: "asc",
     search: "",
     sort: ArticleSortField.CREATED,
+    type: "ALL",
     // INIT
     _inited: false,
   }),
@@ -60,6 +61,9 @@ const articlesPageSlice = createSlice({
     },
     setSearch: (state, action: PayloadAction<string>) => {
       state.search = action.payload
+    },
+    setType: (state, action: PayloadAction<ArticleTabsType>) => {
+      state.type = action.payload
     },
   },
   extraReducers: builder => {

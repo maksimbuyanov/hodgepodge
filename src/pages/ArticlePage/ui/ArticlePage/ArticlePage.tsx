@@ -40,9 +40,9 @@ export const ArticlePage: FC<ArticlePageProps> = props => {
   const dispatch = useAppDispatch()
   const articles = useSelector(getArticles.selectAll)
   const isLoading = useSelector(getArticlesPageIsLoading)
-  const error = useSelector(getArticlesPageError)
   const view = useSelector(getArticlesPageView)
   const [searchParams] = useSearchParams()
+  const error = useSelector(getArticlesPageError)
 
   useInitialEffect(() => {
     void dispatch(initArticlesPage(searchParams))
@@ -51,26 +51,34 @@ export const ArticlePage: FC<ArticlePageProps> = props => {
   const onLoadNextPart = useCallback(() => {
     void dispatch(fetchNextArticlesPage())
   }, [dispatch])
+
+  let content
+
   if (error) {
-    return (
-      <DynamicModuleLoader reducers={reducers}>
-        <Page
-          className={classNames("", {}, [className])}
-          onScrollEnd={onLoadNextPart}
-        >
-          <Text title={t("Ошибка запроса")} />
-        </Page>
-      </DynamicModuleLoader>
+    content = <Text title={t("Ошибка запроса")} />
+  } else if (!isLoading && !articles.length) {
+    content = (
+      <>
+        <ArticlesPageFilters className={cls.addon} />
+        <Text title={t("Статьи не найдены")} />
+      </>
+    )
+  } else {
+    content = (
+      <>
+        <ArticlesPageFilters className={cls.addon} />
+        <ArticleList view={view} isLoading={isLoading} articles={articles} />
+      </>
     )
   }
+
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
       <Page
         className={classNames(cls.ArticlePage, {}, [className])}
         onScrollEnd={onLoadNextPart}
       >
-        <ArticlesPageFilters className={cls.addon} />
-        <ArticleList view={view} isLoading={isLoading} articles={articles} />
+        {content}
       </Page>
     </DynamicModuleLoader>
   )

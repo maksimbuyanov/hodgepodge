@@ -16,7 +16,7 @@ describe("fetchArticleById", () => {
     subtitle: "который не очень любит работать",
     views: 2020,
     createdAt: "26.10.2022",
-    type: [ArticleType.ПРО_МАЛЬЧИКА, ArticleType.РУССКАЯ],
+    type: [ArticleType.ABOUT_BOY, ArticleType.RUSSIAN],
     blocks: [
       {
         id: "1",
