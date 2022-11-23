@@ -10,7 +10,10 @@ import {
 import { ProfileSchema } from "@/entities/Profile"
 import { AxiosInstance } from "axios"
 import { ArticleDetailsSchema } from "@/entities/Article"
-import { ArticleDetailsPageSchema } from "@/pages/ArticleDetailsPage"
+import {
+  ArticleDetailsPageRecommendationsSchema,
+  ArticleDetailsPageSchema,
+} from "@/pages/ArticleDetailsPage"
 import { AddCommentFormSchema } from "@/features/AddCommentForm"
 import { ArticlesPageSchema } from "@/pages/ArticlePage"
 import { ScrollSaveSchema } from "@/features/ScrollSave"
@@ -23,6 +26,7 @@ export interface StateSchema {
   loginForm?: LoginSchema
   profile?: ProfileSchema
   articleDetails?: ArticleDetailsSchema
+  articleDetailsRecommendations?: ArticleDetailsPageRecommendationsSchema
   articleDetailsComments?: ArticleDetailsPageSchema
   addCommentForm?: AddCommentFormSchema
   articlesPage?: ArticlesPageSchema

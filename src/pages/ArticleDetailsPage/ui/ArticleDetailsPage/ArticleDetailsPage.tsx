@@ -26,12 +26,18 @@ import { AddCommentForm } from "@/features/AddCommentForm"
 import { addCommentForArticle } from "../../model/services/addCommentForArticle/addCommentForArticle"
 import { RoutePath } from "@/shared/config"
 import { Page } from "@/widgets/Page"
+import {
+  articleDetailsPageRecommendationsReducer,
+  getArticleRecommendations,
+} from "../../model/slice/articleDetailsPageRecommendationsSlice"
+import { getArticleRecommendationsIsLoading } from "@/pages/ArticleDetailsPage/model/selectors/recommendations/recommendations"
 
 interface ArticleDetailsPageProps {
   className?: string
 }
 const reducers: ReducersList = {
   articleDetailsComments: articleDetailsCommentsReducer,
+  articleDetailsRecommendations: articleDetailsPageRecommendationsReducer,
 }
 
 export const ArticleDetailsPage: FC<ArticleDetailsPageProps> = props => {
@@ -39,8 +45,12 @@ export const ArticleDetailsPage: FC<ArticleDetailsPageProps> = props => {
   const { t } = useTranslation("article")
   const { id } = useParams<{ id: string }>()
   const commentsIsLoading = useSelector(getArticleCommentsIsLoading)
+  const recommendationsIsLoading = useSelector(
+    getArticleRecommendationsIsLoading
+  )
   const commentsError = useSelector(getArticleCommentsError)
   const comments = useSelector(getArticleComments.selectAll)
+  const recommendations = useSelector(getArticleRecommendations.selectAll)
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
   const onBackToList = useCallback(() => {
