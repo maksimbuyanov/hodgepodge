@@ -9,13 +9,10 @@ import {
 } from "@/shared/lib"
 import { useTranslation } from "react-i18next"
 import { ArticleDetails, ArticleList, ArticleView } from "@/entities/Article"
-import { useNavigate, useParams } from "react-router-dom"
-import { Button, ButtonTheme, Text } from "@/shared/ui"
+import { useParams } from "react-router-dom"
+import { Text } from "@/shared/ui"
 import { CommentList } from "@/entities/Comment"
-import {
-  articleDetailsCommentsReducer,
-  getArticleComments,
-} from "../../model/slice/slice"
+import { getArticleComments } from "../../model/slice/slice"
 import { useSelector } from "react-redux"
 import {
   getArticleCommentsError,
@@ -24,15 +21,12 @@ import {
 import { fetchCommentsByArticleId } from "../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId"
 import { AddCommentForm } from "@/features/AddCommentForm"
 import { addCommentForArticle } from "../../model/services/addCommentForArticle/addCommentForArticle"
-import { RoutePath } from "@/shared/config"
 import { Page } from "@/widgets/Page"
-import {
-  articleDetailsPageRecommendationsReducer,
-  getArticleRecommendations,
-} from "../../model/slice/articleDetailsPageRecommendationsSlice"
+import { getArticleRecommendations } from "../../model/slice/articleDetailsPageRecommendationsSlice"
 import { getArticleRecommendationsIsLoading } from "../../model/selectors/recommendations/recommendations"
 import { fetchArticleRecommendations } from "../../model/services/fetchArticleRecommendations/fetchArticleRecommendations"
 import { articleDetailsPageReducer } from "../../model/slice"
+import ArticleDetailsPageHeader from "../ArticleDetailsPageHeader/ArticleDetailsPageHeader"
 
 interface ArticleDetailsPageProps {
   className?: string
@@ -53,10 +47,6 @@ export const ArticleDetailsPage: FC<ArticleDetailsPageProps> = props => {
   const comments = useSelector(getArticleComments.selectAll)
   const recommendations = useSelector(getArticleRecommendations.selectAll)
   const dispatch = useAppDispatch()
-  const navigate = useNavigate()
-  const onBackToList = useCallback(() => {
-    navigate(RoutePath.articles)
-  }, [navigate])
 
   useInitialEffect(() => {
     void dispatch(fetchCommentsByArticleId(id))
@@ -79,9 +69,7 @@ export const ArticleDetailsPage: FC<ArticleDetailsPageProps> = props => {
   return (
     <DynamicModuleLoader reducers={reducers}>
       <Page className={classNames(cls.ArticleDetailsPage, {}, [className])}>
-        <Button theme={ButtonTheme.OUTLINE} onClick={onBackToList}>
-          {t("Назад к списку")}
-        </Button>
+        <ArticleDetailsPageHeader />
         <ArticleDetails id={id} />
         <Text title={t("Рекомендуем")} />
         <ArticleList

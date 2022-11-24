@@ -79,3 +79,13 @@
     font-weight: 700;
   }
 }
+
+.inverted {
+  .title {
+    color: var(--invert-primary-color);
+  }
+
+  .text {
+    color: var(--invert-secondaty-color);
+  }
+}
