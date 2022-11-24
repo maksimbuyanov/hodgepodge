@@ -5,25 +5,21 @@ import {
 } from "@reduxjs/toolkit"
 import { Comment } from "@/entities/Comment"
 import { StateSchema } from "@/app/providers/StoreProvider"
-import { ArticleDetailsPageSchema } from "@/pages/ArticleDetailsPage"
-import {
-  fetchProfileData,
-  Profile,
-  updateProfileData,
-} from "@/entities/Profile"
-import { fetchCommentsByArticleId } from "@/pages/ArticleDetailsPage/model/services/fetchCommentsByArticleId/fetchCommentsByArticleId"
+import { fetchCommentsByArticleId } from "../services/fetchCommentsByArticleId/fetchCommentsByArticleId"
+import { ArticleDetailsCommentsSchema } from "../types/ArticleDetailsPage"
 
 const commentsAdapter = createEntityAdapter<Comment>({
   selectId: comment => comment.id,
 })
 
 export const getArticleComments = commentsAdapter.getSelectors<StateSchema>(
-  state => state.articleDetailsComments ?? commentsAdapter.getInitialState()
+  state =>
+    state.articleDetailsPage?.comments ?? commentsAdapter.getInitialState()
 )
 
 const articleDetailCommentsSlice = createSlice({
   name: "articleDetailsCommentsSlice",
-  initialState: commentsAdapter.getInitialState<ArticleDetailsPageSchema>({
+  initialState: commentsAdapter.getInitialState<ArticleDetailsCommentsSchema>({
     error: undefined,
     isLoading: false,
     ids: [],

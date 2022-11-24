@@ -8,7 +8,7 @@ import {
   useInitialEffect,
 } from "@/shared/lib"
 import { useTranslation } from "react-i18next"
-import { ArticleDetails } from "@/entities/Article"
+import { ArticleDetails, ArticleList, ArticleView } from "@/entities/Article"
 import { useNavigate, useParams } from "react-router-dom"
 import { Button, ButtonTheme, Text } from "@/shared/ui"
 import { CommentList } from "@/entities/Comment"
@@ -30,20 +30,21 @@ import {
   articleDetailsPageRecommendationsReducer,
   getArticleRecommendations,
 } from "../../model/slice/articleDetailsPageRecommendationsSlice"
-import { getArticleRecommendationsIsLoading } from "@/pages/ArticleDetailsPage/model/selectors/recommendations/recommendations"
+import { getArticleRecommendationsIsLoading } from "../../model/selectors/recommendations/recommendations"
+import { fetchArticleRecommendations } from "../../model/services/fetchArticleRecommendations/fetchArticleRecommendations"
+import { articleDetailsPageReducer } from "../../model/slice"
 
 interface ArticleDetailsPageProps {
   className?: string
 }
 const reducers: ReducersList = {
-  articleDetailsComments: articleDetailsCommentsReducer,
-  articleDetailsRecommendations: articleDetailsPageRecommendationsReducer,
+  articleDetailsPage: articleDetailsPageReducer,
 }
 
 export const ArticleDetailsPage: FC<ArticleDetailsPageProps> = props => {
   const { className = "" } = props
-  const { t } = useTranslation("article")
   const { id } = useParams<{ id: string }>()
+  const { t } = useTranslation("article")
   const commentsIsLoading = useSelector(getArticleCommentsIsLoading)
   const recommendationsIsLoading = useSelector(
     getArticleRecommendationsIsLoading
@@ -59,6 +60,7 @@ export const ArticleDetailsPage: FC<ArticleDetailsPageProps> = props => {
 
   useInitialEffect(() => {
     void dispatch(fetchCommentsByArticleId(id))
+    void dispatch(fetchArticleRecommendations())
   })
 
   const onSendComment = useCallback(
@@ -81,6 +83,14 @@ export const ArticleDetailsPage: FC<ArticleDetailsPageProps> = props => {
           {t("Назад к списку")}
         </Button>
         <ArticleDetails id={id} />
+        <Text title={t("Рекомендуем")} />
+        <ArticleList
+          className={cls.recommendations}
+          isLoading={recommendationsIsLoading}
+          view={ArticleView.GRID}
+          articles={recommendations}
+          target={"_blank"}
+        />
         <Text title={t("Комментарии")} />
         <AddCommentForm onSendComment={onSendComment} />
         <CommentList

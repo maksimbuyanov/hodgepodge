@@ -5,18 +5,17 @@ import { loginReducer } from "@/features/AuthByUsername"
 import { profileReducer } from "@/entities/Profile"
 import { ReducersList } from "@/shared/lib"
 import { addCommentFormReducer } from "@/features/AddCommentForm/model/slice/addCommentFormSlice"
-import { articleDetailsCommentsReducer } from "@/pages/ArticleDetailsPage/model/slice/slice"
 import { articleDetailsReducer } from "@/entities/Article/model/slice/articleDetailsSlice"
-import { ArticlesPageSchema } from "@/pages/ArticlePage"
 import { articlesPageReducer } from "@/pages/ArticlePage/model/slice/articlesPageSlice"
+import { articleDetailsPageReducer } from "@/pages/ArticleDetailsPage/model/slice"
 
 const defaultAsyncReducers: ReducersList = {
   loginForm: loginReducer,
   profile: profileReducer,
   articleDetails: articleDetailsReducer,
   addCommentForm: addCommentFormReducer,
-  articleDetailsComments: articleDetailsCommentsReducer,
   articlesPage: articlesPageReducer,
+  articleDetailsPage: articleDetailsPageReducer,
 }
 
 export const StoreDecorator =

@@ -13,9 +13,7 @@ export default {
     backgroundColor: { control: "color" },
   },
   args: {
-    children: (
-      <Button theme={ButtonTheme.BACKGROUND_INVERTED}>some text</Button>
-    ),
+    children: <Button theme={ButtonTheme.BACKGROUND_INVERTED}>1</Button>,
   },
 } as ComponentMeta<typeof Card>
 

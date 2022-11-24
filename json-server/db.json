@@ -259,7 +259,9 @@
       "subtitle": "Блог компании Microsoft",
       "views": 115869,
       "createdAt": "04.01.2015",
-      "type": ["TypeScriptttt"],
+      "type": [
+        "TypeScriptttt"
+      ],
       "blocks": [
         {
           "id": "0",
@@ -404,7 +406,9 @@
       "subtitle": "Блог компании Microsoft",
       "views": 122869,
       "createdAt": "05.01.2015",
-      "type": ["JavaScript"],
+      "type": [
+        "JavaScript"
+      ],
       "blocks": [
         {
           "id": "0",
@@ -2473,6 +2477,12 @@
       "userId": "1",
       "text": "Привет, мир!",
       "id": "zML2N56"
+    },
+    {
+      "articleId": "1",
+      "userId": "1",
+      "text": "hello world",
+      "id": "q7ptP6-"
     }
   ]
 }

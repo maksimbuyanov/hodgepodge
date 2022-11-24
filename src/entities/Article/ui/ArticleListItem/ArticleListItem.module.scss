@@ -1,18 +1,57 @@
-.ArticleListItem {
+.column {
+  .skeletonCart {
+    background-color: var(--invert-bg-color);
+  }
 
+  .header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    gap: 8px;
+  }
+
+  .date {
+    margin-left: auto;
+  }
+
+  .img {
+    width: 100%;
+    max-height: 250px;
+    margin: 16px;
+    object-fit: contain;
+  }
+
+  .textBlock {
+    max-height: 150px;
+    margin-bottom: 16px;
+    overflow-y: hidden;
+  }
+
+  .footer {
+    display: flex;
+    align-items: center;
+  }
+
+  .views {
+    margin-left: auto;
+  }
 }
 
 .grid {
+  overflow: initial;
   width: max-content;
   cursor: pointer;
   opacity: 1;
   transform: scale(1);
   transition: all 0.3s ease;
 
+  &::before {
+    display: none;
+  }
+
   .skeletonCart {
     background-color: var(--invert-bg-color);
   }
-
 
   .date {
     position: absolute;
@@ -76,43 +115,3 @@
     }
   }
 }
-
-.column {
-  .skeletonCart {
-    background-color: var(--invert-bg-color);
-  }
-
-  .header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 8px;
-    gap: 8px;
-  }
-
-  .date {
-    margin-left: auto;
-  }
-
-  .img {
-    width: 100%;
-    max-height: 250px;
-    margin: 16px;
-    object-fit: contain;
-  }
-
-  .textBlock {
-    max-height: 150px;
-    margin-bottom: 16px;
-    overflow-y: hidden;
-  }
-
-  .footer {
-    display: flex;
-    align-items: center;
-  }
-
-  .views {
-    margin-left: auto;
-  }
-}
-

@@ -3,17 +3,10 @@ import {
   createSlice,
   PayloadAction,
 } from "@reduxjs/toolkit"
-import { Comment } from "@/entities/Comment"
 import { StateSchema } from "@/app/providers/StoreProvider"
-import { ArticleDetailsPageSchema } from "@/pages/ArticleDetailsPage"
-import {
-  fetchProfileData,
-  Profile,
-  updateProfileData,
-} from "@/entities/Profile"
-import { fetchCommentsByArticleId } from "../services/fetchCommentsByArticleId/fetchCommentsByArticleId"
 import { Article } from "@/entities/Article"
-import { ArticleDetailsPageRecommendationsSchema } from "@/pages/ArticleDetailsPage/model/types/articleDetailsPageRecommendationsSchema"
+import { ArticleDetailsPageRecommendationsSchema } from "../types/articleDetailsPageRecommendationsSchema"
+import { fetchArticleRecommendations } from "../services/fetchArticleRecommendations/fetchArticleRecommendations"
 
 const recommendationsAdapter = createEntityAdapter<Article>({
   selectId: article => article.id,
@@ -22,7 +15,7 @@ const recommendationsAdapter = createEntityAdapter<Article>({
 export const getArticleRecommendations =
   recommendationsAdapter.getSelectors<StateSchema>(
     state =>
-      state.articleDetailsRecommendations ??
+      state.articleDetailsPage?.recommendations ??
       recommendationsAdapter.getInitialState()
   )
 
@@ -38,23 +31,23 @@ const articleDetailsPageRecommendationsSlice = createSlice({
       }
     ),
   reducers: {},
-  // extraReducers: builder => {
-  //   builder.addCase(fetchCommentsByArticleId.pending, (state, ___action) => {
-  //     state.error = ""
-  //     state.isLoading = true
-  //   })
-  //   builder.addCase(
-  //     fetchCommentsByArticleId.fulfilled,
-  //     (state, action: PayloadAction<Article[]>) => {
-  //       recommendationsAdapter.setAll(state, action.payload)
-  //       state.isLoading = false
-  //     }
-  //   )
-  //   builder.addCase(fetchCommentsByArticleId.rejected, (state, action) => {
-  //     state.isLoading = false
-  //     state.error = action.payload
-  //   })
-  // },
+  extraReducers: builder => {
+    builder.addCase(fetchArticleRecommendations.pending, (state, ___action) => {
+      state.error = ""
+      state.isLoading = true
+    })
+    builder.addCase(
+      fetchArticleRecommendations.fulfilled,
+      (state, action: PayloadAction<Article[]>) => {
+        recommendationsAdapter.setAll(state, action.payload)
+        state.isLoading = false
+      }
+    )
+    builder.addCase(fetchArticleRecommendations.rejected, (state, action) => {
+      state.isLoading = false
+      state.error = action.payload
+    })
+  },
 })
 // TODO комментарии не загружаются, почитать чат
 
