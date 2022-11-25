@@ -2,12 +2,13 @@ import { FC, useEffect } from "react"
 import { useDispatch, useStore } from "react-redux"
 import {
   ReduxStoreWithManager,
+  StateSchema,
   StateSchemaKey,
 } from "@/app/providers/StoreProvider"
 import { Reducer } from "@reduxjs/toolkit"
 
 export type ReducersList = {
-  [name in StateSchemaKey]?: Reducer
+  [name in StateSchemaKey]?: Reducer<NonNullable<StateSchema[name]>>
 }
 
 interface DynamicModuleLoaderProps {
@@ -16,13 +17,17 @@ interface DynamicModuleLoaderProps {
 }
 
 export const DynamicModuleLoader: FC<DynamicModuleLoaderProps> = props => {
-  const { children, reducers, removeAfterUnmount } = props
+  const { children, reducers, removeAfterUnmount = true } = props
   const dispatch = useDispatch()
   const store = useStore() as ReduxStoreWithManager
   useEffect(() => {
+    const reducersMap = store.reducerManager.getReducerMap()
     Object.entries(reducers).forEach(([name, value]) => {
-      store.reducerManager.add(name as StateSchemaKey, value)
-      dispatch({ type: `@INIT ${name}` })
+      const mounted = reducersMap[name as StateSchemaKey]
+      if (mounted === undefined) {
+        store.reducerManager.add(name as StateSchemaKey, value)
+        dispatch({ type: `@INIT ${name}` })
+      }
     })
 
     return () => {

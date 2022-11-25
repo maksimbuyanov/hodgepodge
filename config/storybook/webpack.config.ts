@@ -14,6 +14,8 @@ export default ({
     entry: "",
     html: "",
     src: path.resolve(__dirname, "..", "..", "src"),
+    buildLocales: path.resolve(__dirname, "..", "..", "build", "locales"),
+    locales: path.resolve(__dirname, "..", "..", "public", "locales"),
   }
   config.resolve = {
     extensions: [".tsx", ".ts", ".js"], // Позволяет импортировать без указания ему расширения ( import a from "./Nav")

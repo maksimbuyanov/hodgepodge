@@ -87,6 +87,13 @@ Error.args = {
   text: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium at beatae dicta dolore,
   exercitationem itaque laudantium magnam modi natus necessitatibus neque nihil numquam possimus quod.`,
 }
+export const Bold = Template.bind({})
+Bold.args = {
+  theme: TextTheme.Bold,
+  title: "lorem5 lorem5 lorem5",
+  text: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium at beatae dicta dolore,
+  exercitationem itaque laudantium magnam modi natus necessitatibus neque nihil numquam possimus quod.`,
+}
 
 export const Blood = Template.bind({})
 Blood.args = {

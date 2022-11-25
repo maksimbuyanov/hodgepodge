@@ -8,24 +8,23 @@ import { StateSchema, ThunkExtraArh } from "./StateSchema"
 import { userReducer } from "@/entities/User"
 import { reducerManager } from "./reducerManager"
 import { $api } from "@/shared/api/api"
-import { NavigateFunction } from "react-router-dom"
+import { scrollSaveReducer } from "@/features/ScrollSave"
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export function createReduxStore(
   initialState?: StateSchema,
-  asyncReducers?: ReducersMapObject<StateSchema>,
-  navigate?: NavigateFunction
+  asyncReducers?: ReducersMapObject<StateSchema>
 ) {
   const rootReducers: ReducersMapObject<StateSchema> = {
     ...asyncReducers,
     user: userReducer,
+    scrollSave: scrollSaveReducer,
   }
 
   const manager = reducerManager(rootReducers)
 
   const extraArg: ThunkExtraArh = {
     api: $api,
-    navigate,
   }
 
   const store = configureStore({

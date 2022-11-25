@@ -5,6 +5,8 @@ import { classNames } from "@/shared/lib"
 export enum TextTheme {
   Primary = "primary",
   Error = "error",
+  Bold = "bold",
+  Inverted = "inverted",
 }
 
 export interface TextProps {

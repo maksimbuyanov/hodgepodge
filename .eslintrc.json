@@ -100,7 +100,8 @@
           "ignoreAttribute": [
             "data-testid",
             "to",
-            "reducerName"
+            "reducerName",
+            "target"
           ]
         }
       ],

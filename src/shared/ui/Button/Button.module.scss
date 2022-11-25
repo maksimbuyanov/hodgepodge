@@ -90,4 +90,13 @@
 
 .disabled {
   opacity: 0.4;
+
+  &:hover,
+  &:focus {
+    color: unset;
+    cursor: not-allowed;
+    opacity: 0.4;
+    outline: none;
+    scale: 1;
+  }
 }

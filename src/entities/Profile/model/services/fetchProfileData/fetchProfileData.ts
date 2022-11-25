@@ -6,12 +6,12 @@ import { Profile } from "@/entities/Profile"
 
 export const fetchProfileData = createAsyncThunk<
   Profile,
-  undefined, // TODO пробно указал, проверить
+  string,
   asyncThunkProp<string>
->("profile/fetchProfileData", async (data, thunkAPI) => {
+>("profile/fetchProfileData", async (profileId, thunkAPI) => {
   const { rejectWithValue, extra } = thunkAPI
   try {
-    const response = extra.api.get<Profile>("/profile")
+    const response = extra.api.get<Profile>("/profile/" + profileId)
     if (!(await response).data) {
       throw new Error() // нужно только для отработки тестов
     }

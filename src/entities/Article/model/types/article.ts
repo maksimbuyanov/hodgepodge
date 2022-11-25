@@ -1,3 +1,11 @@
+import { User } from "@/entities/User"
+
+export enum ArticleSortField {
+  VIEWS = "views",
+  TITLE = "title",
+  CREATED = "createdAt",
+}
+
 export type ArticleBlock =
   | ArticleCodeBlock
   | ArticleImageBlock
@@ -36,13 +44,16 @@ export interface ArticleCopyrightBlock extends ArticleBlockBase {
 }
 
 export enum ArticleType {
-  ПРО_МАЛЬЧИКА = "Про мальчика",
-  ПРО_ДЕВОЧКУ = "Про девочку",
-  ПРО_ЗВЕРЮШКУ = "Про зверешку",
-  ПРО_ПРИРОДУ = "Про природу",
-  СКАЗКА = "Сказка",
-  РУССКАЯ = "Русская",
-  ЗАРУБЕЖНАЯ = "Зарубежная",
+  ABOUT_BOY = "Про мальчика",
+  ABOUT_GIRL = "Про девочку",
+  ABOUT_ANIMAL = "Про зверешку",
+  ABOUT_FAUNA = "Про природу",
+  DREAM = "Сказка",
+  RUSSIAN = "Русская",
+  NO_RUSSIAN = "Зарубежная",
+  WEB_DEV = "Разработка веб-сайтов",
+  JS = "JavaScript",
+  TS = "TypeScriptttt",
 }
 
 export interface Article {
@@ -51,7 +62,13 @@ export interface Article {
   image: string
   subtitle: string
   views: number
+  user: User
   createdAt: string
   type: ArticleType[]
   blocks: ArticleBlock[]
+}
+
+export enum ArticleView {
+  COLUMN = "column",
+  GRID = "grid",
 }

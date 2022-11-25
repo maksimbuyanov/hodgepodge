@@ -24,7 +24,7 @@ export function buildWebpackConfig(
       rules: buildLoaders(options),
     },
     resolve: buildResolvers(options),
-    devtool: isDev ? "inline-source-map" : undefined, // Нужно для отслеживания ошибок в дебаг режиме браузера
+    devtool: isDev ? "eval-source-map" : undefined, // Нужно для отслеживания ошибок в дебаг режиме браузера
     devServer: isDev ? buildDevServer(options) : undefined,
   }
 }
