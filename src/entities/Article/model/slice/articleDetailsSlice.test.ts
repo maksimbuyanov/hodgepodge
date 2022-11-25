@@ -15,7 +15,7 @@ describe("profileSlice.test", () => {
       username: "TwitterChief",
       avatar: image,
     },
-    image: "https://i.ytimg.com/vi/AotASl25CCg/maxresdefault.jpg",
+    image,
     subtitle: "который не очень любит работать",
     views: 2020,
     createdAt: "26.10.2022",
