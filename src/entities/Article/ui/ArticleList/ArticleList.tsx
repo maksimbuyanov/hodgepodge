@@ -4,6 +4,13 @@ import { classNames } from "@/shared/lib"
 import { Article, ArticleView } from "../../model/types/article"
 import { ArticleListItem } from "../ArticleListItem/ArticleListItem"
 import { ArticleListItemSkeleton } from "@/entities/Article/ui/ArticleListItem/ArticleListItemSkeleton"
+import {
+  AutoSizer,
+  List,
+  ListRowProps,
+  WindowScroller,
+} from "react-virtualized"
+import { PAGE_ID } from "@/shared/const/page"
 
 interface ArticleListProps {
   className?: string
@@ -38,6 +45,20 @@ export const ArticleList: FC<ArticleListProps> = props => {
     />
   )
 
+  const rowRender: FC<ListRowProps> = props => {
+    // eslint-disable-next-line react/prop-types
+    const { key, style, index } = props
+    return (
+      <div key={key} style={style}>
+        <ArticleListItem
+          article={articles[index]}
+          view={view}
+          target={target}
+        />
+      </div>
+    )
+  }
+
   // if (isLoading) {
   //   return (
   //     <div className={classNames(cls.ArticleList, {}, [className, cls[view]])}>
@@ -47,10 +68,37 @@ export const ArticleList: FC<ArticleListProps> = props => {
   // }
 
   return (
-    <div className={classNames(cls.ArticleList, {}, [className, cls[view]])}>
-      {articles.length > 0 ? articles.map(renderArticle) : null}
-      {isLoading && getSkeletons(view)}
-    </div>
+    // @ts-expect-error
+    <WindowScroller scrollElement={document.getElementById(PAGE_ID) as Element}>
+      {({
+        registerChild,
+        height,
+        width,
+        scrollTop,
+        isScrolling,
+        onChildScroll,
+      }) => (
+        <div
+          className={classNames(cls.ArticleList, {}, [className, cls[view]])}
+          ref={registerChild}
+        >
+          {/* @ts-expect-error */}
+          <List
+            height={height ?? 700}
+            rowCount={articles.length}
+            rowHeight={500}
+            rowRenderer={rowRender}
+            width={width ? width - 80 : 700}
+            autoHeight={true}
+            onScroll={onChildScroll}
+            isScrolling={isScrolling}
+            scrollTop={scrollTop}
+          />
+          {/* {articles.length > 0 ? articles.map(renderArticle) : null} */}
+          {isLoading && getSkeletons(view)}
+        </div>
+      )}
+    </WindowScroller>
   )
 }
 
