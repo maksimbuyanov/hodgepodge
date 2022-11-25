@@ -4,6 +4,7 @@ import MiniCssExtractPlugin from "mini-css-extract-plugin"
 import type { BuildOptions } from "./types/config"
 import ReactRefreshPlugin from "@pmmmwh/react-refresh-webpack-plugin"
 import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer"
+import CopyPlugin from "copy-webpack-plugin"
 
 export function buildPlugins(
   options: BuildOptions
@@ -29,6 +30,10 @@ export function buildPlugins(
       __IS_DEV__: JSON.stringify(isDev),
       __API__: JSON.stringify(apiUrl),
       __PROJECT__: JSON.stringify(project),
+    }),
+
+    new CopyPlugin({
+      patterns: [{ from: paths.locales, to: paths.buildLocales }],
     }),
 
     // Выдавал предупреждение, что автоматически добавляет его, по ключу hot в buildDevServer

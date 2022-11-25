@@ -6,7 +6,7 @@ import { Theme } from "@/app/providers/ThemeProvider"
 import { StoreDecorator } from "@/shared/config"
 
 export default {
-  title: "src/pages/ArticleEditPage/ui/ArticleEditPage/ArticleEditPage",
+  title: "page/ArticleEditPage",
   component: ArticleEditPage,
   argTypes: {
     backgroundColor: { control: "color" },

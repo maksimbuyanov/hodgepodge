@@ -6,8 +6,7 @@ import { Theme } from "@/app/providers/ThemeProvider"
 import { StoreDecorator } from "@/shared/config"
 
 export default {
-  title:
-    "src/pages/ArticleDetailsPage/ui/ArticleDetailsPageHeader/ArticleDetailsPageHeader",
+  title: "page/ArticleDetailsPageHeader",
   component: ArticleDetailsPageHeader,
   argTypes: {
     backgroundColor: { control: "color" },
@@ -20,6 +19,14 @@ const Template: ComponentStory<typeof ArticleDetailsPageHeader> = () => (
 
 export const Light = Template.bind({})
 Light.decorators = [StoreDecorator({})]
+
+export const CanEdit = Template.bind({})
+CanEdit.decorators = [
+  StoreDecorator({
+    user: { authData: { id: "1" } },
+    articleDetails: { data: { user: { id: "1" } } },
+  }),
+]
 
 export const Dark = Template.bind({})
 Dark.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({})]

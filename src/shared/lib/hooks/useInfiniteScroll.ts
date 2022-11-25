@@ -22,7 +22,9 @@ export const useInfiniteScroll = (props: UseInfiniteScroll): void => {
       }
       obs = new IntersectionObserver(([entry]) => {
         if (entry.isIntersecting) {
-          callback()
+          if (__PROJECT__ !== "storybook") {
+            callback()
+          }
         }
       }, options)
       obs.observe(trigger)
