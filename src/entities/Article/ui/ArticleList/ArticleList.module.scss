@@ -5,6 +5,11 @@
 
 .grid {
   flex-wrap: wrap;
+
+  .line {
+    display: flex;
+    gap: 30px;
+  }
 }
 
 .column {
