@@ -39,7 +39,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = props => {
       return block.type === ArticleBlockType.TEXT
     })
     return (
-      <div className={classNames("", {}, [className, cls[view]])}>
+      <article className={classNames("", {}, [className, cls[view]])}>
         <Card>
           <div className={cls.header}>
             <Avatar
@@ -71,12 +71,13 @@ export const ArticleListItem: FC<ArticleListItemProps> = props => {
             <Icon Svg={EyeIcon} className={cls.icon} />
           </div>
         </Card>
-      </div>
+      </article>
     )
   }
 
   return (
     <AppLink
+      role={"article"}
       className={classNames("", {}, [className, cls[view]])}
       to={RoutePath.articles_detail + article.id}
       target={target}

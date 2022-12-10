@@ -18,10 +18,10 @@ const App: FC = () => {
     <div className={classNames("app", {}, [])}>
       <Suspense fallback={<Loader />}>
         <Navbar />
-        <div className="content-page">
+        <main className="content-page">
           <Sidebar />
           {inited && <AppRouter />}
-        </div>
+        </main>
       </Suspense>
     </div>
   )

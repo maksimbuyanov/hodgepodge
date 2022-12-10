@@ -22,7 +22,7 @@ export const Sidebar: FC<SidebarProps> = props => {
   }
 
   return (
-    <menu
+    <section
       data-testid="sidebar"
       className={classNames(cls.Sidebar, { [cls.collapsed]: collapsed }, [
         className,
@@ -40,7 +40,7 @@ export const Sidebar: FC<SidebarProps> = props => {
       >
         {collapsed ? ">" : "<"}
       </Button>
-      <VStack gap={"8"} className={cls.items}>
+      <VStack role="navigation" gap={"8"} className={cls.items}>
         {/* <nav className={cls.items}> */}
         {sidebarItemsList.map(item => (
           <SidebarItem item={item} key={item.path} collapsed={collapsed} />
@@ -52,6 +52,6 @@ export const Sidebar: FC<SidebarProps> = props => {
         <ThemeSwitcher />
         <LangSwitcher className={cls.lang} short={collapsed} />
       </div>
-    </menu>
+    </section>
   )
 }

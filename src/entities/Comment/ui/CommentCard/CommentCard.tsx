@@ -30,6 +30,7 @@ export const CommentCard: FC<CommentCardProps> = props => {
   }
   return (
     <VStack
+      role={"article"}
       gap={"16"}
       max={true}
       className={classNames(cls.CommentCard, {}, [className])}

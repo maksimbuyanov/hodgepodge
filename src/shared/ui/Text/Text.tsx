@@ -31,6 +31,15 @@ export enum TextSize {
   S = "size_s",
 }
 
+type HeaderTagType = "h1" | "h2" | "h3" | "h4"
+
+const mapSizeToHeaderTag: Record<TextSize, HeaderTagType> = {
+  [TextSize.XL]: "h1",
+  [TextSize.L]: "h2",
+  [TextSize.M]: "h3",
+  [TextSize.S]: "h4",
+}
+
 export const Text: FC<TextProps> = props => {
   const {
     className = "",
@@ -41,6 +50,8 @@ export const Text: FC<TextProps> = props => {
     size = TextSize.M,
   } = props
 
+  const HeaderTag = mapSizeToHeaderTag[size]
+
   return (
     <div
       className={classNames(cls.Text, {}, [
@@ -50,7 +61,7 @@ export const Text: FC<TextProps> = props => {
         cls[size],
       ])}
     >
-      {title && <p className={cls.title}>{title}</p>}
+      {title && <HeaderTag className={cls.title}>{title}</HeaderTag>}
       {text && <p className={cls.text}>{text}</p>}
     </div>
   )
