@@ -1,10 +1,8 @@
 import React from "react"
 import { ComponentMeta, ComponentStory } from "@storybook/react"
 import { CommentCard } from "./CommentCard"
-import { StoreDecorator } from "@/shared/config/storybook/StoreDecorator/StoreDecorator"
 import { ThemeDecorator } from "@/shared/config/storybook/styleDecorator/ThemeDecorator"
 import { Theme } from "@/app/providers/ThemeProvider"
-import { action } from "@storybook/addon-actions"
 import icon from "@/shared/assets/forTests/user.png"
 
 export default {

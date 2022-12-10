@@ -2,8 +2,6 @@ import { ArticleDetailsSchema } from "../types/ArticleDetailsSchema"
 import { Article, ArticleBlockType, ArticleType } from "../types/article"
 import { articleDetailsReducer } from "./articleDetailsSlice"
 import { fetchArticleById } from "../services/fetchArticleById/fetchArticleById"
-import { Country } from "src/entities/Country"
-import { Currency } from "src/entities/Currency"
 import image from "@/shared/assets/forTests/user.png"
 
 describe("profileSlice.test", () => {

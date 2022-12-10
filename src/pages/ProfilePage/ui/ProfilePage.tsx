@@ -23,7 +23,7 @@ import { useSelector } from "react-redux"
 import { ProfilePageHeader } from "./ProfilePageHeader/ProfilePageHeader"
 import { Currency } from "@/entities/Currency"
 import { Country } from "@/entities/Country"
-import { Text, TextTheme } from "@/shared/ui"
+import { Text, TextTheme, VStack } from "@/shared/ui"
 import { useParams } from "react-router-dom"
 import { Page } from "@/widgets/Page"
 
@@ -104,26 +104,32 @@ const ProfilePage: FC<ProfilePageProps> = props => {
   return (
     <DynamicModuleLoader reducers={reducers}>
       <Page className={classNames(cls.ProfilePage, {}, [className])}>
-        {t("Страница профиля")}
-        <ProfilePageHeader />
-        {errors?.length &&
-          errors.map(errorCode => (
-            <Text theme={TextTheme.Error} text={t(errorCode)} key={errorCode} />
-          ))}
-        <ProfileCard
-          data={formData}
-          isLoading={isLoading}
-          readOnly={readOnly}
-          error={error}
-          onChangeFirstname={onChangeFirstName}
-          onChangeLastname={onChangeLastName}
-          onChangeAge={onChangeAge}
-          onChangeCity={onChangeCity}
-          onChangeCountry={onChangeCountry}
-          onChangeCurrency={onChangeCurrency}
-          onChangeUsername={onChangeUsername}
-          onChangeAvatar={onChangeAvatar}
-        />
+        <VStack gap={"8"} max={true}>
+          {t("Страница профиля")}
+          <ProfilePageHeader />
+          {errors?.length &&
+            errors.map(errorCode => (
+              <Text
+                theme={TextTheme.Error}
+                text={t(errorCode)}
+                key={errorCode}
+              />
+            ))}
+          <ProfileCard
+            data={formData}
+            isLoading={isLoading}
+            readOnly={readOnly}
+            error={error}
+            onChangeFirstname={onChangeFirstName}
+            onChangeLastname={onChangeLastName}
+            onChangeAge={onChangeAge}
+            onChangeCity={onChangeCity}
+            onChangeCountry={onChangeCountry}
+            onChangeCurrency={onChangeCurrency}
+            onChangeUsername={onChangeUsername}
+            onChangeAvatar={onChangeAvatar}
+          />
+        </VStack>
       </Page>
     </DynamicModuleLoader>
   )

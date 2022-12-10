@@ -1,7 +1,7 @@
 import React from "react"
 import { ComponentMeta, ComponentStory } from "@storybook/react"
 import { ProfileCard } from "./ProfileCard"
-import { ThemeDecorator, StoreDecorator } from "@/shared/config"
+import { ThemeDecorator } from "@/shared/config"
 import { Theme } from "@/app/providers/ThemeProvider"
 import { Country } from "@/entities/Country"
 import { Currency } from "@/entities/Currency"

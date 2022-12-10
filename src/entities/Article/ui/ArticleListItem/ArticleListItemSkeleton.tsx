@@ -2,9 +2,7 @@ import { FC } from "react"
 import cls from "./ArticleListItem.module.scss"
 import { classNames } from "@/shared/lib"
 import { ArticleView } from "@/entities/Article"
-import { ArticleTextBlock } from "@/entities/Article/model/types/article"
-import { Card } from "@/shared/ui/Card/Card"
-import { Icon, Skeleton } from "@/shared/ui"
+import { Card, Skeleton } from "@/shared/ui"
 
 interface ArticleListItemSkeletonProps {
   className?: string

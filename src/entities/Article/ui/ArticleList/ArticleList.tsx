@@ -1,9 +1,9 @@
-import { FC, HTMLAttributeAnchorTarget, memo, ReactNode, useRef } from "react"
+import { FC, HTMLAttributeAnchorTarget, memo, ReactNode } from "react"
 import cls from "./ArticleList.module.scss"
 import { classNames } from "@/shared/lib"
 import { Article, ArticleView } from "../../model/types/article"
 import { ArticleListItem } from "../ArticleListItem/ArticleListItem"
-import { ArticleListItemSkeleton } from "@/entities/Article/ui/ArticleListItem/ArticleListItemSkeleton"
+import { ArticleListItemSkeleton } from "../ArticleListItem/ArticleListItemSkeleton"
 import { List, ListRowProps, WindowScroller } from "react-virtualized"
 import { PAGE_ID } from "@/shared/const/page"
 

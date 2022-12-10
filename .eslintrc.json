@@ -101,7 +101,11 @@
             "data-testid",
             "to",
             "reducerName",
-            "target"
+            "target",
+            "direction",
+            "justify",
+            "align",
+            "gap"
           ]
         }
       ],

@@ -2,6 +2,7 @@
   position: relative;
   width: var(--sidebar-width);
   height: calc(100vh - var(--navbar-heigth));
+  padding: unset;
   margin: 0;
   background: var(--invert-bg-color);
   transition: width 0.3s;
@@ -24,8 +25,6 @@
 }
 
 .items {
-  display: flex;
-  flex-direction: column;
   margin-top: 20px;
   margin-left: 30px;
 }

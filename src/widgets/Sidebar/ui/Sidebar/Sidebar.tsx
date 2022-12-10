@@ -4,7 +4,7 @@ import cls from "./Sidebar.module.scss"
 import { classNames } from "@/shared/lib"
 import { ThemeSwitcher } from "@/widgets/ThemeSwitcher"
 import { LangSwitcher } from "@/widgets/LangSwitcher"
-import { Button, ButtonTheme, ButtonSize } from "@/shared/ui"
+import { Button, ButtonTheme, ButtonSize, VStack } from "@/shared/ui"
 import SidebarItem from "../SidebarItem/SidebarItem"
 import { useSelector } from "react-redux"
 import { getSidebarItems } from "../../model/selectors/getSidebarItems"
@@ -40,11 +40,13 @@ export const Sidebar: FC<SidebarProps> = props => {
       >
         {collapsed ? ">" : "<"}
       </Button>
-      <nav className={cls.items}>
+      <VStack gap={"8"} className={cls.items}>
+        {/* <nav className={cls.items}> */}
         {sidebarItemsList.map(item => (
           <SidebarItem item={item} key={item.path} collapsed={collapsed} />
         ))}
-      </nav>
+        {/* </nav> */}
+      </VStack>
       <div className={classNames(cls.switchers)}>
         {children}
         <ThemeSwitcher />

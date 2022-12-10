@@ -1,12 +1,10 @@
 import { FC, memo, useCallback } from "react"
-import cls from "./ArticleDetailsPageHeader.module.scss"
 import { classNames } from "@/shared/lib"
-import { Button, ButtonTheme } from "@/shared/ui"
+import { Button, ButtonTheme, HStack } from "@/shared/ui"
 import { useNavigate } from "react-router-dom"
 import { RoutePath } from "@/shared/config"
 import { useTranslation } from "react-i18next"
 import { useSelector } from "react-redux"
-import { getUserData } from "@/entities/User"
 import { getArticleDetailsData } from "@/entities/Article"
 import { isUserOwnerArticle } from "@/pages/ArticleDetailsPage/model/selectors/article/article"
 
@@ -25,12 +23,13 @@ export const ArticleDetailsPageHeader: FC<
     navigate(RoutePath.articles)
   }, [navigate])
   const onClickEdin = useCallback(() => {
-    // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-    navigate(`${RoutePath.articles_edit}${article?.id}/edit`)
-  }, [article?.id, navigate])
+    if (article) {
+      navigate(`${RoutePath.articles_edit}${article?.id}/edit`)
+    }
+  }, [article, navigate])
   const isOwner = useSelector(isUserOwnerArticle)
   return (
-    <div className={classNames(cls.ArticleDetailsPageHeader, {}, [className])}>
+    <HStack justify={"between"} className={classNames("", {}, [className])}>
       <Button theme={ButtonTheme.OUTLINE} onClick={onBackToList}>
         {t("Назад к списку")}
       </Button>
@@ -41,7 +40,7 @@ export const ArticleDetailsPageHeader: FC<
       >
         {t("Редактировать статью")}
       </Button>
-    </div>
+    </HStack>
   )
 }
 

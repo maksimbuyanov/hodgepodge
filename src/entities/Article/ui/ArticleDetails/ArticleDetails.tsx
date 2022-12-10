@@ -16,12 +16,14 @@ import {
 } from "../../model/selectors/articleDetails"
 import {
   Avatar,
+  HStack,
   Icon,
   Skeleton,
   Text,
   TextAlign,
   TextSize,
   TextTheme,
+  VStack,
 } from "@/shared/ui"
 import { useTranslation } from "react-i18next"
 import EyeIcon from "@/shared/assets/eye-20-20.svg"
@@ -72,18 +74,18 @@ export const ArticleDetails: FC<ArticleDetailsProps> = props => {
   }, [dispatch, id])
   if (isLoading) {
     content = (
-      <div className={cls.skeleton}>
+      <>
         <Skeleton
           width={200}
           height={200}
           border={"50%"}
           className={cls.avatar}
         />
-        <Skeleton width={300} height={40} className={cls.title} />
+        <Skeleton width={300} height={40} />
         <Skeleton width={600} height={30} />
         <Skeleton width={"100%"} height={200} />
         <Skeleton width={"100%"} height={200} />
-      </div>
+      </>
     )
   } else if (error) {
     content = (
@@ -102,21 +104,21 @@ export const ArticleDetails: FC<ArticleDetailsProps> = props => {
           alt={article?.title}
           className={cls.avatar}
         />
-
-        <Text
-          title={article?.title}
-          text={article?.subtitle}
-          className={cls.title}
-          size={TextSize.L}
-        />
-        <div className={cls.articleInfo}>
-          <Icon Svg={EyeIcon} />
-          <Text text={parseViewers(article?.views)} />
-        </div>
-        <div className={cls.articleInfo}>
-          <Icon Svg={CalendarIcon} />
-          <Text text={article?.createdAt} />
-        </div>
+        <VStack gap={"8"}>
+          <Text
+            title={article?.title}
+            text={article?.subtitle}
+            size={TextSize.L}
+          />
+          <HStack gap={"8"} align={"center"}>
+            <Icon Svg={EyeIcon} />
+            <Text text={parseViewers(article?.views)} />
+          </HStack>
+          <HStack gap={"8"} align={"center"}>
+            <Icon Svg={CalendarIcon} />
+            <Text text={article?.createdAt} />
+          </HStack>
+        </VStack>
         {article?.blocks.map(renderBlock)}
       </>
     )
@@ -124,9 +126,13 @@ export const ArticleDetails: FC<ArticleDetailsProps> = props => {
 
   return (
     <DynamicModuleLoader reducers={reducers}>
-      <div className={classNames(cls.ArticleDetails, {}, [className])}>
+      <VStack
+        gap={"16"}
+        max={true}
+        className={classNames(cls.ArticleDetails, {}, [className])}
+      >
         {content}
-      </div>
+      </VStack>
     </DynamicModuleLoader>
   )
 }

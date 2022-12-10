@@ -1,17 +1,4 @@
 .CommentCard {
-  display: flex;
-  flex-direction: column;
   padding: 20px;
   border: 1px solid var(--primary-color);
-  gap: 30px;
-}
-
-.header {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
-.text {
-  margin-top: 10px;
 }

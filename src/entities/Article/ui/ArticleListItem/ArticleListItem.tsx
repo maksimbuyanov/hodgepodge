@@ -1,4 +1,4 @@
-import { FC, HTMLAttributeAnchorTarget, useCallback } from "react"
+import { FC, HTMLAttributeAnchorTarget } from "react"
 import cls from "./ArticleListItem.module.scss"
 import { classNames } from "@/shared/lib"
 import {
@@ -15,13 +15,12 @@ import {
   Icon,
   Text,
   TextTheme,
+  Card,
 } from "@/shared/ui"
-import { parseViewers } from "@/entities/Article/model/lib/parseViewers/parseViewers"
+import { parseViewers } from "../../model/lib/parseViewers/parseViewers"
 import EyeIcon from "@/shared/assets/eye-20-20.svg"
-import { Card } from "@/shared/ui/Card/Card"
 import { useTranslation } from "react-i18next"
-import { ArticleTextBlockComponent } from "@/entities/Article/ui/ArticleTextBlockComponent/ArticleTextBlockComponent"
-import { useNavigate } from "react-router-dom"
+import { ArticleTextBlockComponent } from "../ArticleTextBlockComponent/ArticleTextBlockComponent"
 import { RoutePath } from "@/shared/config"
 
 interface ArticleListItemProps {
