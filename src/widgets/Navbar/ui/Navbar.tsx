@@ -6,8 +6,10 @@ import { classNames } from "@/shared/lib"
 import {
   AppLink,
   AppLinkTheme,
+  Avatar,
   Button,
   ButtonTheme,
+  Dropdown,
   Text,
   TextTheme,
 } from "@/shared/ui"
@@ -51,11 +53,23 @@ export const Navbar: FC<NavbarProps> = props => {
         >
           {t("Создать статью")}
         </AppLink>
-        <div className={classNames(cls.links)}>
-          <Button theme={ButtonTheme.CLEAR_INVERTED} onClick={logout}>
-            {t("Выйти")}
-          </Button>
-        </div>
+        <Dropdown
+          className={cls.links}
+          direction={"bottom-left"}
+          items={[
+            {
+              content: t("Выйти"),
+              onClick: logout,
+            },
+            {
+              content: t("Профиль"),
+              href: RoutePath.profile + userData.id,
+            },
+          ]}
+          trigger={
+            <Avatar src={userData.avatar} size={30} alt={userData.username} />
+          }
+        />
       </header>
     )
   }

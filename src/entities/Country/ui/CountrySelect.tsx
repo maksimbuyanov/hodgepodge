@@ -35,18 +35,8 @@ export const CountrySelect: FC<CountrySelectProps> = props => {
       value={value}
       defaultValue={t("Страна")}
       label={t("Страна")}
-      direction={"top"}
+      direction={"top-right"}
     />
   )
-  // return (
-  //   <Select
-  //     className={className}
-  //     value={value}
-  //     onChange={onChangeHandler}
-  //     label={t("Страна")}
-  //     options={options}
-  //     readOnly={readOnly}
-  //   />
-  // )
 }
 export default memo(CountrySelect)

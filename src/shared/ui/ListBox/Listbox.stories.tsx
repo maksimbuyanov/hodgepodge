@@ -20,6 +20,21 @@ export default {
       { content: "15", value: "4", disabled: true },
     ],
   },
+  decorators: [
+    Story => (
+      <div
+        style={{
+          display: "flex",
+          height: "100vh",
+          width: "100%",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Story />
+      </div>
+    ),
+  ],
 } as ComponentMeta<typeof ListBox>
 
 const Template: ComponentStory<typeof ListBox> = args => <ListBox {...args} />
@@ -30,9 +45,21 @@ export const ReadOnly = Template.bind({})
 ReadOnly.args = {
   readOnly: true,
 }
-export const Top = Template.bind({})
-Top.args = {
-  direction: "top",
+export const TopRight = Template.bind({})
+TopRight.args = {
+  direction: "top-right",
+}
+export const TopLeft = Template.bind({})
+TopLeft.args = {
+  direction: "top-left",
+}
+export const BottomRight = Template.bind({})
+BottomRight.args = {
+  direction: "bottom-right",
+}
+export const BottomLeft = Template.bind({})
+BottomLeft.args = {
+  direction: "bottom-left",
 }
 export const WithLabel = Template.bind({})
 WithLabel.args = {

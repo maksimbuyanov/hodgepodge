@@ -1,6 +1,7 @@
 export { default as AppLink, AppLinkTheme } from "./AppLink/AppLink"
 export { Card, CardTheme } from "./Card/Card"
 export { ListBox, option } from "./ListBox/ListBox"
+export { Dropdown, DropDownItem } from "./Dropdown/Dropdown"
 
 export { default as Button, ButtonTheme, ButtonSize } from "./Button/Button"
 export { Spinner, SpinnerStatusEnum } from "./Spinner/Spinner"

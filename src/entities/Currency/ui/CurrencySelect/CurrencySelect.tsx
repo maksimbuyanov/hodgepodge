@@ -35,7 +35,7 @@ export const CurrencySelect: FC<CurrencySelectProps> = props => {
       value={value}
       defaultValue={t("Валюта")}
       label={t("Валюта")}
-      direction={"top"}
+      direction={"top-right"}
     />
   )
 }
