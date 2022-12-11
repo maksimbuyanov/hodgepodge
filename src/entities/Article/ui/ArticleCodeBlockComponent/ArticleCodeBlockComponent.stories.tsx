@@ -7,7 +7,7 @@ import { StoreDecorator } from "@/shared/config"
 import { ArticleBlockType } from "@/entities/Article/model/types/article"
 
 export default {
-  title: "entities/ArticleCodeBlockComponent",
+  title: "entities/Article/ArticleCodeBlockComponent",
   component: ArticleCodeBlockComponent,
   argTypes: {
     backgroundColor: { control: "color" },

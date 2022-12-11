@@ -1,20 +1,12 @@
-import React from "react"
-import { ComponentMeta, ComponentStory } from "@storybook/react"
-import { ArticleDetailsPage } from "./ArticleDetailsPage"
-import { ThemeDecorator } from "@/shared/config/storybook/styleDecorator/ThemeDecorator"
-import { Theme } from "@/app/providers/ThemeProvider"
-import { StoreDecorator } from "@/shared/config"
-import {
-  ArticleBlockType,
-  ArticleType,
-} from "@/entities/Article/model/types/article"
+import { Article, ArticleBlockType, ArticleType } from "../model/types/article"
 
-const article = {
+export const article: Article = {
   id: "1",
+  user: { username: "Abdulai", id: "500" },
   title: "Песня про Антошку",
   image: "https://i.ytimg.com/vi/AotASl25CCg/maxresdefault.jpg",
-  views: 2020,
   subtitle: "который не очень любит работать",
+  views: 2020,
   createdAt: "26.10.2022",
   type: [ArticleType.ABOUT_BOY, ArticleType.RUSSIAN],
   blocks: [
@@ -53,31 +45,3 @@ const article = {
     },
   ],
 }
-
-export default {
-  title: "page/ArticleDetailsPage/ArticleDetailsPage",
-  component: ArticleDetailsPage,
-  argTypes: {
-    backgroundColor: { control: "color" },
-  },
-  decorators: [
-    StoreDecorator({
-      articleDetails: {
-        data: article,
-      },
-    }),
-  ],
-} as ComponentMeta<typeof ArticleDetailsPage>
-
-const Template: ComponentStory<typeof ArticleDetailsPage> = () => (
-  <ArticleDetailsPage />
-)
-
-export const Light = Template.bind({})
-Light.decorators = []
-
-export const Dark = Template.bind({})
-Dark.decorators = [ThemeDecorator(Theme.DARK)]
-
-export const Blood = Template.bind({})
-Blood.decorators = [ThemeDecorator(Theme.BLOOD)]

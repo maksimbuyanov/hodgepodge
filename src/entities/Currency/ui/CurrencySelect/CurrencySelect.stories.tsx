@@ -14,14 +14,16 @@ export default {
   },
 } as ComponentMeta<typeof CurrencySelect>
 
-const Template: ComponentStory<typeof CurrencySelect> = () => <CurrencySelect />
+const Template: ComponentStory<typeof CurrencySelect> = args => (
+  <CurrencySelect {...args} />
+)
 
 export const Light = Template.bind({})
 Light.args = {
   readOnly: false,
 }
-export const readOnly = Template.bind({})
-readOnly.args = {
+export const ReadOnly = Template.bind({})
+ReadOnly.args = {
   readOnly: true,
 }
 export const Dark = Template.bind({})

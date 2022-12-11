@@ -1,0 +1,57 @@
+.ListBox {
+  position: relative;
+}
+
+.trigger {
+  padding: 0;
+  border: none;
+  background: none;
+
+  & button:hover,
+  & button:focus {
+    scale: 1;
+  }
+}
+
+.options {
+  position: absolute;
+  z-index: 100;
+  min-width: max-content;
+  padding: unset;
+  margin: 0;
+  background-color: var(--listbox-bg);
+  border-radius: 12px;
+}
+
+.top {
+  bottom: 100%;
+  box-shadow: 4px -4px 9px rgb(0 0 0 / 25%);
+
+  // box-shadow: 4px -4px 9px var(--listbox-bg);
+}
+
+.bottom {
+  box-shadow: 4px -4px 9px rgb(0 0 0 / 25%);
+
+  // box-shadow: 4px 4px 9px var(--listbox-bg);
+}
+
+.item {
+  padding: 10px 20px;
+  cursor: pointer;
+  list-style-type: none;
+}
+
+.active {
+  text-decoration: underline;
+}
+
+.disabled {
+  cursor: not-allowed;
+  opacity: 0.3;
+}
+
+.selected {
+  background: var(--invert-secondaty-color);
+  border-radius: 12px;
+}

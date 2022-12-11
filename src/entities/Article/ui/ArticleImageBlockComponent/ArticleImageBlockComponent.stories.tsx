@@ -8,7 +8,7 @@ import { ArticleBlockType } from "@/entities/Article/model/types/article"
 import icon from "@/shared/assets/forTests/user.png"
 
 export default {
-  title: "entities/ArticleImageBlockComponent",
+  title: "entities/Article/ArticleImageBlockComponent",
   component: ArticleImageBlockComponent,
   argTypes: {
     backgroundColor: { control: "color" },

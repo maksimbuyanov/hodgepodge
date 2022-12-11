@@ -1,5 +1,5 @@
 import { FC, memo, useCallback, useMemo } from "react"
-import { Select } from "@/shared/ui"
+import { ListBox } from "@/shared/ui"
 import { Currency } from "../../model/types/currency"
 import { useTranslation } from "react-i18next"
 
@@ -27,13 +27,15 @@ export const CurrencySelect: FC<CurrencySelectProps> = props => {
     [onChange]
   )
   return (
-    <Select
+    <ListBox
       className={className}
-      value={value}
-      onChange={onChangeHandler}
-      label={t("Валюта")}
-      options={options}
       readOnly={readOnly}
+      onChange={onChangeHandler}
+      options={options}
+      value={value}
+      defaultValue={t("Валюта")}
+      label={t("Валюта")}
+      direction={"top"}
     />
   )
 }

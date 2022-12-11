@@ -6,7 +6,7 @@ import { Theme } from "@/app/providers/ThemeProvider"
 import icon from "@/shared/assets/forTests/user.png"
 
 export default {
-  title: "entities/CommentList",
+  title: "entities/Comment/CommentList",
   component: CommentList,
   argTypes: {
     backgroundColor: { control: "color" },

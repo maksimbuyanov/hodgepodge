@@ -106,7 +106,8 @@
             "justify",
             "align",
             "gap",
-            "role"
+            "role",
+            "as"
           ]
         }
       ],
