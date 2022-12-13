@@ -1,3 +1,4 @@
+// @ts-nocheck TODO добавил пока не выпилю виртуализацию
 import { FC, HTMLAttributeAnchorTarget, memo, ReactNode } from "react"
 import cls from "./ArticleList.module.scss"
 import { classNames } from "@/shared/lib"
@@ -69,7 +70,6 @@ export const ArticleList: FC<ArticleListProps> = props => {
   }
 
   return (
-    // @ts-expect-error
     <WindowScroller scrollElement={elem}>
       {({
         registerChild,
@@ -84,7 +84,6 @@ export const ArticleList: FC<ArticleListProps> = props => {
           ref={registerChild}
         >
           {articles.length > 0 && (
-            /* @ts-expect-error */
             <List
               height={height ?? elem.clientHeight}
               rowCount={rowCount}
