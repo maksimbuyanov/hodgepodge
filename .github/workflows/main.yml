@@ -18,7 +18,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: install modules
-        run: npm install
+        run: npm install --legacy-peer-deps
       - name: build prod project
         run: npm run build:prod
       - name: linting TS
@@ -42,7 +42,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: install modules
-        run: npm install
+        run: npm install --legacy-peer-deps
       - name: build prod project
         run: npm run build:prod
       - name: build storybook
