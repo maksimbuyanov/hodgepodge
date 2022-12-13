@@ -2,7 +2,7 @@ import { FC } from "react"
 import { classNames } from "@/shared/lib"
 import { VStack, Text } from "@/shared/ui"
 import { useTranslation } from "react-i18next"
-import { CommentCard } from "@/entities/Comment/ui/CommentCard/CommentCard"
+import { CommentCard } from "../CommentCard/CommentCard"
 import { Comment } from "../../model/types/comment"
 
 interface CommentListProps {

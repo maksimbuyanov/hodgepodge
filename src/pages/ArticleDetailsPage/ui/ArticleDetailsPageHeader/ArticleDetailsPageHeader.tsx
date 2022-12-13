@@ -6,7 +6,7 @@ import { RoutePath } from "@/shared/config"
 import { useTranslation } from "react-i18next"
 import { useSelector } from "react-redux"
 import { getArticleDetailsData } from "@/entities/Article"
-import { isUserOwnerArticle } from "@/pages/ArticleDetailsPage/model/selectors/article/article"
+import { isUserOwnerArticle } from "../../model/selectors/article/article"
 
 interface ArticleDetailsPageHeaderProps {
   className?: string

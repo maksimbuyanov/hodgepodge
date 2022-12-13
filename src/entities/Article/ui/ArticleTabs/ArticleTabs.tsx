@@ -1,7 +1,7 @@
 import { FC, useMemo } from "react"
 import { classNames } from "@/shared/lib"
 import { TabItem, Tabs } from "@/shared/ui/Tabs/Tabs"
-import { ArticleType } from "@/entities/Article/model/types/article"
+import { ArticleType } from "../../model/types/article"
 import { useTranslation } from "react-i18next"
 
 interface ArticleTabsProps {
