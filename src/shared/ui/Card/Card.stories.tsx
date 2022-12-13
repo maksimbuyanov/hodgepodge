@@ -4,7 +4,7 @@ import { Card } from "./Card"
 import { ThemeDecorator } from "@/shared/config/storybook/styleDecorator/ThemeDecorator"
 import { Theme } from "@/app/providers/ThemeProvider"
 import { StoreDecorator } from "@/shared/config"
-import { Button, ButtonTheme } from "@/shared/ui"
+import { Button, ButtonTheme } from "@/shared/ui/"
 
 export default {
   title: "shared/Card",

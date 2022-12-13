@@ -4,10 +4,10 @@ import { ArticleTextBlockComponent } from "./ArticleTextBlockComponent"
 import { ThemeDecorator } from "@/shared/config/storybook/styleDecorator/ThemeDecorator"
 import { Theme } from "@/app/providers/ThemeProvider"
 import { StoreDecorator } from "@/shared/config"
-import { ArticleBlockType } from "@/entities/Article/model/types/article"
+import { ArticleBlockType } from "../../model/types/article"
 
 export default {
-  title: "entities/ArticleTextBlockComponent",
+  title: "entities/Article/ArticleTextBlockComponent",
   component: ArticleTextBlockComponent,
   argTypes: {
     backgroundColor: { control: "color" },

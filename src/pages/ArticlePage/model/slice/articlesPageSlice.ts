@@ -47,7 +47,7 @@ const articlesPageSlice = createSlice({
       ) as ArticleView
 
       state.view = view
-      state.limit = view === ArticleView.GRID ? 9 : 4
+      state.limit = view === ArticleView.GRID ? 9 : 3
       state._inited = true
     },
     setPage: (state, action: PayloadAction<number>) => {
@@ -76,7 +76,7 @@ const articlesPageSlice = createSlice({
     })
     builder.addCase(fetchArticlesList.fulfilled, (state, action) => {
       state.isLoading = false
-      state.hasMore = action.payload.length > (state.limit ?? 0)
+      state.hasMore = action.payload.length >= (state.limit ?? 0)
       if (action.meta.arg.replace) {
         articlesAdapter.setAll(state, action.payload)
       } else {

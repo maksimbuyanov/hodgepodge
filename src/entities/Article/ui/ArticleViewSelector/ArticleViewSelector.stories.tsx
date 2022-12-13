@@ -7,7 +7,7 @@ import { StoreDecorator } from "@/shared/config"
 import { ArticleView } from "../../model/types/article"
 
 export default {
-  title: "entities/ArticleViewSelector",
+  title: "entities/Article/ArticleViewSelector",
   component: ArticleViewSelector,
   argTypes: {
     backgroundColor: { control: "color" },

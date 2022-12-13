@@ -4,10 +4,10 @@ import { ArticleCopyrightBlockComponent } from "./ArticleCopyrightBlockComponent
 import { ThemeDecorator } from "@/shared/config/storybook/styleDecorator/ThemeDecorator"
 import { Theme } from "@/app/providers/ThemeProvider"
 import { StoreDecorator } from "@/shared/config"
-import { ArticleBlockType } from "@/entities/Article/model/types/article"
+import { ArticleBlockType } from "../../model/types/article"
 
 export default {
-  title: "entities/ArticleCopyrightBlockComponent",
+  title: "entities/Article/ArticleCopyrightBlockComponent",
   component: ArticleCopyrightBlockComponent,
   argTypes: {
     backgroundColor: { control: "color" },

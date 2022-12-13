@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, useMemo } from "react"
+import { ChangeEvent, useMemo } from "react"
 import cls from "./Select.module.scss"
 import { classNames, Mods } from "@/shared/lib"
 
@@ -46,7 +46,7 @@ export const Select = <T extends string>(
   }
   return (
     <div className={classNames(cls.Wrapper, mods, [className])}>
-      {label && <span className={cls.lavel}>{label + " >"}</span>}
+      {label && <span className={cls.label}>{label + " >"}</span>}
       <select
         className={cls.select}
         value={value}

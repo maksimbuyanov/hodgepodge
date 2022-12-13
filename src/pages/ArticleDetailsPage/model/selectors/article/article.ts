@@ -6,9 +6,12 @@ export const isUserOwnerArticle = createSelector(
   getArticleDetailsData,
   getUserData,
   (article, user) => {
-    if (!article || !user) {
+    if (!article?.user || !user) {
       return false
     }
-    return article?.user.id === user?.id
+    const articleUserId = article?.user.id
+    const userId = user?.id
+
+    return articleUserId === userId
   }
 )

@@ -7,7 +7,7 @@ import { StoreDecorator } from "@/shared/config"
 import { action } from "@storybook/addon-actions"
 
 export default {
-  title: "entities/ArticleTabs",
+  title: "entities/Article/ArticleTabs",
   component: ArticleTabs,
   argTypes: {
     backgroundColor: { control: "color" },

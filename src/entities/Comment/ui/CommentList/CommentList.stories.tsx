@@ -1,14 +1,12 @@
 import React from "react"
 import { ComponentMeta, ComponentStory } from "@storybook/react"
 import { CommentList } from "./CommentList"
-import { StoreDecorator } from "@/shared/config/storybook/StoreDecorator/StoreDecorator"
 import { ThemeDecorator } from "@/shared/config/storybook/styleDecorator/ThemeDecorator"
 import { Theme } from "@/app/providers/ThemeProvider"
-import { action } from "@storybook/addon-actions"
 import icon from "@/shared/assets/forTests/user.png"
 
 export default {
-  title: "entities/CommentList",
+  title: "entities/Comment/CommentList",
   component: CommentList,
   argTypes: {
     backgroundColor: { control: "color" },

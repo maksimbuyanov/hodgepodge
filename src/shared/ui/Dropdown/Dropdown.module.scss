@@ -1,0 +1,59 @@
+.Dropdown {
+  position: relative;
+  width: max-content;
+}
+
+.trigger {
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.options {
+  position: absolute;
+  z-index: 100;
+  min-width: 100%;
+  padding: unset;
+  margin: 0;
+  background-color: var(--listbox-bg);
+  border-radius: 12px;
+}
+
+.option {
+  width: inherit;
+  padding: 10px 20px;
+  cursor: pointer;
+  list-style-type: none;
+}
+
+.top-right {
+  bottom: 100%;
+  left: 0;
+  box-shadow: 4px -4px 9px rgb(0 0 0 / 25%);
+}
+
+.bottom-right {
+  left: 0;
+  box-shadow: 4px -4px 9px rgb(0 0 0 / 25%);
+}
+
+.top-left {
+  right: 0;
+  bottom: 100%;
+  box-shadow: 4px -4px 9px rgb(0 0 0 / 25%);
+}
+
+.bottom-left {
+  right: 0;
+  box-shadow: 4px -4px 9px rgb(0 0 0 / 25%);
+}
+
+.active {
+  text-decoration: underline;
+}
+
+.disabled {
+  cursor: not-allowed;
+  opacity: 0.3;
+}

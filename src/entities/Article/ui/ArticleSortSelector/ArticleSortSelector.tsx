@@ -1,4 +1,4 @@
-import { FC, memo, useCallback, useMemo } from "react"
+import { FC, memo, useMemo } from "react"
 import cls from "./ArticleSortSelector.module.scss"
 import { classNames } from "@/shared/lib"
 import { Select, SelectOption } from "@/shared/ui"

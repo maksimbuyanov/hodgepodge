@@ -1,7 +1,7 @@
 import { FC, memo, useMemo } from "react"
 import cls from "./ArticleViewSelector.module.scss"
 import { classNames } from "@/shared/lib"
-import { ArticleView } from "@/entities/Article"
+import { ArticleView } from "../../model/types/article"
 import ListIcon from "@/shared/assets/article-list.svg"
 import GridIcon from "@/shared/assets/article-grid.svg"
 import { Button, ButtonTheme, Icon } from "@/shared/ui"

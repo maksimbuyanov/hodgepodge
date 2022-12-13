@@ -1,7 +1,13 @@
 import { FC, useCallback } from "react"
-import cls from "./ProfilePageHeader.module.scss"
 import { classNames, useAppDispatch } from "@/shared/lib"
-import { Button, ButtonSize, ButtonTheme, Text, TextTheme } from "@/shared/ui"
+import {
+  Button,
+  ButtonSize,
+  ButtonTheme,
+  HStack,
+  Text,
+  TextTheme,
+} from "@/shared/ui"
 import { useTranslation } from "react-i18next"
 import { useSelector } from "react-redux"
 import {
@@ -41,24 +47,26 @@ export const ProfilePageHeader: FC<ProfilePageHeaderProps> = props => {
     }
   }, [PROFILE_ID, dispatch])
   return (
-    <div className={classNames(cls.ProfilePageHeader, {}, [className])}>
+    <HStack
+      justify={"between"}
+      className={classNames("", {}, [className])}
+      max={true}
+    >
       <Text theme={TextTheme.Primary} title={t("Профиль")} />
       {canEdit && (
         <>
           {readOnly ? (
             <Button
               theme={ButtonTheme.OUTLINE}
-              className={cls.editButton}
               size={ButtonSize.M}
               onClick={onEdit}
             >
               {t("Редактировать")}
             </Button>
           ) : (
-            <>
+            <HStack gap={"8"}>
               <Button
                 theme={ButtonTheme.OUTLINE_RED}
-                className={cls.editButton}
                 size={ButtonSize.M}
                 onClick={onCancelEdin}
               >
@@ -66,16 +74,15 @@ export const ProfilePageHeader: FC<ProfilePageHeaderProps> = props => {
               </Button>
               <Button
                 theme={ButtonTheme.OUTLINE}
-                className={cls.saveButton}
                 size={ButtonSize.M}
                 onClick={onSave}
               >
                 {t("Сохранить")}
               </Button>
-            </>
+            </HStack>
           )}
         </>
       )}
-    </div>
+    </HStack>
   )
 }
