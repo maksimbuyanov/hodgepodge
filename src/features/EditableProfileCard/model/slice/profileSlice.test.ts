@@ -1,8 +1,12 @@
-import { Profile, ProfileSchema, ValidateProfileError } from "../types/profile"
-import { profileActions, profileReducer } from "./slice"
-import { updateProfileData } from "@/entities/Profile"
+import { editableProfileActions, editableProfileReducer } from "./slice"
 import { Country } from "@/entities/Country"
 import { Currency } from "@/entities/Currency"
+import { Profile } from "@/entities/Profile"
+import {
+  EditableProfileCardSchema,
+  ValidateProfileError,
+} from "../types/EditableProfileCardSchema"
+import { updateProfileData } from "../services/updateProfileData/updateProfileData"
 
 describe("profileSlice.test", () => {
   const profileValue: Profile = {
@@ -15,16 +19,19 @@ describe("profileSlice.test", () => {
     currency: Currency.EUR,
   }
   test("test toggle readonly", () => {
-    const state: DeepPartial<ProfileSchema> = {
+    const state: DeepPartial<EditableProfileCardSchema> = {
       readonly: true,
       isLoading: false,
     }
     expect(
-      profileReducer(state as ProfileSchema, profileActions.setReadOnly(false))
+      editableProfileReducer(
+        state as EditableProfileCardSchema,
+        editableProfileActions.setReadOnly(false)
+      )
     ).toEqual({ readonly: false, isLoading: false })
   })
   test("test cancel Edit", () => {
-    const state: DeepPartial<ProfileSchema> = {
+    const state: DeepPartial<EditableProfileCardSchema> = {
       readonly: false,
       isLoading: false,
       form: {},
@@ -32,7 +39,10 @@ describe("profileSlice.test", () => {
       validateErrors: [],
     }
     expect(
-      profileReducer(state as ProfileSchema, profileActions.cancelEdit())
+      editableProfileReducer(
+        state as EditableProfileCardSchema,
+        editableProfileActions.cancelEdit()
+      )
     ).toEqual({
       readonly: true,
       isLoading: false,
@@ -42,40 +52,43 @@ describe("profileSlice.test", () => {
     })
   })
   test("test updateProfile", () => {
-    const state: DeepPartial<ProfileSchema> = {
+    const state: DeepPartial<EditableProfileCardSchema> = {
       form: { username: "valet" },
     }
     expect(
-      profileReducer(
-        state as ProfileSchema,
-        profileActions.updateProfile({ username: "koroly" })
+      editableProfileReducer(
+        state as EditableProfileCardSchema,
+        editableProfileActions.updateProfile({ username: "koroly" })
       )
     ).toEqual({ form: { username: "koroly" } })
     expect(
-      profileReducer(
-        state as ProfileSchema,
-        profileActions.updateProfile({ age: 2 })
+      editableProfileReducer(
+        state as EditableProfileCardSchema,
+        editableProfileActions.updateProfile({ age: 2 })
       )
     ).toEqual({ form: { username: "valet", age: 2 } })
   })
   test("test update profile data pending", () => {
-    const state: DeepPartial<ProfileSchema> = {
+    const state: DeepPartial<EditableProfileCardSchema> = {
       isLoading: false,
       validateErrors: [ValidateProfileError.INCORRECT_USER_DATA],
     }
     expect(
-      profileReducer(state as ProfileSchema, updateProfileData.pending)
+      editableProfileReducer(
+        state as EditableProfileCardSchema,
+        updateProfileData.pending
+      )
     ).toEqual({ isLoading: true, error: "", validateErrors: undefined })
   })
   test("test update profile data fulfilled", () => {
-    const state: DeepPartial<ProfileSchema> = {
+    const state: DeepPartial<EditableProfileCardSchema> = {
       isLoading: true,
       validateErrors: [ValidateProfileError.INCORRECT_USER_DATA],
       readonly: false,
     }
     expect(
-      profileReducer(
-        state as ProfileSchema,
+      editableProfileReducer(
+        state as EditableProfileCardSchema,
         // @ts-expect-error
         updateProfileData.fulfilled(profileValue)
       )

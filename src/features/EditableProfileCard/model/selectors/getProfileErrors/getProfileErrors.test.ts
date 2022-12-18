@@ -1,6 +1,6 @@
 import { StateSchema } from "@/app/providers/StoreProvider"
 import { getProfileErrors } from "./getProfileErrors"
-import { ValidateProfileError } from "../../types/profile"
+import { ValidateProfileError } from "../../types/EditableProfileCardSchema"
 
 describe("getProfileErrors.test", () => {
   test("return enum value", () => {

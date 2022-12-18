@@ -10,13 +10,11 @@ import {
 } from "@/shared/ui"
 import { useTranslation } from "react-i18next"
 import { useSelector } from "react-redux"
-import {
-  getProfileData,
-  getProfileReadOnly,
-  profileActions,
-  updateProfileData,
-} from "@/entities/Profile"
 import { getUserData } from "@/entities/User"
+import { editableProfileActions } from "../../model/slice/slice"
+import { updateProfileData } from "../../model/services/updateProfileData/updateProfileData"
+import { getProfileReadOnly } from "../../model/selectors/getReadOnly/getReadOnly"
+import { getProfileData } from "../../model/selectors/getProfileData/getProfileData"
 
 interface ProfilePageHeaderProps {
   className?: string
@@ -36,10 +34,10 @@ export const ProfilePageHeader: FC<ProfilePageHeaderProps> = props => {
   const canEdit = PROFILE_ID === USER_ID // TODO может сделать реселект, и получать из него данные, совпадает пользователь и профиль или нет?
 
   const onEdit = useCallback(() => {
-    dispatch(profileActions.setReadOnly(false))
+    dispatch(editableProfileActions.setReadOnly(false))
   }, [dispatch])
   const onCancelEdin = useCallback(() => {
-    dispatch(profileActions.cancelEdit())
+    dispatch(editableProfileActions.cancelEdit())
   }, [dispatch])
   const onSave = useCallback(() => {
     if (PROFILE_ID) {

@@ -7,10 +7,11 @@ import { ArticleListItem } from "../ArticleListItem/ArticleListItem"
 import { ArticleListItemSkeleton } from "../ArticleListItem/ArticleListItemSkeleton"
 import { List, ListRowProps, WindowScroller } from "react-virtualized"
 import { PAGE_ID } from "@/shared/const/page"
+import { HStack } from "@/shared/ui"
 
 interface ArticleListProps {
   className?: string
-  articles: Article[]
+  articles: Article[] | undefined
   isLoading?: boolean
   view?: ArticleView
   target?: HTMLAttributeAnchorTarget
@@ -40,6 +41,10 @@ export const ArticleList: FC<ArticleListProps> = props => {
 
   const isColumn = view === ArticleView.COLUMN
   const itemsPerRow = isColumn ? 1 : Math.floor(elem.clientWidth / 300)
+
+  if (!articles || isLoading) {
+    return <HStack>{getSkeletons(view)}</HStack>
+  }
 
   const rowCount = isColumn
     ? articles.length

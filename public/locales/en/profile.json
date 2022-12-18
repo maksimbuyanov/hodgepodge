@@ -16,5 +16,6 @@
   "INCORRECT_AGE": "Input correct age",
   "INCORRECT_CITY": "Input correct city",
   "NO_DATA": "profile data is empty",
-  "SERVER_ERROR": "Error from server, request later please"
+  "SERVER_ERROR": "Error from server, request later please",
+  "Профиль с таким ID не существует": "Профиль с таким ID не существует"
 }
