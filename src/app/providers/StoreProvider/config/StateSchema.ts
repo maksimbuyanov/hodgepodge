@@ -13,8 +13,8 @@ import { ArticleDetailsPageSchema } from "@/pages/ArticleDetailsPage"
 import { AddCommentFormSchema } from "@/features/AddCommentForm"
 import { ArticlesPageSchema } from "@/pages/ArticlePage"
 import { ScrollSaveSchema } from "@/features/ScrollSave"
-import { rtkApi } from "@/shared/api/rtkApi"
 import { EditableProfileCardSchema } from "@/features/EditableProfileCard"
+import { rtkApi } from "@/shared/api"
 
 export interface StateSchema {
   user: UserSchema

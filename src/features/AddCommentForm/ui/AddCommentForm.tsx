@@ -31,7 +31,7 @@ export const AddCommentForm: FC<AddCommentFormProps> = props => {
   const { className = "", onSendComment } = props
   const { t } = useTranslation("article")
   const text = useSelector(getAddCommentFormText)
-  const error = useSelector(getAddCommentFormError)
+  const ___error = useSelector(getAddCommentFormError)
   const dispatch = useAppDispatch()
   const onCommentTextChange = useCallback(
     value => {

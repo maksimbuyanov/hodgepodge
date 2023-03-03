@@ -13,7 +13,7 @@ import { initArticlesPage } from "../../model/services/initArticlesPage/initArti
 import { Page } from "@/widgets/Page"
 import ArticlesPageFilters from "../ArticlesPageFilters/ArticlesPageFilters"
 import { useSearchParams } from "react-router-dom"
-import { ArticleInfiniteList } from "@/pages/ArticlePage/ui/ArticleInfiniteList/ArticleInfiniteList"
+import { ArticleInfiniteList } from "../ArticleInfiniteList/ArticleInfiniteList"
 
 interface ArticlePageProps {
   className?: string

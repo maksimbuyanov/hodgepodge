@@ -55,7 +55,9 @@
             "files": ["**/src/**/*.test.{ts,tsx}"],
             "rules": {
                 // не проверяет есть ли перевод для слов в файлах с тестами, хз, может потом придется выключить
-                "i18next/no-literal-string":0
+                "i18next/no-literal-string":0,
+              "@typescript-eslint/no-unused-vars": 0
+
             }
         },
         {

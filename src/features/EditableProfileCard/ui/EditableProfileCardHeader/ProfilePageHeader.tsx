@@ -58,6 +58,7 @@ export const ProfilePageHeader: FC<ProfilePageHeaderProps> = props => {
               theme={ButtonTheme.OUTLINE}
               size={ButtonSize.M}
               onClick={onEdit}
+              data-testid="EditableProfileCardHeader.EditButton"
             >
               {t("Редактировать")}
             </Button>
@@ -65,8 +66,9 @@ export const ProfilePageHeader: FC<ProfilePageHeaderProps> = props => {
             <HStack gap={"8"}>
               <Button
                 theme={ButtonTheme.OUTLINE_RED}
-                size={ButtonSize.M}
                 onClick={onCancelEdin}
+                size={ButtonSize.M}
+                data-testid="EditableProfileCardHeader.CancelButton"
               >
                 {t("Отменить редактирование")}
               </Button>
@@ -74,6 +76,7 @@ export const ProfilePageHeader: FC<ProfilePageHeaderProps> = props => {
                 theme={ButtonTheme.OUTLINE}
                 size={ButtonSize.M}
                 onClick={onSave}
+                data-testid="EditableProfileCardHeader.SaveButton"
               >
                 {t("Сохранить")}
               </Button>

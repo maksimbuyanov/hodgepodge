@@ -8,7 +8,6 @@ import {
 import { useTranslation } from "react-i18next"
 import cls from "./EditableProfileCard.module.scss"
 import { FC, memo, useCallback } from "react"
-import { useParams } from "react-router-dom"
 import { useSelector } from "react-redux"
 import { Country } from "@/entities/Country"
 import { Currency } from "@/entities/Currency"
@@ -24,7 +23,7 @@ import {
   editableProfileReducer,
 } from "../../model/slice/slice"
 import { ProfileCard } from "@/entities/Profile"
-import { ProfilePageHeader } from "@/features/EditableProfileCard/ui/EditableProfileCardHeader/ProfilePageHeader"
+import { ProfilePageHeader } from "../EditableProfileCardHeader/ProfilePageHeader"
 
 const reducers: ReducersList = { profile: editableProfileReducer }
 
@@ -108,7 +107,12 @@ export const EditableProfileCard: FC<EditableProfileCardProps> = props => {
         <ProfilePageHeader />
         {errors?.length &&
           errors.map(errorCode => (
-            <Text theme={TextTheme.Error} text={t(errorCode)} key={errorCode} />
+            <Text
+              theme={TextTheme.Error}
+              text={t(errorCode)}
+              key={errorCode}
+              data-testid="EditableProfileCard.Error"
+            />
           ))}
         <ProfileCard
           data={formData}

@@ -15,6 +15,7 @@ interface ArticleListProps {
   isLoading?: boolean
   view?: ArticleView
   target?: HTMLAttributeAnchorTarget
+  virtualized?: boolean
 }
 
 const getSkeletons = (view: ArticleView): ReactNode[] => {
@@ -32,6 +33,7 @@ export const ArticleList: FC<ArticleListProps> = props => {
     view = ArticleView.COLUMN,
     isLoading,
     target,
+    virtualized = true,
   } = props
   let elem: Element
   elem = document.getElementById(PAGE_ID) as Element
@@ -88,20 +90,33 @@ export const ArticleList: FC<ArticleListProps> = props => {
           className={classNames(cls.ArticleList, {}, [className, cls[view]])}
           ref={registerChild}
         >
-          {articles.length > 0 && (
-            <List
-              height={height ?? elem.clientHeight}
-              rowCount={rowCount}
-              rowHeight={isColumn ? 660 : 380}
-              autoWidth={isColumn}
-              rowRenderer={rowRender}
-              width={width || elem.clientWidth}
-              autoHeight={true}
-              onScroll={onChildScroll}
-              isScrolling={isScrolling}
-              scrollTop={scrollTop}
-            />
-          )}
+          {virtualized
+            ? articles.length > 0 && (
+                <List
+                  height={height ?? elem.clientHeight}
+                  rowCount={rowCount}
+                  rowHeight={isColumn ? 660 : 380}
+                  autoWidth={isColumn}
+                  rowRenderer={rowRender}
+                  width={width || elem.clientWidth}
+                  autoHeight={true}
+                  onScroll={onChildScroll}
+                  isScrolling={isScrolling}
+                  scrollTop={scrollTop}
+                />
+              )
+            : articles.map(item => {
+                return (
+                  <ArticleListItem
+                    article={item}
+                    view={view}
+                    target={target}
+                    key={item.id}
+                    className={cls.card}
+                  />
+                )
+              })}
+
           {isLoading && getSkeletons(view)}
         </div>
       )}

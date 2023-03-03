@@ -19,16 +19,15 @@ export const ArticleRecommendationsList: FC<
   const { isLoading, data: articles } = useArticleRecommendationsList(4)
 
   return (
-    <VStack
-      className={classNames(cls.RecommendationsList, {}, [className])}
-      gap={"8"}
-    >
+    <VStack className={classNames("", {}, [className])} gap={"8"}>
       <Text title={t("Рекомендуем")} />
       <ArticleList
+        className={cls.RecommendationsList}
         view={ArticleView.GRID}
         articles={articles}
         target={"_blank"}
         isLoading={isLoading}
+        virtualized={false}
       />
     </VStack>
   )

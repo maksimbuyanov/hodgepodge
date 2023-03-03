@@ -14,8 +14,7 @@ interface ArticleInfiniteListProps {
   className?: string
 }
 
-export const ArticleInfiniteList: FC<ArticleInfiniteListProps> = props => {
-  const { className = "" } = props
+export const ArticleInfiniteList: FC<ArticleInfiniteListProps> = () => {
   const { t } = useTranslation("article")
   const articles = useSelector(getArticles.selectAll)
   const isLoading = useSelector(getArticlesPageIsLoading)

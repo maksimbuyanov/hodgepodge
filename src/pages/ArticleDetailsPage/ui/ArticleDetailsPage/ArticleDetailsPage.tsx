@@ -34,7 +34,7 @@ export const ArticleDetailsPage: FC<ArticleDetailsPageProps> = props => {
       <Page className={classNames(cls.ArticleDetailsPage, {}, [className])}>
         <ArticleDetailsPageHeader />
         <ArticleDetails id={id} />
-        <ArticleRecommendationsList />
+        <ArticleRecommendationsList className={cls.recommendations} />
         <ArticleDetailsCommensts id={id} />
       </Page>
     </DynamicModuleLoader>
