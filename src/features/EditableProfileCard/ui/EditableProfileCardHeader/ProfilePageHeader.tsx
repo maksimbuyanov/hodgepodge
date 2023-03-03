@@ -31,7 +31,7 @@ export const ProfilePageHeader: FC<ProfilePageHeaderProps> = props => {
   const PROFILE_ID = profileData?.id
   const userData = useSelector(getUserData)
   const USER_ID = userData?.id
-  const canEdit = PROFILE_ID === USER_ID // TODO может сделать реселект, и получать из него данные, совпадает пользователь и профиль или нет?
+  const canEdit = PROFILE_ID === USER_ID
 
   const onEdit = useCallback(() => {
     dispatch(editableProfileActions.setReadOnly(false))
