@@ -3,7 +3,7 @@ import { classNames } from "@/shared/lib"
 import { VStack, Text } from "@/shared/ui"
 import { useTranslation } from "react-i18next"
 import { CommentCard } from "../CommentCard/CommentCard"
-import { Comment } from "../../model/types/comment"
+import { Comment } from "@/entities/Comment"
 
 interface CommentListProps {
   className?: string
@@ -15,7 +15,7 @@ export const CommentList: FC<CommentListProps> = props => {
   const { className = "", comments, isLoading } = props
   const { t } = useTranslation()
   return (
-    <VStack gap={"16"} className={classNames("", {}, [className])}>
+    <VStack gap={"16"} max className={classNames("", {}, [className])}>
       {comments?.length ? (
         comments.map(comment => {
           return (

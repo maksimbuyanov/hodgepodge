@@ -33,7 +33,7 @@ export const ArticleDetailsCommensts: FC<
     void dispatch(fetchCommentsByArticleId(id))
   })
   return (
-    <VStack className={classNames("", {}, [className])}>
+    <VStack gap={"16"} className={classNames("", {}, [className])}>
       <Text title={t("Комментарии")} />
       <AddCommentForm onSendComment={onSendComment} />
       <CommentList comments={comments} isLoading={commentsIsLoading} />

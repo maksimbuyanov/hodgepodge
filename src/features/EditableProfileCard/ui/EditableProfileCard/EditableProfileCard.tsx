@@ -103,7 +103,10 @@ export const EditableProfileCard: FC<EditableProfileCardProps> = props => {
 
   return (
     <DynamicModuleLoader reducers={reducers}>
-      <VStack className={classNames(cls.EditableProfileCard, {}, [className])}>
+      <VStack
+        max
+        className={classNames(cls.EditableProfileCard, {}, [className])}
+      >
         <ProfilePageHeader />
         {errors?.length &&
           errors.map(errorCode => (
