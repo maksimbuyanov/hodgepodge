@@ -15,7 +15,12 @@ import {
 } from "@/shared/ui"
 import { LoginModal } from "@/features/AuthByUsername"
 import { useDispatch, useSelector } from "react-redux"
-import { getUserData, userActions } from "@/entities/User"
+import {
+  getUserData,
+  isUserAdmin,
+  isUserManager,
+  userActions,
+} from "@/entities/User"
 import { RoutePath } from "@/shared/config"
 
 interface NavbarProps {
@@ -28,6 +33,8 @@ export const Navbar: FC<NavbarProps> = props => {
   const [isAuthModal, setIsAuthModal] = useState(false)
   const dispatch = useDispatch()
   const userData = useSelector(getUserData)
+  const isAdmin = useSelector(isUserAdmin)
+  const isManager = useSelector(isUserManager)
   const onCloseModal = useCallback(() => {
     setIsAuthModal(false)
   }, [])
@@ -37,6 +44,8 @@ export const Navbar: FC<NavbarProps> = props => {
   const logout = useCallback(() => {
     dispatch(userActions.logout())
   }, [dispatch])
+
+  const isAdminPanelAvailable = isAdmin || isManager
 
   if (userData) {
     return (
@@ -57,6 +66,14 @@ export const Navbar: FC<NavbarProps> = props => {
           className={cls.links}
           direction={"bottom-left"}
           items={[
+            ...(isAdminPanelAvailable
+              ? [
+                  {
+                    content: t("Админка"),
+                    href: RoutePath.admin_panel,
+                  },
+                ]
+              : []),
             {
               content: t("Выйти"),
               onClick: logout,
