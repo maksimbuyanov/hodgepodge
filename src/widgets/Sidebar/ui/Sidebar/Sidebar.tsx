@@ -1,5 +1,5 @@
 import type { ReactNode } from "react"
-import React, { useState } from "react"
+import { useState } from "react"
 import cls from "./Sidebar.module.scss"
 import { classNames } from "@/shared/lib"
 import { ThemeSwitcher } from "@/widgets/ThemeSwitcher"

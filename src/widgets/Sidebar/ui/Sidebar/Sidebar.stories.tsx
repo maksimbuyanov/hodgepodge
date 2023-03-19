@@ -1,4 +1,3 @@
-import React from "react"
 import { ComponentMeta, ComponentStory } from "@storybook/react"
 import { Sidebar } from "./Sidebar"
 import { StoreDecorator, ThemeDecorator } from "@/shared/config"
