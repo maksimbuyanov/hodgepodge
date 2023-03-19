@@ -62,6 +62,7 @@ const LoginForm: FC<LoginFormProps> = props => {
           autoFocus={true}
           onChange={onChangeUsername}
           value={username}
+          data-testid={"username"}
         />
         <Input
           className={cls.input}

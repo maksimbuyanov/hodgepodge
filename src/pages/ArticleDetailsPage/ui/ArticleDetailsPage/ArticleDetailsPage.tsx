@@ -1,4 +1,4 @@
-import { FC, memo } from "react"
+import { memo } from "react"
 import cls from "./ArticleDetailsPage.module.scss"
 import { classNames, DynamicModuleLoader, ReducersList } from "@/shared/lib"
 import { useTranslation } from "react-i18next"
@@ -17,7 +17,7 @@ const reducers: ReducersList = {
   articleDetailsPage: articleDetailsPageReducer,
 }
 
-export const ArticleDetailsPage: FC<ArticleDetailsPageProps> = props => {
+export const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
   const { className = "" } = props
   const { id } = useParams<{ id: string }>()
   const { t } = useTranslation("article")

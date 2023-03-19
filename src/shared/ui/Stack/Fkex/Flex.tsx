@@ -1,4 +1,4 @@
-import { DetailedHTMLProps, FC, HTMLAttributes, ReactNode } from "react"
+import { DetailedHTMLProps, HTMLAttributes, ReactNode } from "react"
 import cls from "./Flex.module.scss"
 import { classNames, Mods } from "@/shared/lib"
 
@@ -57,7 +57,7 @@ export interface FlexProps extends DivProps {
   max?: boolean
 }
 
-export const Flex: FC<FlexProps> = props => {
+export const Flex = (props: FlexProps) => {
   const {
     className = "",
     children,

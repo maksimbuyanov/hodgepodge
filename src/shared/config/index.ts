@@ -1,4 +1,5 @@
 export { routeConfig, RoutePath } from "./routerConfig/routerConfig"
 export { StoreDecorator } from "./storybook/StoreDecorator/StoreDecorator"
-export { RouterDecoratod } from "./storybook/RouterDecorator/RouterDecoratod"
+export { SuspenseDecorator } from "./storybook/SuspenseDecorator/SuspenseDecorator"
+export { RouterDecorator } from "./storybook/RouterDecorator/RouterDecorator"
 export { ThemeDecorator } from "./storybook/styleDecorator/ThemeDecorator"

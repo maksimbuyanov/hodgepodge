@@ -34,7 +34,7 @@ export const AddCommentForm: FC<AddCommentFormProps> = props => {
   const ___error = useSelector(getAddCommentFormError)
   const dispatch = useAppDispatch()
   const onCommentTextChange = useCallback(
-    value => {
+    (value: string) => {
       dispatch(addCommentFormActions.setText(value))
     },
     [dispatch]

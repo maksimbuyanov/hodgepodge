@@ -2,7 +2,7 @@
 import { FC, HTMLAttributeAnchorTarget, memo, ReactNode } from "react"
 import cls from "./ArticleList.module.scss"
 import { classNames } from "@/shared/lib"
-import { Article, ArticleView } from "../../model/types/article"
+import { Article, ArticleView } from "@/entities/Article"
 import { ArticleListItem } from "../ArticleListItem/ArticleListItem"
 import { ArticleListItemSkeleton } from "../ArticleListItem/ArticleListItemSkeleton"
 import { List, ListRowProps, WindowScroller } from "react-virtualized"

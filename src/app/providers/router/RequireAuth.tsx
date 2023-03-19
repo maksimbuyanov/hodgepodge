@@ -1,4 +1,4 @@
-import { FC, useMemo } from "react"
+import { ReactNode, useMemo } from "react"
 import { useSelector } from "react-redux"
 import { getUserData, getUserRole, Role } from "@/entities/User"
 import { Navigate, useLocation } from "react-router-dom"
@@ -6,9 +6,10 @@ import { RoutePath } from "@/shared/config"
 
 interface RequireAuthProps {
   roles?: Role[]
+  children: ReactNode
 }
 
-export const RequireAuth: FC<RequireAuthProps> = props => {
+export const RequireAuth = (props: RequireAuthProps): JSX.Element => {
   const { children, roles } = props
   const user = useSelector(getUserData)
   const userRoles = useSelector(getUserRole)

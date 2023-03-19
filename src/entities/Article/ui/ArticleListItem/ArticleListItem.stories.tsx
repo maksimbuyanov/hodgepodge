@@ -4,11 +4,7 @@ import { ArticleListItem } from "./ArticleListItem"
 import { ThemeDecorator } from "@/shared/config/storybook/styleDecorator/ThemeDecorator"
 import { Theme } from "@/app/providers/ThemeProvider"
 import { StoreDecorator } from "@/shared/config"
-import {
-  ArticleBlockType,
-  ArticleType,
-  ArticleView,
-} from "../../model/types/article"
+import { ArticleView } from "@/entities/Article"
 import { article } from "../../config/articleExample"
 
 export default {

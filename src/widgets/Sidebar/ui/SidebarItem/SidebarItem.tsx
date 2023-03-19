@@ -1,4 +1,4 @@
-import React, { FC, memo } from "react"
+import React, { memo } from "react"
 import cls from "./SidebarItem.module.scss"
 import { classNames } from "@/shared/lib"
 import { AppLink, AppLinkTheme } from "@/shared/ui"
@@ -12,7 +12,7 @@ interface SidebarItemProps {
   collapsed: boolean
 }
 
-export const SidebarItem: FC<SidebarItemProps> = props => {
+export const SidebarItem = (props: SidebarItemProps) => {
   const { item, collapsed } = props
   const { t } = useTranslation()
   const { text, path, Icon, authOnly } = item

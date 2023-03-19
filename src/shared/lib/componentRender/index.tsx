@@ -2,7 +2,7 @@ import { ReactNode } from "react"
 import { MemoryRouter } from "react-router-dom"
 import i18nForTest from "@/shared/config/i18n/i18nForTest"
 import { I18nextProvider } from "react-i18next"
-import { render } from "@testing-library/react"
+import { render, RenderResult } from "@testing-library/react"
 import { StateSchema, StoreProvider } from "@/app/providers/StoreProvider"
 import { ReducersMapObject } from "@reduxjs/toolkit"
 
@@ -15,7 +15,7 @@ interface componentRenderOptions {
 export function componentRender(
   component: ReactNode,
   options: componentRenderOptions = { route: "/" }
-): ReactNode {
+): RenderResult {
   const { route, initialState, asyncReducer } = options
   return render(
     <MemoryRouter initialEntries={[route]}>

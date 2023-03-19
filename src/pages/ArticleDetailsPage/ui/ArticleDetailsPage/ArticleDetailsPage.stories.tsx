@@ -8,6 +8,7 @@ import {
   ArticleBlockType,
   ArticleType,
 } from "@/entities/Article/model/types/article"
+import { RouterDecoratorWithPath } from "@/shared/config/storybook/RouterDecorator/RouterDecoratorWithPath"
 
 const article = {
   id: "1",
@@ -66,6 +67,7 @@ export default {
         data: article,
       },
     }),
+    RouterDecoratorWithPath("google.com/article?id=123"),
   ],
 } as ComponentMeta<typeof ArticleDetailsPage>
 

@@ -1,15 +1,19 @@
 import React from "react"
-import { render } from "react-dom"
 import { BrowserRouter } from "react-router-dom"
 import { ThemeProvider } from "@/app/providers/ThemeProvider/"
 import App from "./app/App"
 import "@/shared/config/i18n"
 import { ErrorBoundary } from "@/app/providers/ErrorBoundary"
 import { StoreProvider } from "@/app/providers/StoreProvider"
+import { createRoot } from "react-dom/client"
 
-const root = document.getElementById("root")
+const container = document.getElementById("root")
 
-render(
+if (!container) {
+  throw new Error("root div error")
+}
+const root = createRoot(container)
+root.render(
   <BrowserRouter>
     <ErrorBoundary>
       <StoreProvider>
@@ -18,6 +22,5 @@ render(
         </ThemeProvider>
       </StoreProvider>
     </ErrorBoundary>
-  </BrowserRouter>,
-  root
+  </BrowserRouter>
 )

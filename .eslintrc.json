@@ -24,9 +24,7 @@
     },
     "plugins": [
         "react",
-      //        "react-hooks",
         "@typescript-eslint",
-//        "i18next",
         "prettier"
     ],
     "overrides": [
@@ -72,6 +70,13 @@
             "rules": {
                 // ругался на регулярные выражения в конфиге сторибука
                 "@typescript-eslint/prefer-includes": 0
+            }
+        },
+        {
+            "files": ["**/src/**/**/ui/**/*.tsx", "**/src/**/**/ui/*.tsx"],
+            "rules": {
+                // постоянно просил указывать тип возвращаемой функции у компонентов...
+              "@typescript-eslint/explicit-function-return-type": "off"
             }
         }
     ],

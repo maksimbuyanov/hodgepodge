@@ -1,4 +1,4 @@
-import type { FC } from "react"
+import type { ReactNode } from "react"
 import React, { useState } from "react"
 import cls from "./Sidebar.module.scss"
 import { classNames } from "@/shared/lib"
@@ -11,9 +11,10 @@ import { getSidebarItems } from "../../model/selectors/getSidebarItems"
 
 interface SidebarProps {
   className?: string
+  children?: ReactNode
 }
 
-export const Sidebar: FC<SidebarProps> = props => {
+export const Sidebar = (props: SidebarProps) => {
   const { className = "", children, ...otherProps } = props
   const [collapsed, setCollapsed] = useState(false)
   const sidebarItemsList = useSelector(getSidebarItems)

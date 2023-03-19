@@ -1,4 +1,4 @@
-import { FC, memo } from "react"
+import { memo, ReactNode } from "react"
 import cls from "./PageError.module.scss"
 import { classNames } from "@/shared/lib"
 import { useTranslation } from "react-i18next"
@@ -6,9 +6,10 @@ import { Button, ButtonTheme } from "@/shared/ui"
 
 interface PageErrorProps {
   className?: string
+  children?: ReactNode
 }
 
-export const PageError: FC<PageErrorProps> = props => {
+export const PageError = (props: PageErrorProps) => {
   const { className = "" } = props
   const { t } = useTranslation()
   const reloadPage = (): void => {

@@ -1,4 +1,3 @@
-import { FC } from "react"
 import { classNames } from "@/shared/lib"
 import { VStack, Text } from "@/shared/ui"
 import { useTranslation } from "react-i18next"
@@ -11,7 +10,7 @@ interface CommentListProps {
   isLoading?: boolean
 }
 
-export const CommentList: FC<CommentListProps> = props => {
+export const CommentList = (props: CommentListProps) => {
   const { className = "", comments, isLoading } = props
   const { t } = useTranslation()
   return (

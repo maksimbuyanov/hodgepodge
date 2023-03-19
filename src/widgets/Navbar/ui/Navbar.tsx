@@ -1,4 +1,4 @@
-import type { FC } from "react"
+import type { ReactNode } from "react"
 import React, { memo, useCallback, useState } from "react"
 import { useTranslation } from "react-i18next"
 import cls from "./Navbar.module.scss"
@@ -25,9 +25,10 @@ import { RoutePath } from "@/shared/config"
 
 interface NavbarProps {
   className?: string
+  children?: ReactNode
 }
 
-export const Navbar: FC<NavbarProps> = props => {
+export const Navbar = (props: NavbarProps) => {
   const { className = "" } = props
   const { t } = useTranslation()
   const [isAuthModal, setIsAuthModal] = useState(false)
