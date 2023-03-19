@@ -5,6 +5,7 @@ import type { BuildOptions } from "./types/config"
 import ReactRefreshPlugin from "@pmmmwh/react-refresh-webpack-plugin"
 import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer"
 import CopyPlugin from "copy-webpack-plugin"
+import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin"
 
 export function buildPlugins(
   options: BuildOptions
@@ -44,5 +45,15 @@ export function buildPlugins(
     isDev && new ReactRefreshPlugin(),
 
     isDev && new BundleAnalyzerPlugin({ openAnalyzer: false }),
+
+    new ForkTsCheckerWebpackPlugin({
+      typescript: {
+        diagnosticOptions: {
+          semantic: true,
+          syntactic: true,
+        },
+        mode: "write-references",
+      },
+    }),
   ].filter(Boolean) as webpack.WebpackPluginInstance[]
 }

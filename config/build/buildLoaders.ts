@@ -2,6 +2,7 @@ import type webpack from "webpack"
 import type { BuildOptions } from "./types/config"
 import { buildCssLoader } from "./loaders/buildCssLoader"
 import { buildSvgLoader } from "./loaders/buildSvgLoader"
+import { buildBabelLoader } from "./loaders/buildBabelLoader"
 
 export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
   const { isDev } = options
@@ -15,34 +16,8 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
 
   const cssLoader = buildCssLoader(isDev)
 
-  // Если бы в проекте не использовался TS, то нужно было бы ставить лоадер babel-loader
-  // для того, что бы этот бабел транспилировал код jsx в js
-  const typescriptLoader = {
-    // Обрабатывает файлы ts перед сборкой
-    test: /\.tsx?$/, // Обрабатывает все что попадает в regex
-    use: "ts-loader", // То, чем обрабатывает
-    exclude: /node_modules/, // Файлы, папки которые точно не нужно обрабатывать
-  }
+  const tsxCodeBabelLoader = buildBabelLoader({ ...options, isTsx: true })
+  const codeBabelLoader = buildBabelLoader({ ...options, isTsx: false })
 
-  const babelLoader = {
-    test: /\.(js|jsx|tsx)$/,
-    exclude: /node_modules/,
-    use: {
-      loader: "babel-loader",
-      options: {
-        presets: ["@babel/preset-env"],
-        plugins: [isDev && require.resolve("react-refresh/babel")].filter(
-          Boolean
-        ),
-      },
-    },
-  }
-  return [
-    cssLoader,
-    svgLoader,
-    fileLoader,
-    babelLoader,
-    typescriptLoader,
-    // fontsLoader,
-  ]
+  return [cssLoader, svgLoader, fileLoader, codeBabelLoader, tsxCodeBabelLoader]
 }
