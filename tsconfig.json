@@ -24,7 +24,8 @@
     //позволяет синтетически сделать импорты привычными, многие библиотеки не поддерживают export default
     "strictNullChecks": true,
     "strict": true,
-    "sourceMap": true
+    "sourceMap": true,
+    "isolatedModules": true
   },
   "ts-node": {
     "compilerOptions": {
