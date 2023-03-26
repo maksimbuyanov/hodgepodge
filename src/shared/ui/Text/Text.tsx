@@ -2,43 +2,46 @@ import { FC, memo } from "react"
 import cls from "./Text.module.scss"
 import { classNames } from "@/shared/lib"
 
-export enum TextTheme {
-  Primary = "primary",
-  Error = "error",
-  Bold = "bold",
-  Inverted = "inverted",
+export const TextTheme = {
+  Primary: "primary",
+  Error: "error",
+  Bold: "bold",
+  Inverted: "inverted",
+} as const
+type TextThemeType = valueOf<typeof TextTheme>
+
+export const TextAlign = {
+  RIGHT: "right",
+  LEFT: "left",
+  CENTER: "center",
+} as const
+type TextAlignType = valueOf<typeof TextAlign>
+
+export const TextSize = {
+  XL: "size_xl",
+  M: "size_m",
+  L: "size_l",
+  S: "size_s",
+} as const
+type TextSizeType = valueOf<typeof TextSize>
+
+type HeaderTagType = "h1" | "h2" | "h3" | "h4"
+
+const mapSizeToHeaderTag: Record<TextSizeType, HeaderTagType> = {
+  [TextSize.XL]: "h1",
+  [TextSize.L]: "h2",
+  [TextSize.M]: "h3",
+  [TextSize.S]: "h4",
 }
 
 export interface TextProps {
   className?: string
   title?: string
   text?: string
-  theme?: TextTheme
-  align?: TextAlign
-  size?: TextSize
+  theme?: TextThemeType
+  align?: TextAlignType
+  size?: TextSizeType
   "data-testid"?: string
-}
-
-export enum TextAlign {
-  RIGHT = "right",
-  LEFT = "left",
-  CENTER = "center",
-}
-
-export enum TextSize {
-  XL = "size_xl",
-  M = "size_m",
-  L = "size_l",
-  S = "size_s",
-}
-
-type HeaderTagType = "h1" | "h2" | "h3" | "h4"
-
-const mapSizeToHeaderTag: Record<TextSize, HeaderTagType> = {
-  [TextSize.XL]: "h1",
-  [TextSize.L]: "h2",
-  [TextSize.M]: "h3",
-  [TextSize.S]: "h4",
 }
 
 export const Text: FC<TextProps> = props => {

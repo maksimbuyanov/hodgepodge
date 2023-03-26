@@ -114,6 +114,7 @@
             "align",
             "gap",
             "role",
+            "theme",
             "as"
           ]
         }

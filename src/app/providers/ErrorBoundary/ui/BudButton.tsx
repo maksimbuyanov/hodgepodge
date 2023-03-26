@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from "react"
-import { Button, ButtonTheme } from "@/shared/ui"
+import { Button } from "@/shared/ui"
 
 interface BudButtonProps {
   className?: string
@@ -16,7 +16,7 @@ export const BudButton: FC<BudButtonProps> = () => {
     }
   }, [error])
   return (
-    <Button theme={ButtonTheme.ERROR} onClick={throwFn}>
+    <Button theme={"error"} onClick={throwFn}>
       #####
     </Button>
   )

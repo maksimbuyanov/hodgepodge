@@ -4,6 +4,8 @@ declare module "*.scss" {
   export = classNames
 }
 
+type valueOf<T> = T[keyof T]
+
 declare module "*.svg" {
   import type React from "react"
 

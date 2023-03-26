@@ -3,27 +3,29 @@ import cls from "./Button.module.scss"
 import { classNames, Mods } from "@/shared/lib"
 import { memo } from "react"
 
-export enum ButtonTheme {
-  CLEAR = "clear",
-  CLEAR_INVERTED = "clearInverted",
-  ERROR = "error",
-  OUTLINE = "outline",
-  OUTLINE_RED = "outline_red",
-  BACKGROUND = "background",
-  BACKGROUND_INVERTED = "backgroundInverted",
-}
+export const ButtonTheme = {
+  CLEAR: "clear",
+  CLEAR_INVERTED: "clearInverted",
+  ERROR: "error",
+  OUTLINE: "outline",
+  OUTLINE_RED: "outline_red",
+  BACKGROUND: "background",
+  BACKGROUND_INVERTED: "backgroundInverted",
+} as const
+type ButtonThemeType = valueOf<typeof ButtonTheme>
 
-export const enum ButtonSize {
-  L = "size_l",
-  M = "size_m",
-  XL = "size_xl",
-}
+export const ButtonSize = {
+  L: "size_l",
+  M: "size_m",
+  XL: "size_xl",
+} as const
+type ButtonSizeType = valueOf<typeof ButtonSize>
 
 type ButtonProps = {
   className?: string
-  theme?: ButtonTheme
+  theme?: ButtonThemeType
   square?: boolean
-  size?: ButtonSize
+  size?: ButtonSizeType
   disabled?: boolean
 } & ButtonHTMLAttributes<HTMLButtonElement>
 
