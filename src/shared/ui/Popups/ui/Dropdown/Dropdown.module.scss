@@ -1,0 +1,21 @@
+.Dropdown {
+  position: relative;
+  width: max-content;
+}
+
+.options {
+  position: absolute;
+  z-index: 100;
+  min-width: 100%;
+  padding: unset;
+  margin: 0;
+  background-color: var(--listbox-bg);
+  border-radius: 12px;
+}
+
+.option {
+  width: inherit;
+  padding: 10px 20px;
+  cursor: pointer;
+  list-style-type: none;
+}

@@ -10,6 +10,9 @@ import {
   Button,
   ButtonTheme,
   Dropdown,
+  HStack,
+  Icon,
+  Popover,
   Text,
   TextTheme,
 } from "@/shared/ui"
@@ -22,6 +25,7 @@ import {
   userActions,
 } from "@/entities/User"
 import { RoutePath } from "@/shared/config"
+import NotificationIcon from "../../../shared/assets/house.svg"
 
 interface NavbarProps {
   className?: string
@@ -47,6 +51,14 @@ export const Navbar = (props: NavbarProps) => {
   }, [dispatch])
 
   const isAdminPanelAvailable = isAdmin || isManager
+  const adminButtons = isAdminPanelAvailable
+    ? [
+        {
+          content: t("Админка"),
+          href: RoutePath.admin_panel,
+        },
+      ]
+    : []
 
   if (userData) {
     return (
@@ -63,38 +75,42 @@ export const Navbar = (props: NavbarProps) => {
         >
           {t("Создать статью")}
         </AppLink>
-        <Dropdown
-          className={cls.links}
-          direction={"bottom-left"}
-          items={[
-            ...(isAdminPanelAvailable
-              ? [
-                  {
-                    content: t("Админка"),
-                    href: RoutePath.admin_panel,
-                  },
-                ]
-              : []),
-            {
-              content: t("Выйти"),
-              onClick: logout,
-            },
-            {
-              content: t("Профиль"),
-              href: RoutePath.profile + userData.id,
-            },
-          ]}
-          trigger={
-            <Avatar src={userData.avatar} size={30} alt={userData.username} />
-          }
-        />
+        <HStack gap={"16"} className={cls.actions}>
+          <Popover
+            trigger={
+              <Button theme={"clear"}>
+                <Icon Svg={NotificationIcon} className={cls.notificationIcon} />
+              </Button>
+            }
+          >
+            12312313
+          </Popover>
+
+          <Dropdown
+            direction={"bottom-left"}
+            items={[
+              ...adminButtons,
+              {
+                content: t("Выйти"),
+                onClick: logout,
+              },
+              {
+                content: t("Профиль"),
+                href: RoutePath.profile + userData.id,
+              },
+            ]}
+            trigger={
+              <Avatar src={userData.avatar} size={30} alt={userData.username} />
+            }
+          />
+        </HStack>
       </header>
     )
   }
 
   return (
     <header className={classNames(cls.Navbar, {}, [className])}>
-      <div className={classNames(cls.links)}>
+      <div className={classNames(cls.actions)}>
         <Button theme={ButtonTheme.CLEAR_INVERTED} onClick={onOpenModal}>
           {t("Войти")}
         </Button>

@@ -1,9 +1,10 @@
-import { FC, Fragment, ReactNode } from "react"
+import { FC, Fragment, memo, ReactNode } from "react"
 import cls from "./Dropdown.module.scss"
 import { classNames } from "@/shared/lib"
 import { Menu } from "@headlessui/react"
 import { DropdownDirection } from "@/shared/types/ui"
 import { AppLink } from "@/shared/ui"
+import popupCls from "../../styles/popups.module.scss"
 
 export interface DropDownItem {
   disabled?: boolean
@@ -19,12 +20,14 @@ interface DropdownProps {
   direction?: DropdownDirection
 }
 
-export const Dropdown: FC<DropdownProps> = props => {
+const Dropdown: FC<DropdownProps> = props => {
   const { className = "", trigger, items, direction = "bottom right" } = props
   return (
     <Menu as={"div"} className={classNames(cls.Dropdown, {}, [className])}>
-      <Menu.Button className={cls.trigger}>{trigger}</Menu.Button>
-      <Menu.Items className={classNames(cls.options, {}, [cls[direction]])}>
+      <Menu.Button className={popupCls.trigger}>{trigger}</Menu.Button>
+      <Menu.Items
+        className={classNames(cls.options, {}, [popupCls[direction]])}
+      >
         {items.map((item, index) => {
           if (item.href) {
             return (
@@ -40,8 +43,8 @@ export const Dropdown: FC<DropdownProps> = props => {
                     <li
                       onClick={item.onClick}
                       className={classNames(cls.option, {
-                        [cls.active]: active,
-                        [cls.disabled]: disabled,
+                        [popupCls.active]: active,
+                        [popupCls.disabled]: disabled,
                       })}
                     >
                       {item.content}
@@ -74,3 +77,5 @@ export const Dropdown: FC<DropdownProps> = props => {
     </Menu>
   )
 }
+
+export const MemoDropdown = memo(Dropdown)

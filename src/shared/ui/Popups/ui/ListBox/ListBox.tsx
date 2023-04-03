@@ -1,9 +1,10 @@
-import { FC, Fragment, ReactNode } from "react"
+import { FC, Fragment, memo, ReactNode } from "react"
 import cls from "./ListBox.module.scss"
 import { classNames } from "@/shared/lib"
 import { Listbox as HListBox } from "@headlessui/react"
 import { Button, ButtonTheme, HStack } from "@/shared/ui"
-import { DropdownDirection } from "../../types/ui"
+import { DropdownDirection } from "src/shared/types/ui"
+import popupCls from "../../styles/popups.module.scss"
 
 export interface option {
   value: string
@@ -22,7 +23,7 @@ interface ListBoxProps {
   label?: string
 }
 
-export const ListBox: FC<ListBoxProps> = props => {
+const ListBox: FC<ListBoxProps> = props => {
   const {
     className = "",
     options,
@@ -44,13 +45,13 @@ export const ListBox: FC<ListBoxProps> = props => {
         className={classNames(cls.ListBox, {}, [className])}
         disabled={readOnly}
       >
-        <HListBox.Button className={cls.trigger} disabled={readOnly}>
+        <HListBox.Button className={popupCls.trigger} disabled={readOnly}>
           <Button disabled={readOnly} theme={ButtonTheme.OUTLINE}>
             {value ?? defaultValue}
           </Button>
         </HListBox.Button>
         <HListBox.Options
-          className={classNames(cls.options, {}, [cls[direction]])}
+          className={classNames(cls.options, {}, [popupCls[direction]])}
         >
           {options?.map(option => {
             return (
@@ -65,9 +66,9 @@ export const ListBox: FC<ListBoxProps> = props => {
                   return (
                     <li
                       className={classNames(cls.item, {
-                        [cls.active]: active,
+                        [popupCls.active]: active,
                         [cls.selected]: selected,
-                        [cls.disabled]: disabled,
+                        [popupCls.disabled]: disabled,
                       })}
                     >
                       {option.content}
@@ -82,3 +83,5 @@ export const ListBox: FC<ListBoxProps> = props => {
     </HStack>
   )
 }
+
+export const MemoListBox = memo(ListBox)
