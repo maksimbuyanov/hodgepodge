@@ -1,4 +1,34 @@
 {
+  "notifications": [
+    {
+      "id": "1",
+      "title": "New",
+      "description": "Descr",
+      "userId": "1"
+    },
+    {
+      "id": "2",
+      "title": "New2",
+      "description": "Descr",
+      "userId": "1",
+      "href": "yandex.ru"
+    },
+    {
+      "id": "3",
+      "title": "New3",
+      "description": "Descr",
+      "userId": "2",
+      "href": "google.com"
+    },
+    {
+      "id": "4",
+      "title": "New4",
+      "description": "Descr",
+      "userId": "1"
+    }
+  ]
+
+  ,
   "post": {
     "id": "1",
     "name": "Oleh"

@@ -26,6 +26,7 @@ import {
 } from "@/entities/User"
 import { RoutePath } from "@/shared/config"
 import NotificationIcon from "../../../shared/assets/house.svg"
+import { NotificationList } from "@/entities/Notification"
 
 interface NavbarProps {
   className?: string
@@ -83,7 +84,7 @@ export const Navbar = (props: NavbarProps) => {
               </Button>
             }
           >
-            12312313
+            <NotificationList />
           </Popover>
 
           <Dropdown

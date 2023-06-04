@@ -2,7 +2,7 @@ import React from "react"
 import { ComponentMeta, ComponentStory } from "@storybook/react"
 import { ThemeDecorator } from "@/shared/config/storybook/styleDecorator/ThemeDecorator"
 import { Theme } from "@/app/providers/ThemeProvider"
-import { Dropdown } from ".//Dropdown"
+import { MemoDropdown as Dropdown } from "./Dropdown"
 import { Button } from "@/shared/ui"
 
 export default {
